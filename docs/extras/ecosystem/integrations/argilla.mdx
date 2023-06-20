@@ -1,28 +1,26 @@
 # Argilla
 
-![Argilla - Open-source data platform for LLMs](https://argilla.io/og.png)
+![Argilla - 针对LLMs的开源数据平台](https://argilla.io/og.png)
 
->[Argilla](https://argilla.io/) is an open-source data curation platform for LLMs.
-> Using Argilla, everyone can build robust language models through faster data curation 
-> using both human and machine feedback. We provide support for each step in the MLOps cycle, 
-> from data labeling to model monitoring.
+>[Argilla](https://argilla.io/) 是一个针对LLMs的开源数据策划平台。
+> 使用Argilla，每个人都可以通过更快的数据策划，使用人工和机器反馈来构建强大的语言模型。
+> 我们为MLOps周期的每个步骤提供支持，从数据标注到模型监控。
 
-## Installation and Setup
+## 安装和设置
 
-First, you'll need to install the  `argilla` Python package as follows:
+首先，您需要按照以下步骤安装 `argilla` Python包：
 
 ```bash
 pip install argilla --upgrade
 ```
 
-If you already have an Argilla Server running, then you're good to go; but if
-you don't, follow the next steps to install it.
+如果您已经运行了Argilla服务器，那么您就可以开始了；但如果您没有，请按照以下步骤安装它。
 
-If you don't you can refer to [Argilla - 🚀 Quickstart](https://docs.argilla.io/en/latest/getting_started/quickstart.html#Running-Argilla-Quickstart) to deploy Argilla either on HuggingFace Spaces, locally, or on a server.
+如果您没有，请参考[Argilla - 🚀 快速入门](https://docs.argilla.io/en/latest/getting_started/quickstart.html#Running-Argilla-Quickstart)在HuggingFace Spaces上、本地或服务器上部署Argilla。
 
-## Tracking
+## 跟踪
 
-See a [usage example of `ArgillaCallbackHandler`](/docs/modules/callbacks/integrations/argilla.html).
+请参阅[使用`ArgillaCallbackHandler`的用法示例](/docs/modules/callbacks/integrations/argilla.html)。
 
 ```python
 from langchain.callbacks import ArgillaCallbackHandler

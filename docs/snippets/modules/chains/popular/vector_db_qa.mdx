@@ -1,4 +1,3 @@
-```python
 from langchain.chains import RetrievalQA
 from langchain.document_loaders import TextLoader
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -34,10 +33,10 @@ qa.run(query)
 
 </CodeOutputBlock>
 
-## Chain Type
-You can easily specify different chain types to load and use in the RetrievalQA chain. For a more detailed walkthrough of these types, please see [this notebook](question_answering.html).
+## 链类型
+您可以轻松地指定不同的链类型来加载和使用在RetrievalQA链中。有关这些类型的更详细的介绍，请参阅[此笔记本](question_answering.html)。
 
-There are two ways to load different chain types. First, you can specify the chain type argument in the `from_chain_type` method. This allows you to pass in the name of the chain type you want to use. For example, in the below we change the chain type to `map_reduce`.
+有两种方法可以加载不同的链类型。首先，您可以在`from_chain_type`方法中指定链类型参数。这样可以传入您想要使用的链类型的名称。例如，在下面的示例中，我们将链类型更改为`map_reduce`。
 
 
 ```python
@@ -56,9 +55,9 @@ qa.run(query)
     " The president said that Judge Ketanji Brown Jackson is one of our nation's top legal minds, a former top litigator in private practice and a former federal public defender, from a family of public school educators and police officers, a consensus builder and has received a broad range of support from the Fraternal Order of Police to former judges appointed by Democrats and Republicans."
 ```
 
-</CodeOutputBlock>
+\<CodeOutputBlock\>
 
-The above way allows you to really simply change the chain_type, but it does provide a ton of flexibility over parameters to that chain type. If you want to control those parameters, you can load the chain directly (as you did in [this notebook](question_answering.html)) and then pass that directly to the the RetrievalQA chain with the `combine_documents_chain` parameter. For example:
+上述方法允许您非常简单地更改chain_type，但它确实提供了对该chain类型的参数的大量灵活性。如果您想控制这些参数，可以直接加载链条（就像在[此笔记本](question_answering.html)中所做的那样），然后将其直接传递给RetrievalQA链条，使用`combine_documents_chain`参数。例如:
 
 
 ```python
@@ -81,8 +80,8 @@ qa.run(query)
 
 </CodeOutputBlock>
 
-## Custom Prompts
-You can pass in custom prompts to do question answering. These prompts are the same prompts as you can pass into the [base question answering chain](./question_answering.html)
+## 自定义提示
+您可以传递自定义提示来进行问答。这些提示与您可以传递到[基本问答链](./question_answering.html)中的提示相同。
 
 
 ```python

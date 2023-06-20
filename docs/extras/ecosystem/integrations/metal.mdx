@@ -1,18 +1,18 @@
 # Metal
 
-This page covers how to use [Metal](https://getmetal.io) within LangChain.
+本页面介绍了如何在LangChain中使用Metal。
 
-## What is Metal?
+## 什么是Metal？
 
-Metal is a  managed retrieval & memory platform built for production. Easily index your data into `Metal` and run semantic search and retrieval on it.
+Metal是一个为生产环境构建的管理检索和存储平台。您可以将数据索引到Metal中，并在其上运行语义搜索和检索。
 
 ![Metal](/img/MetalDash.png)
 
-## Quick start
+## 快速入门
 
-Get started by [creating a Metal account](https://app.getmetal.io/signup).
+请从[创建一个Metal账户](https://app.getmetal.io/signup)开始。
 
-Then, you can easily take advantage of the `MetalRetriever` class to start retrieving your data for semantic search, prompting context, etc. This class takes a `Metal` instance and a dictionary of parameters to pass to the Metal API.
+然后，您可以轻松地利用`MetalRetriever`类来开始检索数据，进行语义搜索、提示上下文等操作。该类接受一个`Metal`实例和一个参数字典，用于传递给Metal API。
 
 ```python
 from langchain.retrievers import MetalRetriever

@@ -1,28 +1,28 @@
 # Airbyte
 
->[Airbyte](https://github.com/airbytehq/airbyte) is a data integration platform for ELT pipelines from APIs, 
-> databases & files to warehouses & lakes. It has the largest catalog of ELT connectors to data warehouses and databases.
+>[Airbyte](https://github.com/airbytehq/airbyte) 是一个用于从API、数据库和文件到数据仓库和数据湖的ELT管道的数据集成平台。
+> 它拥有最大的ELT连接器目录，可连接到数据仓库和数据库。
 
-## Installation and Setup
+## 安装和设置
 
-This instruction shows how to load any source from `Airbyte` into a local `JSON` file that can be read in as a document.
+这个指南展示了如何将`Airbyte`中的任何源加载到本地的`JSON`文件中，以便以文档的形式读取。
 
-**Prerequisites:**
-Have `docker desktop` installed.
+**先决条件：**
+已安装`Docker Desktop`。
 
-**Steps:**
-1. Clone Airbyte from GitHub - `git clone https://github.com/airbytehq/airbyte.git`.
-2. Switch into Airbyte directory - `cd airbyte`.
-3. Start Airbyte - `docker compose up`.
-4. In your browser, just visit http://localhost:8000. You will be asked for a username and password. By default, that's username `airbyte` and password `password`.
-5. Setup any source you wish.
-6. Set destination as Local JSON, with specified destination path - lets say `/json_data`. Set up a manual sync.
-7. Run the connection.
-8. To see what files are created, navigate to: `file:///tmp/airbyte_local/`.
+**步骤：**
+1. 从GitHub克隆Airbyte - `git clone https://github.com/airbytehq/airbyte.git`。
+2. 切换到Airbyte目录 - `cd airbyte`。
+3. 启动Airbyte - `docker compose up`。
+4. 在您的浏览器中，访问http://localhost:8000。您将被要求输入用户名和密码。默认情况下，用户名是`airbyte`，密码是`password`。
+5. 设置您希望的任何数据源。
+6. 将目标设置为本地JSON，指定目标路径 - 假设为`/json_data`。设置手动同步。
+7. 运行连接。
+8. 要查看创建的文件，请导航至：`file:///tmp/airbyte_local/`。
 
-## Document Loader
+## 文档加载器
 
-See a [usage example](/docs/modules/data_connection/document_loaders/integrations/airbyte_json.html).
+查看[使用示例](/docs/modules/data_connection/document_loaders/integrations/airbyte_json.html)。
 
 ```python
 from langchain.document_loaders import AirbyteJSONLoader

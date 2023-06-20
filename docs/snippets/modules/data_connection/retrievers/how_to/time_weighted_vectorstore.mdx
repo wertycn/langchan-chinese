@@ -1,4 +1,3 @@
-```python
 import faiss
 
 from datetime import datetime, timedelta
@@ -9,9 +8,9 @@ from langchain.schema import Document
 from langchain.vectorstores import FAISS
 ```
 
-## Low Decay Rate
+## 低衰减率
 
-A low `decay rate` (in this, to be extreme, we will set close to 0) means memories will be "remembered" for longer. A `decay rate` of 0 means memories never be forgotten, making this retriever equivalent to the vector lookup.
+低衰减率（在这里，为了极端情况，我们将设置接近0）意味着记忆将会被更长时间地“记住”。衰减率为0意味着记忆永远不会被遗忘，使得检索器等同于向量查找。
 
 
 ```python
@@ -53,9 +52,9 @@ retriever.get_relevant_documents("hello world")
 
 </CodeOutputBlock>
 
-## High Decay Rate
+## 高衰减率
 
-With a high `decay rate` (e.g., several 9's), the `recency score` quickly goes to 0! If you set this all the way to 1, `recency` is 0 for all objects, once again making this equivalent to a vector lookup.
+当`衰减率`很高（例如几个9），`最近分数`会迅速变为0！如果将其设置为1，`最近性`对于所有对象都是0，这等效于向量查找。
 
 
 
@@ -98,9 +97,9 @@ retriever.get_relevant_documents("hello world")
 
 </CodeOutputBlock>
 
-## Virtual Time
+## 虚拟时间
 
-Using some utils in LangChain, you can mock out the time component
+使用LangChain中的一些工具，您可以模拟时间组件
 
 
 ```python

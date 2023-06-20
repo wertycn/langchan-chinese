@@ -1,24 +1,24 @@
-# Agent simulations
+# 代理模拟
 
-Agent simulations involve interacting one of more agents with each other.
-Agent simulations generally involve two main components:
+代理模拟涉及将一个或多个代理与彼此进行交互。
+代理模拟通常包括两个主要组成部分：
 
-- Long Term Memory
-- Simulation Environment
+- 长期记忆
+- 模拟环境
 
-Specific implementations of agent simulations (or parts of agent simulations) include:
+代理模拟的具体实现（或代理模拟的部分）包括：
 
-## Simulations with One Agent
-- [Simulated Environment: Gymnasium](./gymnasium.html): an example of how to create a simple agent-environment interaction loop with [Gymnasium](https://gymnasium.farama.org/) (formerly [OpenAI Gym](https://github.com/openai/gym)).
+## 单代理的模拟
+- [模拟环境: Gymnasium](./gymnasium.html): 一个使用[Gymnasium](https://gymnasium.farama.org/)（之前称为[OpenAI Gym](https://github.com/openai/gym)）创建简单的智能体-环境交互循环的示例。
 
-## Simulations with Two Agents
-- [CAMEL](./camel_role_playing.html): an implementation of the CAMEL (Communicative Agents for “Mind” Exploration of Large Scale Language Model Society) paper, where two agents communicate with each other.
-- [Two Player D&D](./two_player_dnd.html): an example of how to use a generic simulator for two agents to implement a variant of the popular Dungeons & Dragons role playing game.
-- [Agent Debates with Tools](./two_agent_debate_tools.html): an example of how to enable Dialogue Agents to use tools to inform their responses.
+## 使用两个智能体进行模拟
+- [CAMEL](./camel_role_playing.html): CAMEL（用于“Mind”探索大规模语言模型社会的交际智能体）论文的实现，其中两个智能体相互通信。
+- [双人D&D](./two_player_dnd.html)：展示如何使用通用模拟器实现双方代理人的变种Dungeons & Dragons角色扮演游戏。
+- [代理人使用工具进行辩论](./two_agent_debate_tools.html)：展示如何使对话代理人能够使用工具来增强其回应能力。
 
-## Simulations with Multiple Agents
-- [Multi-Player D&D](./multi_player_dnd.html): an example of how to use a generic dialogue simulator for multiple dialogue agents with a custom speaker-ordering, illustrated with a variant of the popular Dungeons & Dragons role playing game.
-- [Decentralized Speaker Selection](./multiagent_bidding.html): an example of how to implement a multi-agent dialogue without a fixed schedule for who speaks when. Instead the agents decide for themselves who speaks by outputting bids to speak. This example shows how to do this in the context of a fictitious presidential debate.
-- [Authoritarian Speaker Selection](./multiagent_authoritarian.html): an example of how to implement a multi-agent dialogue, where a privileged agent directs who speaks what. This example also showcases how to enable the privileged agent to determine when the conversation terminates. This example shows how to do this in the context of a fictitious news show.
-- [Simulated Environment: PettingZoo](./petting_zoo.html): an example of how to create a agent-environment interaction loop for multiple agents with [PettingZoo](https://pettingzoo.farama.org/) (a multi-agent version of [Gymnasium](https://gymnasium.farama.org/)).
-- [Generative Agents](./characters.html): This notebook implements a generative agent based on the paper [Generative Agents: Interactive Simulacra of Human Behavior](https://arxiv.org/abs/2304.03442) by Park, et. al.
+## 多代理模拟
+- [多人D&D](./multi_player_dnd.html)：一个示例，展示了如何使用通用的对话模拟器为多个对话代理配置自定义的发言顺序，以流行的龙与地下城角色扮演游戏的变体作为示例。
+- [去中心化的发言者选择](./multiagent_bidding.html): 这是一个示例，演示了如何在没有固定时间表的情况下实现多智能体对话。代理人通过输出发言竞标来决定谁发言。这个示例展示了如何在一个虚构的总统辩论的背景下实现这一功能。
+- [专制式发言人选择](./multiagent_authoritarian.html)：一个示例，展示了如何实现多代理对话，其中特权代理指导谁说什么。该示例还展示了如何使特权代理决定对话何时终止。该示例在一个虚构的新闻节目的背景下展示了如何做到这一点。
+- [模拟环境：PettingZoo](./petting_zoo.html)：一个使用[PettingZoo](https://pettingzoo.farama.org/)（[Gymnasium](https://gymnasium.farama.org/)的多智能体版本）创建多智能体的代理-环境交互循环的示例。
+- [生成式智能体](./characters.html)：该笔记本实现了一个基于论文[生成式智能体：人类行为的交互模拟](https://arxiv.org/abs/2304.03442)（作者：Park等人）的生成式智能体。

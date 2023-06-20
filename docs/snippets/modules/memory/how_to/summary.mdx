@@ -1,4 +1,3 @@
-```python
 from langchain.memory import ConversationSummaryMemory, ChatMessageHistory
 from langchain.llms import OpenAI
 ```
@@ -20,9 +19,7 @@ memory.load_memory_variables({})
     {'history': '\nThe human greets the AI, to which the AI responds.'}
 ```
 
-</CodeOutputBlock>
-
-We can also get the history as a list of messages (this is useful if you are using this with a chat model).
+我们还可以将历史记录作为消息列表获取（如果您正在使用聊天模型，这将非常有用）。
 
 
 ```python
@@ -41,9 +38,7 @@ memory.load_memory_variables({})
     {'history': [SystemMessage(content='\nThe human greets the AI, to which the AI responds.', additional_kwargs={})]}
 ```
 
-</CodeOutputBlock>
-
-We can also utilize the `predict_new_summary` method directly.
+我们还可以直接使用`predict_new_summary`方法。
 
 
 ```python
@@ -60,9 +55,9 @@ memory.predict_new_summary(messages, previous_summary)
 
 </CodeOutputBlock>
 
-## Initializing with messages
+## 使用消息进行初始化
 
-If you have messages outside this class, you can easily initialize the class with ChatMessageHistory. During loading, a summary will be calculated.
+如果您在此类之外有消息，您可以使用ChatMessageHistory轻松地初始化该类。在加载过程中，将会计算摘要。
 
 
 ```python
@@ -81,7 +76,7 @@ memory = ConversationSummaryMemory.from_messages(llm=OpenAI(temperature=0), chat
 memory.buffer
 ```
 
-<CodeOutputBlock lang="python">
+代码输出块（Python语言）
 
 ```
     '\nThe human greets the AI, to which the AI responds with a friendly greeting.'
@@ -89,8 +84,8 @@ memory.buffer
 
 </CodeOutputBlock>
 
-## Using in a chain
-Let's walk through an example of using this in a chain, again setting `verbose=True` so we can see the prompt.
+## 在链式调用中使用
+让我们通过一个示例来演示如何在链式调用中使用它，再次设置`verbose=True`以便我们可以看到提示信息。
 
 
 ```python

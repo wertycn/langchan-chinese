@@ -1,36 +1,35 @@
 Databricks
 ==========
 
-The [Databricks](https://www.databricks.com/) Lakehouse Platform unifies data, analytics, and AI on one platform.
+[Databricks](https://www.databricks.com/) Lakehouse平台将数据、分析和人工智能统一在一个平台上。
 
-Databricks embraces the LangChain ecosystem in various ways:
+Databricks以多种方式支持LangChain生态系统：
 
-1. Databricks connector for the SQLDatabase Chain: SQLDatabase.from_databricks() provides an easy way to query your data on Databricks through LangChain
-2. Databricks-managed MLflow integrates with LangChain: Tracking and serving LangChain applications with fewer steps
-3. Databricks as an LLM provider: Deploy your fine-tuned LLMs on Databricks via serving endpoints or cluster driver proxy apps, and query it as langchain.llms.Databricks
-4. Databricks Dolly: Databricks open-sourced Dolly which allows for commercial use, and can be accessed through the Hugging Face Hub
+1. SQLDatabase Chain的Databricks连接器：SQLDatabase.from_databricks()提供了通过LangChain在Databricks上查询数据的简便方法
+2. Databricks管理的MLflow与LangChain集成：使用更少的步骤跟踪和提供LangChain应用程序
+3. Databricks作为LLM提供者：通过服务端点或集群驱动程序代理应用程序在Databricks上部署经过优化的LLM，并通过langchain.llms.Databricks进行查询。
+4. Databricks Dolly：Databricks开源了Dolly，可以用于商业用途，并可通过Hugging Face Hub访问。
 
-Databricks connector for the SQLDatabase Chain
+SQLDatabase Chain的Databricks连接器
 ----------------------------------------------
-You can connect to [Databricks runtimes](https://docs.databricks.com/runtime/index.html) and [Databricks SQL](https://www.databricks.com/product/databricks-sql) using the SQLDatabase wrapper of LangChain. See the notebook [Connect to Databricks](./databricks/databricks.html) for details.
+您可以使用LangChain的SQLDatabase包装器连接到[Databricks运行时](https://docs.databricks.com/runtime/index.html)和[Databricks SQL](https://www.databricks.com/product/databricks-sql)。有关详细信息，请参阅笔记本[Connect to Databricks](./databricks/databricks.html)。
 
-Databricks-managed MLflow integrates with LangChain
----------------------------------------------------
+Databricks管理的MLflow与LangChain集成。
 
-MLflow is an open source platform to manage the ML lifecycle, including experimentation, reproducibility, deployment, and a central model registry. See the notebook [MLflow Callback Handler](./mlflow_tracking.ipynb) for details about MLflow's integration with LangChain.
+MLflow是一个开源平台，用于管理机器学习生命周期，包括实验、可重现性、部署和中央模型注册。有关MLflow与LangChain集成的详细信息，请参阅笔记本[MLflow回调处理程序](./mlflow_tracking.ipynb)。
 
-Databricks provides a fully managed and hosted version of MLflow integrated with enterprise security features, high availability, and other Databricks workspace features such as experiment and run management and notebook revision capture. MLflow on Databricks offers an integrated experience for tracking and securing machine learning model training runs and running machine learning projects. See [MLflow guide](https://docs.databricks.com/mlflow/index.html) for more details.
+Databricks提供了一个完全托管和托管的MLflow版本，集成了企业安全功能、高可用性和其他Databricks工作区功能，例如实验和运行管理以及笔记本修订捕获。Databricks上的MLflow为跟踪和保护机器学习模型训练运行以及运行机器学习项目提供了集成的体验。详情请参阅[MLflow指南](https://docs.databricks.com/mlflow/index.html)。
 
-Databricks-managed MLflow makes it more convenient to develop LangChain applications on Databricks. For MLflow tracking, you don't need to set the tracking uri. For MLflow Model Serving, you can save LangChain Chains in the MLflow langchain flavor, and then register and serve the Chain with a few clicks on Databricks, with credentials securely managed by MLflow Model Serving.
+Databricks托管的MLflow使得在Databricks上开发LangChain应用程序更加方便。对于MLflow跟踪，您不需要设置跟踪URI。对于MLflow模型服务，您可以将LangChain Chains保存为MLflow langchain flavor，并在Databricks上用几次点击即可注册和服务这个Chain，凭据由MLflow模型服务安全管理。
 
-Databricks as an LLM provider
------------------------------
+Databricks作为LLM提供商
+-------------------------
 
-The notebook [Wrap Databricks endpoints as LLMs](../modules/models/llms/integrations/databricks.html) illustrates the method to wrap Databricks endpoints as LLMs in LangChain. It supports two types of endpoints: the serving endpoint, which is recommended for both production and development, and the cluster driver proxy app, which is recommended for interactive development. 
+笔记本[将Databricks端点包装为LLMs](../modules/models/llms/integrations/databricks.html)演示了在LangChain中将Databricks端点包装为LLMs的方法。它支持两种类型的端点：服务端点，推荐用于生产和开发；集群驱动程序代理应用程序，推荐用于交互式开发。 
 
-Databricks endpoints support Dolly, but are also great for hosting models like MPT-7B or any other models from the Hugging Face ecosystem. Databricks endpoints can also be used with proprietary models like OpenAI to provide a governance layer for enterprises.
+Databricks端点支持Dolly，但也非常适合托管MPT-7B或Hugging Face生态系统中的任何其他模型。Databricks端点还可以与OpenAI等专有模型一起使用，为企业提供治理层。
 
 Databricks Dolly
 ----------------
 
-Databricks’ Dolly is an instruction-following large language model trained on the Databricks machine learning platform that is licensed for commercial use. The model is available on Hugging Face Hub as databricks/dolly-v2-12b. See the notebook [Hugging Face Hub](../modules/models/llms/integrations/huggingface_hub.html) for instructions to access it through the Hugging Face Hub integration with LangChain. 
+Databricks的Dolly是一个在Databricks机器学习平台上训练的遵循指令的大型语言模型，可用于商业用途。该模型在Hugging Face Hub上以databricks/dolly-v2-12b的形式提供。请参阅笔记本[Hugging Face Hub](../modules/models/llms/integrations/huggingface_hub.html)以了解如何通过与LangChain集成的Hugging Face Hub访问该模型的说明。 

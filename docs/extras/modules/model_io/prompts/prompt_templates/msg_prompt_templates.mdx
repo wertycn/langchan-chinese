@@ -1,8 +1,8 @@
-# Types of `MessagePromptTemplate`
+# `MessagePromptTemplate`的类型
 
-LangChain provides different types of `MessagePromptTemplate`. The most commonly used are `AIMessagePromptTemplate`, `SystemMessagePromptTemplate` and `HumanMessagePromptTemplate`, which create an AI message, system message and human message respectively.
+LangChain提供了不同类型的`MessagePromptTemplate`。其中最常用的是`AIMessagePromptTemplate`、`SystemMessagePromptTemplate`和`HumanMessagePromptTemplate`，分别用于创建AI消息、系统消息和人类消息。
 
-However, in cases where the chat model supports taking chat message with arbitrary role, you can use `ChatMessagePromptTemplate`, which allows user to specify the role name.
+然而，在聊天模型支持使用任意角色发送聊天消息的情况下，您可以使用`ChatMessagePromptTemplate`，允许用户指定角色名称。
 
 
 ```python
@@ -20,9 +20,7 @@ chat_message_prompt.format(subject="force")
     ChatMessage(content='May the force be with you', additional_kwargs={}, role='Jedi')
 ```
 
-</CodeOutputBlock>
-
-LangChain also provides `MessagesPlaceholder`, which gives you full control of what messages to be rendered during formatting. This can be useful when you are uncertain of what role you should be using for your message prompt templates or when you wish to insert a list of messages during formatting.
+`LangChain`还提供了`MessagesPlaceholder`，它允许您在格式化过程中完全控制要呈现的消息。当您对应用程序中的消息提示模板所使用的角色不确定时，或者希望在格式化过程中插入一系列消息时，这将非常有用。
 
 
 ```python

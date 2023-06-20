@@ -1,27 +1,23 @@
 # AtlasDB
 
-This page covers how to use Nomic's Atlas ecosystem within LangChain.
-It is broken into two parts: installation and setup, and then references to specific Atlas wrappers.
+本页面介绍了如何在LangChain中使用Nomic的Atlas生态系统。
+它分为两个部分：安装和设置，以及对特定Atlas包装器的引用。
 
-## Installation and Setup
-- Install the Python package with `pip install nomic`
-- Nomic is also included in langchains poetry extras `poetry install -E all`
+## 安装和设置
+- 使用`pip install nomic`命令安装Python包
+- Nomic也包含在langchains poetry extras中，可以使用`poetry install -E all`命令安装
 
-## Wrappers
+## 包装器
 
 ### VectorStore
 
-There exists a wrapper around the Atlas neural database, allowing you to use it as a vectorstore.
-This vectorstore also gives you full access to the underlying AtlasProject object, which will allow you to use the full range of Atlas map interactions, such as bulk tagging and automatic topic modeling.
-Please see [the Atlas docs](https://docs.nomic.ai/atlas_api.html) for more detailed information.
+存在一个围绕Atlas神经数据库的包装器，允许您将其用作向量存储。
+此向量存储还提供了对底层的AtlasProject对象的完全访问权限，使您能够使用完整范围的Atlas地图交互，例如批量标记和自动主题建模。
+请参阅[Atlas文档](https://docs.nomic.ai/atlas_api.html)获取更详细的信息。
 
-
-
-
-
-To import this vectorstore:
+要导入此向量存储，请执行以下操作：
 ```python
 from langchain.vectorstores import AtlasDB
 ```
 
-For a more detailed walkthrough of the AtlasDB wrapper, see [this notebook](/docs/modules/data_connection/vectorstores/integrations/atlas.html)
+有关AtlasDB包装器的更详细说明，请参阅[这个笔记本](/docs/modules/data_connection/vectorstores/integrations/atlas.html)。

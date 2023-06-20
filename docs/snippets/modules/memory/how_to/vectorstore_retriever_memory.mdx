@@ -1,4 +1,3 @@
-```python
 from datetime import datetime
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
@@ -7,9 +6,9 @@ from langchain.chains import ConversationChain
 from langchain.prompts import PromptTemplate
 ```
 
-### Initialize your VectorStore
+### 初始化您的 VectorStore
 
-Depending on the store you choose, this step may look different. Consult the relevant VectorStore documentation for more details.
+根据您选择的存储方式，此步骤可能会有所不同。请参阅相关的 VectorStore 文档以获取更多详细信息。
 
 
 ```python
@@ -25,9 +24,9 @@ embedding_fn = OpenAIEmbeddings().embed_query
 vectorstore = FAISS(embedding_fn, index, InMemoryDocstore({}), {})
 ```
 
-### Create your the VectorStoreRetrieverMemory
+### 创建VectorStoreRetrieverMemory对象
 
-The memory object is instantiated from any VectorStoreRetriever.
+内存对象是通过任何VectorStoreRetriever实例化的。
 
 
 ```python
@@ -58,8 +57,8 @@ print(memory.load_memory_variables({"prompt": "what sport should i watch?"})["hi
 
 </CodeOutputBlock>
 
-## Using in a chain
-Let's walk through an example, again setting `verbose=True` so we can see the prompt.
+## 在链中使用
+让我们通过一个示例来了解一下，在这个示例中，我们再次设置`verbose=True`，以便我们可以看到提示信息。
 
 
 ```python

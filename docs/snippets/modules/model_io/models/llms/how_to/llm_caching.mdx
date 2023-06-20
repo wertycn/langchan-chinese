@@ -1,4 +1,3 @@
-```python
 import langchain
 from langchain.llms import OpenAI
 
@@ -6,7 +5,7 @@ from langchain.llms import OpenAI
 llm = OpenAI(model_name="text-davinci-002", n=2, best_of=2)
 ```
 
-## In Memory Cache
+## 内存缓存
 
 
 ```python
@@ -47,7 +46,7 @@ llm("Tell me a joke")
 
 </CodeOutputBlock>
 
-## SQLite Cache
+## SQLite缓存
 
 
 ```bash
@@ -97,10 +96,10 @@ llm("Tell me a joke")
 
 </CodeOutputBlock>
 
-## Optional Caching in Chains
-You can also turn off caching for particular nodes in chains. Note that because of certain interfaces, its often easier to construct the chain first, and then edit the LLM afterwards.
+## 链中的可选缓存
+您还可以关闭链中特定节点的缓存。请注意，由于某些接口的原因，通常先构建链，然后再编辑LLM会更容易。
 
-As an example, we will load a summarizer map-reduce chain. We will cache results for the map-step, but then not freeze it for the combine step.
+以一个示例为例，我们将加载一个汇总器的map-reduce链。我们将缓存map步骤的结果，但在合并步骤中不冻结它。
 
 
 ```python
@@ -152,7 +151,7 @@ chain.run(docs)
 
 </CodeOutputBlock>
 
-When we run it again, we see that it runs substantially faster but the final answer is different. This is due to caching at the map steps, but not at the reduce step.
+当我们再次运行它时，我们发现它运行得更快，但最终的答案却不同。这是由于在映射步骤中进行了缓存，但在减少步骤中没有进行缓存。
 
 
 ```python

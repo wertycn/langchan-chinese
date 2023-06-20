@@ -1,21 +1,21 @@
-# Custom example selector
+# 自定义示例选择器
 
-In this tutorial, we'll create a custom example selector that selects every alternate example from a given list of examples.
+在本教程中，我们将创建一个自定义示例选择器，该选择器从给定的示例列表中选择每个交替的示例。
 
-An `ExampleSelector` must implement two methods:
+一个 `ExampleSelector` 必须实现两个方法:
 
-1. An `add_example` method which takes in an example and adds it into the ExampleSelector
-2. A `select_examples` method which takes in input variables (which are meant to be user input) and returns a list of examples to use in the few shot prompt.
+1. 一个 `add_example` 方法，接收一个示例并将其添加到 ExampleSelector 中
+2. 一个 `select_examples` 方法，接收输入变量（用于用户输入）并返回用于 few shot prompt 的示例列表。
 
-Let's implement a custom `ExampleSelector` that just selects two examples at random.
+让我们实现一个自定义的`ExampleSelector`，它只是随机选择两个示例。
 
 :::{note}
-Take a look at the current set of example selector implementations supported in LangChain [here](../../prompt_templates/getting_started.md).
+在LangChain中支持的当前示例选择器实现，请[点击这里](../../prompt_templates/getting_started.md)查看。
 :::
 
-<!-- TODO(shreya): Add the correct link. -->
+<!-- TODO（shreya）：添加正确的链接。-->
 
-## Implement custom example selector
+## 实现自定义示例选择器
 
 ```python
 from langchain.prompts.example_selector.base import BaseExampleSelector
@@ -39,7 +39,7 @@ class CustomExampleSelector(BaseExampleSelector):
 ```
 
 
-## Use custom example selector
+## 使用自定义示例选择器
 
 ```python
 

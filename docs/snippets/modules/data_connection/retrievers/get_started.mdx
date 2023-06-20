@@ -1,4 +1,4 @@
-The `BaseRetriever` class in LangChain is as follows:
+在LangChain中，`BaseRetriever`类的定义如下：
 
 ```python
 from abc import ABC, abstractmethod
@@ -18,31 +18,31 @@ class BaseRetriever(ABC):
         """
 ```
 
-It's that simple! The `get_relevant_documents` method can be implemented however you see fit.
+就是这么简单！`get_relevant_documents`方法可以根据您的需求进行实现。
 
-Of course, we also help construct what we think useful Retrievers are. The main type of Retriever that we focus on is a Vectorstore retriever. We will focus on that for the rest of this guide.
+当然，我们也帮助构建了我们认为有用的Retriever。我们主要关注的Retriever类型是Vectorstore retriever。在本指南的剩余部分，我们将重点介绍这个类型的Retriever。
 
-In order to understand what a vectorstore retriever is, it's important to understand what a Vectorstore is. So let's look at that.
+为了理解什么是vectorstore retriever，重要的是要了解什么是Vectorstore。让我们来看看。
 
-By default, LangChain uses [Chroma](../../ecosystem/chroma.md) as the vectorstore to index and search embeddings. To walk through this tutorial, we'll first need to install `chromadb`.
+默认情况下，LangChain使用[Chroma](../../ecosystem/chroma.md)作为向量存储库来索引和搜索嵌入。在进行本教程之前，我们首先需要安装`chromadb`。
 
 ```
 pip install chromadb
 ```
 
-This example showcases question answering over documents.
-We have chosen this as the example for getting started because it nicely combines a lot of different elements (Text splitters, embeddings, vectorstores) and then also shows how to use them in a chain.
+这个示例展示了在文档上进行问答的过程。
+我们选择这个示例作为入门示例，因为它很好地结合了许多不同的元素（文本分割器、嵌入、向量存储），并展示了如何在链式结构中使用它们。
 
-Question answering over documents consists of four steps:
+文档问答包括四个步骤：
 
-1. Create an index
-2. Create a Retriever from that index
-3. Create a question answering chain
-4. Ask questions!
+1. 创建索引
+2. 从索引创建检索器
+3. 创建问答链
+4. 提出问题！
 
-Each of the steps has multiple sub steps and potential configurations. In this notebook we will primarily focus on (1). We will start by showing the one-liner for doing so, but then break down what is actually going on.
+每个步骤都有多个子步骤和潜在的配置项。在这个笔记本中，我们主要关注(1)。我们将首先展示一行代码来完成这个步骤，然后分解实际操作。
 
-First, let's import some common classes we'll use no matter what.
+首先，让我们导入一些无论如何都会使用到的常见类。
 
 
 ```python
@@ -50,7 +50,7 @@ from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 ```
 
-Next in the generic setup, let's specify the document loader we want to use. You can download the `state_of_the_union.txt` file [here](https://github.com/hwchase17/langchain/blob/master/docs/modules/state_of_the_union.txt)
+接下来，在通用设置中，让我们来指定我们想要使用的文档加载器。您可以在[这里](https://github.com/hwchase17/langchain/blob/master/docs/modules/state_of_the_union.txt)下载`state_of_the_union.txt`文件。
 
 
 ```python
@@ -58,9 +58,9 @@ from langchain.document_loaders import TextLoader
 loader = TextLoader('../state_of_the_union.txt', encoding='utf8')
 ```
 
-## One Line Index Creation
+## 一行索引创建
 
-To get started as quickly as possible, we can use the `VectorstoreIndexCreator`.
+为了尽快开始，我们可以使用`VectorstoreIndexCreator`。
 
 
 ```python
@@ -81,7 +81,7 @@ index = VectorstoreIndexCreator().from_loaders([loader])
 
 </CodeOutputBlock>
 
-Now that the index is created, we can use it to ask questions of the data! Note that under the hood this is actually doing a few steps as well, which we will cover later in this guide.
+现在索引已经创建，我们可以使用它来对数据进行提问！请注意，在底层，这实际上也做了几个步骤，我们将在本指南后面进行介绍。
 
 
 ```python
@@ -111,9 +111,7 @@ index.query_with_sources(query)
      'sources': '../state_of_the_union.txt'}
 ```
 
-</CodeOutputBlock>
-
-What is returned from the `VectorstoreIndexCreator` is `VectorStoreIndexWrapper`, which provides these nice `query` and `query_with_sources` functionality. If we just wanted to access the vectorstore directly, we can also do that.
+从`VectorstoreIndexCreator`返回的是`VectorStoreIndexWrapper`，它提供了`query`和`query_with_sources`这些方便的功能。如果我们只想直接访问向量存储，也可以这样做。
 
 
 ```python
@@ -128,7 +126,7 @@ index.vectorstore
 
 </CodeOutputBlock>
 
-If we then want to access the VectorstoreRetriever, we can do that with:
+如果我们想要访问VectorstoreRetriever，我们可以使用以下方式:
 
 
 ```python
@@ -143,26 +141,26 @@ index.vectorstore.as_retriever()
 
 </CodeOutputBlock>
 
-## Walkthrough
+## 操作步骤
 
-Okay, so what's actually going on? How is this index getting created?
+好的，实际上发生了什么？索引是如何创建的？
 
-A lot of the magic is being hid in this `VectorstoreIndexCreator`. What is this doing?
+很多魔法都隐藏在这个 `VectorstoreIndexCreator` 中。它在做什么？
 
-There are three main steps going on after the documents are loaded:
+在加载文档后，主要有三个步骤：
 
-1. Splitting documents into chunks
-2. Creating embeddings for each document
-3. Storing documents and embeddings in a vectorstore
+1. 将文档拆分成块
+2. 为每个文档创建嵌入
+3. 将文档和嵌入存储在向量存储中
 
-Let's walk through this in code
+让我们通过代码逐步进行解释。
 
 
 ```python
 documents = loader.load()
 ```
 
-Next, we will split the documents into chunks.
+接下来，我们将把文档分成块。
 
 
 ```python
@@ -171,7 +169,7 @@ text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
 ```
 
-We will then select which embeddings we want to use.
+然后我们将选择要使用的嵌入。
 
 
 ```python
@@ -179,7 +177,7 @@ from langchain.embeddings import OpenAIEmbeddings
 embeddings = OpenAIEmbeddings()
 ```
 
-We now create the vectorstore to use as the index.
+现在我们创建向量存储以用作索引。
 
 
 ```python
@@ -196,14 +194,14 @@ db = Chroma.from_documents(texts, embeddings)
 
 </CodeOutputBlock>
 
-So that's creating the index. Then, we expose this index in a retriever interface.
+这样就创建了索引。然后，我们在一个检索接口中暴露这个索引。
 
 
 ```python
 retriever = db.as_retriever()
 ```
 
-Then, as before, we create a chain and use it to answer questions!
+然后，和之前一样，我们创建一个链条并使用它来回答问题！
 
 
 ```python
@@ -222,9 +220,7 @@ qa.run(query)
     " The President said that Judge Ketanji Brown Jackson is one of the nation's top legal minds, a former top litigator in private practice, a former federal public defender, and from a family of public school educators and police officers. He said she is a consensus builder and has received a broad range of support from organizations such as the Fraternal Order of Police and former judges appointed by Democrats and Republicans."
 ```
 
-</CodeOutputBlock>
-
-`VectorstoreIndexCreator` is just a wrapper around all this logic. It is configurable in the text splitter it uses, the embeddings it uses, and the vectorstore it uses. For example, you can configure it as below:
+`VectorstoreIndexCreator`只是对所有这些逻辑的封装。它可以配置文本切割器、嵌入向量和向量存储。例如，您可以按照下面的方式进行配置：
 
 
 ```python
@@ -235,4 +231,4 @@ index_creator = VectorstoreIndexCreator(
 )
 ```
 
-Hopefully this highlights what is going on under the hood of `VectorstoreIndexCreator`. While we think it's important to have a simple way to create indexes, we also think it's important to understand what's going on under the hood.
+希望这能突出显示`VectorstoreIndexCreator`背后的工作原理。虽然我们认为创建索引的方法很简单很重要，但我们也认为了解背后发生的事情同样重要。

@@ -1,4 +1,3 @@
-```python
 class BaseExampleSelector(ABC):
     """Interface for selecting examples to include in prompts."""
 
@@ -7,4 +6,4 @@ class BaseExampleSelector(ABC):
         """Select which examples to use based on the inputs."""
 ```
 
-The only method it needs to expose is a ``select_examples`` method. This takes in the input variables and then returns a list of examples. It is up to each specific implementation as to how those examples are selected. Let's take a look at some below.
+它只需要暴露一个``select_examples``方法。该方法接受输入变量，并返回一个示例列表。具体实现如何选择这些示例则取决于每个具体的实现。让我们看看下面的一些示例。

@@ -1,69 +1,65 @@
 # Hugging Face
 
-This page covers how to use the Hugging Face ecosystem (including the [Hugging Face Hub](https://huggingface.co)) within LangChain.
-It is broken into two parts: installation and setup, and then references to specific Hugging Face wrappers.
+这个页面介绍了如何在LangChain中使用Hugging Face生态系统（包括[Hugging Face Hub](https://huggingface.co)）。它分为两个部分：安装和设置，以及特定的Hugging Face包装器的参考。
 
-## Installation and Setup
+## 安装和设置
 
-If you want to work with the Hugging Face Hub:
-- Install the Hub client library with `pip install huggingface_hub`
-- Create a Hugging Face account (it's free!)
-- Create an [access token](https://huggingface.co/docs/hub/security-tokens) and set it as an environment variable (`HUGGINGFACEHUB_API_TOKEN`)
+如果您想使用Hugging Face Hub：
+- 使用`pip install huggingface_hub`安装Hub客户端库
+- 创建一个Hugging Face账号（免费！）
+- 创建一个[访问令牌](https://huggingface.co/docs/hub/security-tokens)并将其设置为环境变量(`HUGGINGFACEHUB_API_TOKEN`)
 
-If you want work with the Hugging Face Python libraries:
-- Install `pip install transformers` for working with models and tokenizers
-- Install `pip install datasets` for working with datasets
+如果您想要使用Hugging Face的Python库:
+- 安装`pip install transformers`以便使用模型和分词器
+- 安装`pip install datasets`以便使用数据集
 
-## Wrappers
+## 包装器
 
 ### LLM
 
-There exists two Hugging Face LLM wrappers, one for a local pipeline and one for a model hosted on Hugging Face Hub.
-Note that these wrappers only work for models that support the following tasks: [`text2text-generation`](https://huggingface.co/models?library=transformers&pipeline_tag=text2text-generation&sort=downloads), [`text-generation`](https://huggingface.co/models?library=transformers&pipeline_tag=text-classification&sort=downloads)
+存在两个Hugging Face LLM包装器，一个用于本地流水线，一个用于在Hugging Face Hub上托管的模型。
+请注意，这些包装器仅适用于支持以下任务的模型：[`text2text-generation`](https://huggingface.co/models?library=transformers&pipeline_tag=text2text-generation&sort=downloads)，[`text-generation`](https://huggingface.co/models?library=transformers&pipeline_tag=text-classification&sort=downloads)
 
-To use the local pipeline wrapper:
+要使用本地的pipeline包装器：
 ```python
 from langchain.llms import HuggingFacePipeline
 ```
 
-To use a the wrapper for a model hosted on Hugging Face Hub:
+使用Hugging Face Hub上托管的模型的包装器：
 ```python
 from langchain.llms import HuggingFaceHub
 ```
-For a more detailed walkthrough of the Hugging Face Hub wrapper, see [this notebook](/docs/modules/model_io/models/llms/integrations/huggingface_hub.html)
+有关Hugging Face Hub包装器的更详细步骤，请参阅[此笔记本](/docs/modules/model_io/models/llms/integrations/huggingface_hub.html)。
 
+### 嵌入
 
-### Embeddings
+存在两个Hugging Face嵌入包装器，一个用于本地模型，一个用于Hugging Face Hub上的模型。请注意，这些包装器仅适用于[`sentence-transformers`](https://huggingface.co/models?library=sentence-transformers&sort=downloads)模型。
 
-There exists two Hugging Face Embeddings wrappers, one for a local model and one for a model hosted on Hugging Face Hub.
-Note that these wrappers only work for [`sentence-transformers` models](https://huggingface.co/models?library=sentence-transformers&sort=downloads).
-
-To use the local pipeline wrapper:
+要使用本地管道包装器：
 ```python
 from langchain.embeddings import HuggingFaceEmbeddings
 ```
 
-To use a the wrapper for a model hosted on Hugging Face Hub:
+要使用Hugging Face Hub上托管的模型的包装器：
 ```python
 from langchain.embeddings import HuggingFaceHubEmbeddings
 ```
-For a more detailed walkthrough of this, see [this notebook](/docs/modules/data_connection/text_embedding/integrations/huggingfacehub.html)
+更详细的步骤说明，请参见[此笔记本](/docs/modules/data_connection/text_embedding/integrations/huggingfacehub.html)
 
-### Tokenizer
+### 分词器
 
-There are several places you can use tokenizers available through the `transformers` package.
-By default, it is used to count tokens for all LLMs.
+`transformers` 包中提供了几种可以使用的分词器。
+默认情况下，它用于计算所有语言模型的标记数。
 
-You can also use it to count tokens when splitting documents with 
+您还可以在拆分文档时使用它来计算标记数。 
 ```python
 from langchain.text_splitter import CharacterTextSplitter
 CharacterTextSplitter.from_huggingface_tokenizer(...)
 ```
-For a more detailed walkthrough of this, see [this notebook](/docs/modules/data_connection/document_transformers/text_splitters/huggingface_length_function.html)
+要了解更详细的操作步骤，请参阅[这个notebook](/docs/modules/data_connection/document_transformers/text_splitters/huggingface_length_function.html)
 
+### 数据集
 
-### Datasets
+Hugging Face Hub有许多优秀的[数据集](https://huggingface.co/datasets)，可以用来评估您的LLM模型链。
 
-The Hugging Face Hub has lots of great [datasets](https://huggingface.co/datasets) that can be used to evaluate your LLM chains.
-
-For a detailed walkthrough of how to use them to do so, see [this notebook](../use_cases/evaluation/huggingface_datasets.html)
+要详细了解如何使用它们进行评估，请参阅[这个notebook](../use_cases/evaluation/huggingface_datasets.html)

@@ -1,9 +1,12 @@
-# Auto-fixing parser
+# 自动修复解析器
 
-This output parser wraps another output parser, and in the event that the first one fails it calls out to another LLM to fix any errors.
+该输出解析器包装了另一个输出解析器，当第一个解析器失败时，它会调用另一个LLM来修复任何错误。
 
-But we can do other things besides throw errors. Specifically, we can pass the misformatted output, along with the formatted instructions, to the model and ask it to fix it.
+除了抛出错误之外，我们还可以做其他事情。具体来说，我们可以将格式不正确的输出以及格式化的指令传递给模型，并要求它进行修复。
 
+```javascript
 import Example from "@snippets/modules/model_io/output_parsers/output_fixing_parser.mdx"
 
 <Example/>
+```
+

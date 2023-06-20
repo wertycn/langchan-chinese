@@ -1,4 +1,4 @@
-Currently, we support streaming for the `OpenAI`, `ChatOpenAI`, and `ChatAnthropic` implementations. To utilize streaming, use a [`CallbackHandler`](https://github.com/hwchase17/langchain/blob/master/langchain/callbacks/base.py) that implements `on_llm_new_token`. In this example, we are using `StreamingStdOutCallbackHandler`.
+目前，我们支持对`OpenAI`，`ChatOpenAI`和`ChatAnthropic`实现的流式处理。要使用流式处理，请使用实现了`on_llm_new_token`方法的[`CallbackHandler`](https://github.com/hwchase17/langchain/blob/master/langchain/callbacks/base.py)。在本示例中，我们将使用`StreamingStdOutCallbackHandler`。
 
 ```python
 from langchain.llms import OpenAI
@@ -51,7 +51,7 @@ resp = llm("Write me a song about sparkling water.")
 
 </CodeOutputBlock>
 
-We still have access to the end `LLMResult` if using `generate`. However, `token_usage` is not currently supported for streaming.
+如果使用`generate`仍然可以访问最终的`LLMResult`。然而，对于流式传输，目前不支持`token_usage`。
 
 
 ```python

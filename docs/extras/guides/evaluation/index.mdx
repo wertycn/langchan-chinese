@@ -1,86 +1,80 @@
-# Evaluation
+# 评估
 
-This section of documentation covers how we approach and think about evaluation in LangChain.
-Both evaluation of internal chains/agents, but also how we would recommend people building on top of LangChain approach evaluation.
+本文档部分介绍了我们在LangChain中对评估的方法和思考方式。
+评估内部链/代理的方法，以及我们建议在LangChain上构建应用程序时如何进行评估。
 
-## The Problem
+## 问题
 
-It can be really hard to evaluate LangChain chains and agents.
-There are two main reasons for this:
+评估LangChain的链和代理可能非常困难。
+主要有两个原因：
 
-**# 1: Lack of data**
+**# 1: 缺乏数据**
 
-You generally don't have a ton of data to evaluate your chains/agents over before starting a project.
-This is usually because Large Language Models (the core of most chains/agents) are terrific few-shot and zero shot learners,
-meaning you are almost always able to get started on a particular task (text-to-SQL, question answering, etc) without
-a large dataset of examples.
-This is in stark contrast to traditional machine learning where you had to first collect a bunch of datapoints
-before even getting started using a model.
+在开始一个项目之前，您通常没有大量的数据可以用来评估您的链和代理。
+这通常是因为大型语言模型（大多数链/代理的核心）具有出色的少样本和零样本学习能力，这意味着您几乎总是能够在特定任务（文本到SQL、问答等）上开始工作，而无需大量示例数据集。这与传统的机器学习形成鲜明对比，在传统机器学习中，您必须先收集一堆数据点，然后才能开始使用模型。
 
-**# 2: Lack of metrics**
+**# 2: 缺乏指标**
 
-Most chains/agents are performing tasks for which there are not very good metrics to evaluate performance.
-For example, one of the most common use cases is generating text of some form.
-Evaluating generated text is much more complicated than evaluating a classification prediction, or a numeric prediction.
+大多数链/代理执行的任务很难评估性能。
+例如，最常见的用例之一是生成某种形式的文本。
+评估生成的文本要比评估分类预测或数值预测复杂得多。
 
-## The Solution
+## 解决方案
 
-LangChain attempts to tackle both of those issues.
-What we have so far are initial passes at solutions - we do not think we have a perfect solution.
-So we very much welcome feedback, contributions, integrations, and thoughts on this.
+LangChain试图解决这两个问题。
+到目前为止，我们只是初步解决方案的尝试 - 我们并不认为我们有一个完美的解决方案。
+因此，我们非常欢迎反馈、贡献、集成以及对此的想法。
 
-Here is what we have for each problem so far:
+以下是我们目前针对每个问题的解决方案：
 
-**# 1: Lack of data**
+**# 1：数据不足**
 
-We have started [LangChainDatasets](https://huggingface.co/LangChainDatasets) a Community space on Hugging Face.
-We intend this to be a collection of open source datasets for evaluating common chains and agents.
-We have contributed five datasets of our own to start, but we highly intend this to be a community effort.
-In order to contribute a dataset, you simply need to join the community and then you will be able to upload datasets.
+我们已经在Hugging Face上创建了一个名为[LangChainDatasets](https://huggingface.co/LangChainDatasets)的社区空间。
+我们希望这能成为一个用于评估常见链和代理的开源数据集的集合。
+我们已经投入了五个我们自己的数据集来开始，但我们非常希望这能成为一个社区的努力。
+为了贡献数据集，您只需要加入社区，然后就可以上传数据集。
 
-We're also aiming to make it as easy as possible for people to create their own datasets.
-As a first pass at this, we've added a QAGenerationChain, which given a document comes up
-with question-answer pairs that can be used to evaluate question-answering tasks over that document down the line.
-See [this notebook](/docs/guides/evaluation/qa_generation.html) for an example of how to use this chain.
+我们还致力于让人们尽可能容易地创建自己的数据集。
+作为首要任务，我们已经添加了一个QAGenerationChain，它可以根据给定的文档生成问题-答案对，以便用于后续的问答任务评估。
+请参考[这个笔记本](/docs/guides/evaluation/qa_generation.html)的示例，了解如何使用这个链条。
 
-**# 2: Lack of metrics**
+**# 2: 缺乏度量标准**
 
-We have two solutions to the lack of metrics.
+我们有两个解决缺乏度量标准的方法。
 
-The first solution is to use no metrics, and rather just rely on looking at results by eye to get a sense for how the chain/agent is performing.
-To assist in this, we have developed (and will continue to develop) [tracing](/docs/guides/tracing/), a UI-based visualizer of your chain and agent runs.
+第一个解决方案是不使用度量标准，而是仅仅依靠目测结果来判断链条/代理的性能。
+为了辅助这一点，我们已经开发了（并将继续开发）[追踪](/docs/guides/tracing/)，这是一个基于用户界面的链条和代理运行的可视化工具。
 
-The second solution we recommend is to use Language Models themselves to evaluate outputs.
-For this we have a few different chains and prompts aimed at tackling this issue.
+我们推荐的第二种解决方案是使用语言模型自身来评估输出结果。
+为此，我们提供了一些不同的链式和提示，旨在解决这个问题。
 
-## The Examples
+## 示例
 
-We have created a bunch of examples combining the above two solutions to show how we internally evaluate chains and agents when we are developing.
-In addition to the examples we've curated, we also highly welcome contributions here.
-To facilitate that, we've included a [template notebook](/docs/guides/evaluation/benchmarking_template.html) for community members to use to build their own examples.
+我们创建了一系列的示例，结合了上述两种解决方案，以展示我们在开发过程中是如何评估链式和代理的。
+除了我们已经策划的示例外，我们也非常欢迎在这里提供贡献。
+为了方便，我们提供了一个[模板笔记本](/docs/guides/evaluation/benchmarking_template.html)，供社区成员使用来构建自己的示例。
 
-The existing examples we have are:
+我们目前已有的示例包括：
 
-[Question Answering (State of Union)](/docs/guides/evaluation/qa_benchmarking_sota.html): A notebook showing evaluation of a question-answering task over a State-of-the-Union address.
+[问答（国情咨文）](/docs/guides/evaluation/qa_benchmarking_sota.html)：展示了对国情咨文进行问答任务评估的笔记本。
 
-[Question Answering (Paul Graham Essay)](/docs/guides/evaluation/qa_benchmarking_pg.html): A notebook showing evaluation of a question-answering task over a Paul Graham essay.
+[问答系统（Paul Graham文集）](/docs/guides/evaluation/qa_benchmarking_pg.html)：展示了对Paul Graham文集进行问答任务评估的笔记本。
 
-[SQL Question Answering (Chinook)](/docs/guides/evaluation/sql_qa_benchmarking_chinook.html): A notebook showing evaluation of a question-answering task over a SQL database (the Chinook database).
+[SQL问答系统（Chinook）](/docs/guides/evaluation/sql_qa_benchmarking_chinook.html)：展示了对SQL数据库（Chinook数据库）进行问答任务评估的笔记本。
 
-[Agent Vectorstore](/docs/guides/evaluation/agent_vectordb_sota_pg.html): A notebook showing evaluation of an agent doing question answering while routing between two different vector databases.
+[Agent Vectorstore](/docs/guides/evaluation/agent_vectordb_sota_pg.html): 一个展示了在两个不同的向量数据库之间进行路由的代理执行问答评估的笔记本。
 
-[Agent Search + Calculator](/docs/guides/evaluation/agent_benchmarking.html): A notebook showing evaluation of an agent doing question answering using a Search engine and a Calculator as tools.
+[Agent Search + Calculator](/docs/guides/evaluation/agent_benchmarking.html): 一个展示了代理使用搜索引擎和计算器工具进行问答评估的笔记本。
 
-[Evaluating an OpenAPI Chain](/docs/guides/evaluation/openapi_eval.html): A notebook showing evaluation of an OpenAPI chain, including how to generate test data if you don't have any.
+[Evaluating an OpenAPI Chain](/docs/guides/evaluation/openapi_eval.html): 一个展示如何评估OpenAPI链的笔记本，包括如何在没有测试数据的情况下生成测试数据。
 
+## 其他示例
 
-## Other Examples
+此外，我们还有一些用于评估的通用资源。
 
-In addition, we also have some more generic resources for evaluation.
+[问答](/docs/guides/evaluation/question_answering.html): 一个旨在评估通用问答系统的LLM概述。
 
-[Question Answering](/docs/guides/evaluation/question_answering.html): An overview of LLMs aimed at evaluating question answering systems in general.
+[数据增强问答](/docs/guides/evaluation/data_augmented_question_answering.html)：这是一个端到端的示例，用于评估一个针对特定文档的问答系统（准确来说是一个RetrievalQAChain）。该示例演示了如何使用LLMs生成问题/答案示例进行评估，并突出了如何使用LLMs评估生成的示例的性能。
 
-[Data Augmented Question Answering](/docs/guides/evaluation/data_augmented_question_answering.html): An end-to-end example of evaluating a question answering system focused on a specific document (a RetrievalQAChain to be precise). This example highlights how to use LLMs to come up with question/answer examples to evaluate over, and then highlights how to use LLMs to evaluate performance on those generated examples.
-
-[Hugging Face Datasets](/docs/guides/evaluation/huggingface_datasets.html): Covers an example of loading and using a dataset from Hugging Face for evaluation.
+[Hugging Face Datasets](/docs/guides/evaluation/huggingface_datasets.html)：介绍了如何加载和使用来自Hugging Face的数据集进行评估的示例。
 

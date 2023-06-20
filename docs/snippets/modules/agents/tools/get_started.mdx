@@ -1,11 +1,10 @@
-```python
 from langchain.agents import load_tools
 tool_names = [...]
 tools = load_tools(tool_names)
 ```
 
-Some tools (e.g. chains, agents) may require a base LLM to use to initialize them.
-In that case, you can pass in an LLM as well:
+一些工具（例如链和代理）可能需要使用基本的语言模型来初始化。
+在这种情况下，您也可以传入一个语言模型：
 
 ```python
 from langchain.agents import load_tools

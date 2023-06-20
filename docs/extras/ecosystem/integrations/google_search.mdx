@@ -1,32 +1,32 @@
-# Google Search
+# Google搜索
 
-This page covers how to use the Google Search API within LangChain.
-It is broken into two parts: installation and setup, and then references to the specific Google Search wrapper.
+本页面介绍如何在LangChain中使用Google搜索API。
+它分为两个部分：安装和设置，以及对特定的Google搜索封装的引用。
 
-## Installation and Setup
-- Install requirements with `pip install google-api-python-client`
-- Set up a Custom Search Engine, following [these instructions](https://stackoverflow.com/questions/37083058/programmatically-searching-google-in-python-using-custom-search)
-- Get an API Key and Custom Search Engine ID from the previous step, and set them as environment variables `GOOGLE_API_KEY` and `GOOGLE_CSE_ID` respectively
+## 安装和设置
+- 使用`pip install google-api-python-client`安装所需的库
+- 根据[这些说明](https://stackoverflow.com/questions/37083058/programmatically-searching-google-in-python-using-custom-search)设置自定义搜索引擎
+- 从上一步骤中获取API密钥和自定义搜索引擎ID，并将它们设置为环境变量`GOOGLE_API_KEY`和`GOOGLE_CSE_ID`。
 
-## Wrappers
+## 包装器
 
-### Utility
+### 实用工具
 
-There exists a GoogleSearchAPIWrapper utility which wraps this API. To import this utility:
+存在一个名为GoogleSearchAPIWrapper的实用工具，用于包装此API。要导入此实用工具：
 
 ```python
 from langchain.utilities import GoogleSearchAPIWrapper
 ```
 
-For a more detailed walkthrough of this wrapper, see [this notebook](/docs/modules/agents/tools/integrations/google_search.html).
+要详细了解这个包装器的使用方法，请参阅[这个笔记本](/docs/modules/agents/tools/integrations/google_search.html)。
 
-### Tool
+### 工具
 
-You can also easily load this wrapper as a Tool (to use with an Agent).
-You can do this with:
+您还可以将此包装器作为一个工具轻松加载（与代理一起使用）。
+您可以使用以下方式完成：
 ```python
 from langchain.agents import load_tools
 tools = load_tools(["google-search"])
 ```
 
-For more information on this, see [this page](/docs/modules/agents/tools/getting_started.md)
+要了解更多信息，请参阅[此页面](/docs/modules/agents/tools/getting_started.md)

@@ -1,35 +1,34 @@
-# Azure Blob Storage
+# Azure Blob 存储
 
->[Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction) is Microsoft's object storage solution for the cloud. Blob Storage is optimized for storing massive amounts of unstructured data. Unstructured data is data that doesn't adhere to a particular data model or definition, such as text or binary data.
+>[Azure Blob Storage](https://learn.microsoft.com/zh-cn/azure/storage/blobs/storage-blobs-introduction) 是微软云的对象存储解决方案。Blob 存储专为存储大量的非结构化数据进行了优化。非结构化数据是指不符合特定数据模型或定义的数据，例如文本或二进制数据。
 
->[Azure Files](https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction) offers fully managed
-> file shares in the cloud that are accessible via the industry standard Server Message Block (`SMB`) protocol, 
-> Network File System (`NFS`) protocol, and `Azure Files REST API`. `Azure Files` are based on the `Azure Blob Storage`.
+>[Azure 文件](https://learn.microsoft.com/zh-cn/azure/storage/files/storage-files-introduction) 提供了完全托管的存储服务，用于存储和访问文件。
+> 在云中，可以通过行业标准的Server Message Block (`SMB`)协议、Network File System (`NFS`)协议和`Azure Files REST API`访问的文件共享。`Azure Files`基于`Azure Blob Storage`。
 
-`Azure Blob Storage` is designed for:
-- Serving images or documents directly to a browser.
-- Storing files for distributed access.
-- Streaming video and audio.
-- Writing to log files.
-- Storing data for backup and restore, disaster recovery, and archiving.
-- Storing data for analysis by an on-premises or Azure-hosted service.
+`Azure Blob Storage`的设计用途包括：
+- 直接向浏览器提供图像或文档。
+- 存储文件以进行分布式访问。
+- 流式传输视频和音频。
+- 写入日志文件。
+- 存储数据用于备份和恢复、灾难恢复和归档。
+- 存储数据以供本地或托管在Azure上的服务进行分析。
 
-## Installation and Setup
+## 安装和设置
 
 ```bash
 pip install azure-storage-blob
 ```
 
 
-## Document Loader
+## 文档加载器
 
-See a [usage example for the Azure Blob Storage](/docs/modules/data_connection/document_loaders/integrations/azure_blob_storage_container.html).
+可查看[使用示例：Azure Blob Storage](/docs/modules/data_connection/document_loaders/integrations/azure_blob_storage_container.html)。
 
 ```python
 from langchain.document_loaders import AzureBlobStorageContainerLoader
 ```
 
-See a [usage example for the Azure Files](/docs/modules/data_connection/document_loaders/integrations/azure_blob_storage_file.html).
+请参阅[使用Azure Files的用法示例](/docs/modules/data_connection/document_loaders/integrations/azure_blob_storage_file.html)。
 
 ```python
 from langchain.document_loaders import AzureBlobStorageFileLoader

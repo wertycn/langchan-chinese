@@ -1,15 +1,17 @@
-# Time-weighted vector store retriever
+# 基于时间加权的向量存储检索器
 
-This retriever uses a combination of semantic similarity and a time decay.
+该检索器使用了语义相似度和时间衰减的组合。
 
-The algorithm for scoring them is:
+评分算法如下：
 
 ```
 semantic_similarity + (1.0 - decay_rate) ^ hours_passed
 ```
 
-Notably, `hours_passed` refers to the hours passed since the object in the retriever **was last accessed**, not since it was created. This means that frequently accessed objects remain "fresh."
+值得注意的是，`hours_passed`指的是自检索器中的对象**上次被访问**以来经过的小时数，而不是自创建以来的小时数。这意味着经常访问的对象保持“新鲜”。
 
+```javascript
 import Example from "@snippets/modules/data_connection/retrievers/how_to/time_weighted_vectorstore.mdx"
 
 <Example/>
+```

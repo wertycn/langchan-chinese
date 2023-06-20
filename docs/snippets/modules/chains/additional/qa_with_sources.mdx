@@ -1,4 +1,4 @@
-We can also perform document QA and return the sources that were used to answer the question. To do this we'll just need to make sure each document has a "source" key in the metadata, and we'll use the `load_qa_with_sources` helper to construct our chain:
+我们还可以执行文档问答，并返回用于回答问题的源文档。为了实现这一点，我们只需要确保每个文档的元数据中有一个"source"键，并使用`load_qa_with_sources`助手来构建我们的链式模型：
 
 ```python
 docsearch = Chroma.from_texts(texts, embeddings, metadatas=[{"source": str(i)} for i in range(len(texts))])

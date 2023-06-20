@@ -1,95 +1,96 @@
 # 🦜️🔗 LangChain
 
-⚡ Building applications with LLMs through composability ⚡
+⚡ 通过可组合性构建LLM应用程序 ⚡
 
-[![Release Notes](https://img.shields.io/github/release/hwchase17/langchain)](https://github.com/hwchase17/langchain/releases)
+[![发布说明](https://img.shields.io/github/release/hwchase17/langchain)](https://github.com/hwchase17/langchain/releases)
 [![lint](https://github.com/hwchase17/langchain/actions/workflows/lint.yml/badge.svg)](https://github.com/hwchase17/langchain/actions/workflows/lint.yml)
-[![test](https://github.com/hwchase17/langchain/actions/workflows/test.yml/badge.svg)](https://github.com/hwchase17/langchain/actions/workflows/test.yml)
-[![Downloads](https://static.pepy.tech/badge/langchain/month)](https://pepy.tech/project/langchain)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/langchainai.svg?style=social&label=Follow%20%40LangChainAI)](https://twitter.com/langchainai)
+[![测试](https://github.com/hwchase17/langchain/actions/workflows/test.yml/badge.svg)](https://github.com/hwchase17/langchain/actions/workflows/test.yml)
+[![下载量](https://static.pepy.tech/badge/langchain/month)](https://pepy.tech/project/langchain)
+[![许可证: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/langchainai.svg?style=social&label=关注%20%40LangChainAI)](https://twitter.com/langchainai)
 [![](https://dcbadge.vercel.app/api/server/6adMQxSpJS?compact=true&style=flat)](https://discord.gg/6adMQxSpJS)
-[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hwchase17/langchain)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hwchase17/langchain)
+[![在 Dev Containers 中打开](https://img.shields.io/static/v1?label=Dev%20Containers&message=打开&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/hwchase17/langchain)
+[![在 GitHub Codespaces 中打开](https://github.com/codespaces/badge.svg)](https://codespaces.new/hwchase17/langchain)
 [![GitHub star chart](https://img.shields.io/github/stars/hwchase17/langchain?style=social)](https://star-history.com/#hwchase17/langchain)
 [![Dependency Status](https://img.shields.io/librariesio/github/hwchase17/langchain)](https://libraries.io/github/hwchase17/langchain)
 [![Open Issues](https://img.shields.io/github/issues-raw/hwchase17/langchain)](https://github.com/hwchase17/langchain/issues)
 
 
-Looking for the JS/TS version? Check out [LangChain.js](https://github.com/hwchase17/langchainjs).
+寻找JS/TS版本？请查看[LangChain.js](https://github.com/hwchase17/langchainjs)。
 
-**Production Support:** As you move your LangChains into production, we'd love to offer more comprehensive support.
-Please fill out [this form](https://forms.gle/57d8AmXBYp8PP8tZA) and we'll set up a dedicated support Slack channel.
+**生产支持：** 当您将LangChains投入生产时，我们将提供更全面的支持。请填写[此表格](https://forms.gle/57d8AmXBYp8PP8tZA)，我们将为您设置一个专门的支持Slack频道。
 
-## Quick Install
+## 快速安装
 
 `pip install langchain`
-or
+或者
 `conda install langchain -c conda-forge`
 
-## 🤔 What is this?
+## 🤔 这是什么？
 
-Large language models (LLMs) are emerging as a transformative technology, enabling developers to build applications that they previously could not. However, using these LLMs in isolation is often insufficient for creating a truly powerful app - the real power comes when you can combine them with other sources of computation or knowledge.
+大型语言模型（LLM）正在成为一种具有变革性的技术，使开发人员能够构建以前无法实现的应用程序。然而，仅仅使用这些LLM往往不足以创建一个真正强大的应用程序 - 真正的力量在于将它们与其他计算或知识源结合起来。
 
-This library aims to assist in the development of those types of applications. Common examples of these applications include:
+本库旨在帮助开发这些类型的应用程序。这些应用程序的常见示例包括：
 
-**❓ Question Answering over specific documents**
+**❓ 在特定文档上的问答**
 
-- [Documentation](https://python.langchain.com/docs/use_cases/question_answering/)
-- End-to-end Example: [Question Answering over Notion Database](https://github.com/hwchase17/notion-qa)
+- [文档](https://python.langchain.com/docs/use_cases/question_answering/)
+- 端到端示例：[在Notion数据库上的问答](https://github.com/hwchase17/notion-qa)
 
-**💬 Chatbots**
+**💬 聊天机器人**
 
-- [Documentation](https://python.langchain.com/docs/use_cases/chatbots/)
-- End-to-end Example: [Chat-LangChain](https://github.com/hwchase17/chat-langchain)
+- [文档](https://python.langchain.com/docs/use_cases/chatbots/)
+- 端到端示例：[Chat-LangChain](https://github.com/hwchase17/chat-langchain)
 
-**🤖 Agents**
+**🤖 代理程序**
 
-- [Documentation](https://python.langchain.com/docs/modules/agents/)
-- End-to-end Example: [GPT+WolframAlpha](https://huggingface.co/spaces/JavaFXpert/Chat-GPT-LangChain)
+- [文档](https://python.langchain.com/docs/modules/agents/)
+- 端到端示例：[GPT+WolframAlpha](https://huggingface.co/spaces/JavaFXpert/Chat-GPT-LangChain)
 
-## 📖 Documentation
+## 📖 文档
 
-Please see [here](https://python.langchain.com) for full documentation on:
+请参阅[此处](https://python.langchain.com)获取有关以下内容的完整文档：
 
-- Getting started (installation, setting up the environment, simple examples)
-- How-To examples (demos, integrations, helper functions)
-- Reference (full API docs)
-- Resources (high-level explanation of core concepts)
+- 入门指南（安装、环境设置、简单示例）
+- 如何示例（演示、集成、辅助函数）
+- 参考（完整的API文档）
+- 资源（核心概念的高级解释）
 
-## 🚀 What can this help with?
+## 🚀 这可以帮助解决什么问题？
 
-There are six main areas that LangChain is designed to help with.
-These are, in increasing order of complexity:
+LangChain的设计目标主要有六个主要领域。
+按照复杂性递增的顺序，它们包括：
 
-**📃 LLMs and Prompts:**
+**📃 LLMs和Prompts：**
 
-This includes prompt management, prompt optimization, a generic interface for all LLMs, and common utilities for working with LLMs.
+这包括prompt管理，prompt优化，适用于所有LLMs的通用接口以及与LLMs一起使用的常用工具。
 
-**🔗 Chains:**
+**🔗 链：**
 
-Chains go beyond a single LLM call and involve sequences of calls (whether to an LLM or a different utility). LangChain provides a standard interface for chains, lots of integrations with other tools, and end-to-end chains for common applications.
+链不仅限于单个LLM调用，还涉及到一系列的调用（无论是对LLM还是其他实用程序的调用）。LangChain提供了一种标准的链式接口，与其他工具有很多的集成，并提供了常见应用程序的端到端链。
 
-**📚 Data Augmented Generation:**
+**📚 数据增强生成：**
 
-Data Augmented Generation involves specific types of chains that first interact with an external data source to fetch data for use in the generation step. Examples include summarization of long pieces of text and question/answering over specific data sources.
+数据增强生成涉及特定类型的链，首先与外部数据源进行交互，以获取用于生成步骤的数据。示例包括对长文本进行摘要和在特定数据源上进行问题/回答。
 
-**🤖 Agents:**
+**🤖 代理人：**
 
-Agents involve an LLM making decisions about which Actions to take, taking that Action, seeing an Observation, and repeating that until done. LangChain provides a standard interface for agents, a selection of agents to choose from, and examples of end-to-end agents.
+**👥 代理人:**
 
-**🧠 Memory:**
+代理人涉及使用LLM（语言模型）做出决策，选择要采取的行动，观察结果，并重复此过程直到完成。LangChain为代理人提供了一个标准接口，并提供了一系列可供选择的代理人以及端到端代理人的示例。
 
-Memory refers to persisting state between calls of a chain/agent. LangChain provides a standard interface for memory, a collection of memory implementations, and examples of chains/agents that use memory.
+**🧠 存储:**
 
-**🧐 Evaluation:**
+存储指的是在链/代理人的调用之间保持状态的能力。LangChain为存储提供了一个标准接口，并提供了一系列存储实现以及使用存储的链/代理人的示例。
 
-[BETA] Generative models are notoriously hard to evaluate with traditional metrics. One new way of evaluating them is using language models themselves to do the evaluation. LangChain provides some prompts/chains for assisting in this.
+**🧐 评估:**
 
-For more information on these concepts, please see our [full documentation](https://python.langchain.com).
+生成模型通常很难使用传统的度量标准进行评估。一种新的评估方法是使用语言模型自身来进行评估。LangChain提供了一些提示/链来辅助进行评估。
 
-## 💁 Contributing
+有关这些概念的更多信息，请参阅我们的[完整文档](https://python.langchain.com)。
 
-As an open-source project in a rapidly developing field, we are extremely open to contributions, whether it be in the form of a new feature, improved infrastructure, or better documentation.
+## 💁 贡献
 
-For detailed information on how to contribute, see [here](.github/CONTRIBUTING.md).
+作为一个在快速发展的领域中的开源项目，我们非常欢迎贡献，不论是新功能、改进基础设施还是更好的文档。
+
+有关如何贡献的详细信息，请参阅[这里](.github/CONTRIBUTING.md)。

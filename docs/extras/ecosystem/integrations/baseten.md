@@ -1,20 +1,20 @@
 # Baseten
 
-Learn how to use LangChain with models deployed on Baseten.
+了解如何在 Baseten 上使用 LangChain 模型。
 
-## Installation and setup
+## 安装和设置
 
-- Create a [Baseten](https://baseten.co) account and [API key](https://docs.baseten.co/settings/api-keys).
-- Install the Baseten Python client with `pip install baseten`
-- Use your API key to authenticate with `baseten login`
+- 创建一个 [Baseten](https://baseten.co) 账户和 [API 密钥](https://docs.baseten.co/settings/api-keys)。
+- 使用 `pip install baseten` 安装 Baseten Python 客户端。
+- 使用您的 API 密钥进行身份验证 `baseten login`
 
-## Invoking a model
+## 调用模型
 
-Baseten integrates with LangChain through the LLM module, which provides a standardized and interoperable interface for models that are deployed on your Baseten workspace.
+Baseten通过LLM模块与LangChain集成，该模块为在您的Baseten工作区上部署的模型提供了一个标准化且可互操作的接口。
 
-You can deploy foundation models like WizardLM and Alpaca with one click from the [Baseten model library](https://app.baseten.co/explore/) or if you have your own model, [deploy it with this tutorial](https://docs.baseten.co/deploying-models/deploy).
+您可以通过[Baseten模型库](https://app.baseten.co/explore/)一键部署基础模型，如WizardLM和Alpaca，或者如果您有自己的模型，可以使用[此教程](https://docs.baseten.co/deploying-models/deploy)进行部署。
 
-In this example, we'll work with WizardLM. [Deploy WizardLM here](https://app.baseten.co/explore/wizardlm) and follow along with the deployed [model's version ID](https://docs.baseten.co/managing-models/manage).
+在这个示例中，我们将使用WizardLM。[在这里部署WizardLM](https://app.baseten.co/explore/wizardlm)，并跟随已部署模型的[版本ID](https://docs.baseten.co/managing-models/manage)进行操作。
 
 ```python
 from langchain.llms import Baseten

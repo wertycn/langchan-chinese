@@ -1,23 +1,23 @@
 # Azure Cognitive Search
 
->[Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search) (formerly known as `Azure Search`) is a cloud search service that gives developers infrastructure, APIs, and tools for building a rich search experience over private, heterogeneous content in web, mobile, and enterprise applications.
+>[Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search)（以前称为`Azure Search`）是一项云搜索服务，为开发人员提供基础设施、API和工具，用于在Web、移动和企业应用程序中构建丰富的搜索体验，用于私有、异构内容的搜索。
 
->Search is foundational to any app that surfaces text to users, where common scenarios include catalog or document search, online retail apps, or data exploration over proprietary content. When you create a search service, you'll work with the following capabilities:
->- A search engine for full text search over a search index containing user-owned content
->- Rich indexing, with lexical analysis and optional AI enrichment for content extraction and transformation
->- Rich query syntax for text search, fuzzy search, autocomplete, geo-search and more
->- Programmability through REST APIs and client libraries in Azure SDKs
->- Azure integration at the data layer, machine learning layer, and AI (Cognitive Services)
-
-
-## Installation and Setup
-
-See [set up instructions](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal).
+>搜索是任何向用户展示文本的应用程序的基础，常见的场景包括目录或文档搜索、在线零售应用程序或针对专有内容的数据探索。创建搜索服务时，您将使用以下功能：
+>- 用于对包含用户拥有内容的搜索索引进行全文搜索的搜索引擎
+>- 丰富的索引功能，包括词法分析和可选的人工智能增强，用于内容提取和转换
+>- 丰富的查询语法，用于文本搜索、模糊搜索、自动完成、地理搜索等功能
+>- 通过Azure SDK中的REST API和客户端库进行编程
+>- Azure在数据层、机器学习层和AI（认知服务）层面上的集成
 
 
-## Retriever
+## 安装和设置
 
-See a [usage example](/docs/modules/data_connection/retrievers/integrations/azure_cognitive_search.html).
+请参阅[设置说明](https://learn.microsoft.com/en-us/azure/search/search-create-service-portal)。
+
+
+## 检索器
+
+请参考[使用示例](/docs/modules/data_connection/retrievers/integrations/azure_cognitive_search.html)。
 
 ```python
 from langchain.retrievers import AzureCognitiveSearchRetriever

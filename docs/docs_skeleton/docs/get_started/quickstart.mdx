@@ -1,8 +1,8 @@
-# Quickstart
+# 快速入门
 
-## Installation
+## 安装
 
-To install LangChain run:
+要安装LangChain，请运行以下命令：
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,46 +10,48 @@ import Install from "@snippets/get_started/quickstart/installation.mdx"
 
 <Install/>
 
-For more details, see our [Installation guide](/docs/get_started/installation.html).
+有关更多详细信息，请参阅我们的[安装指南](/docs/get_started/installation.html)。
 
-## Environment setup
+## 环境设置
 
-Using LangChain will usually require integrations with one or more model providers, data stores, APIs, etc. For this example, we'll use OpenAI's model APIs.
+使用LangChain通常需要与一个或多个模型提供商、数据存储、API等进行集成。在本例中，我们将使用OpenAI的模型API。
 
 import OpenAISetup from "@snippets/get_started/quickstart/openai_setup.mdx"
 
 <OpenAISetup/>
 
-## Building an application
+## 构建一个应用程序
 
-Now we can start building our language model application. LangChain provides many modules that can be used to build language model applications. Modules can be used as stand-alones in simple applications and they can be combined for more complex use cases.
+现在我们可以开始构建我们的语言模型应用程序了。LangChain提供了许多模块，可以用来构建语言模型应用程序。这些模块可以在简单的应用程序中作为独立模块使用，也可以在更复杂的用例中进行组合使用。
 
-## LLMs
-#### Get predictions from a language model
+## 语言模型
+#### 从语言模型获取预测结果
 
-The basic building block of LangChain is the LLM, which takes in text and generates more text.
+LangChain的基本构建模块是LLM，它接收文本并生成更多的文本。
 
-As an example, suppose we're building an application that generates a company name based on a company description. In order to do this, we need to initialize an OpenAI model wrapper. In this case, since we want the outputs to be MORE random, we'll initialize our model with a HIGH temperature.
+举个例子，假设我们正在构建一个根据公司描述生成公司名称的应用程序。为了做到这一点，我们需要初始化一个OpenAI模型包装器。在这种情况下，由于我们希望输出更加随机，我们将使用较高的温度来初始化我们的模型。
 
+```
 import LLM from "@snippets/get_started/quickstart/llm.mdx"
 
 <LLM/>
+```
 
-## Chat models
+## 聊天模型
 
-Chat models are a variation on language models. While chat models use language models under the hood, the interface they expose is a bit different: rather than expose a "text in, text out" API, they expose an interface where "chat messages" are the inputs and outputs.
+聊天模型是语言模型的一种变体。虽然聊天模型在内部使用语言模型，但它们提供的接口有些不同：它们不是提供一个“输入文本，输出文本”的API，而是提供一个接口，其中“聊天消息”是输入和输出。
 
-You can get chat completions by passing one or more messages to the chat model. The response will be a message. The types of messages currently supported in LangChain are `AIMessage`, `HumanMessage`, `SystemMessage`, and `ChatMessage` -- `ChatMessage` takes in an arbitrary role parameter. Most of the time, you'll just be dealing with `HumanMessage`, `AIMessage`, and `SystemMessage`.
+通过将一个或多个消息传递给聊天模型，您可以获取聊天完成的结果。响应将是一个消息。LangChain目前支持的消息类型有`AIMessage`，`HumanMessage`，`SystemMessage`和`ChatMessage` - `ChatMessage`接受一个任意的角色参数。大部分情况下，您只需要处理`HumanMessage`，`AIMessage`和`SystemMessage`。
 
-import ChatModel from "@snippets/get_started/quickstart/chat_model.mdx"
+从"@snippets/get_started/quickstart/chat_model.mdx"导入ChatModel
 
 <ChatModel/>
 
-## Prompt templates
+## 提示模板
 
-Most LLM applications do not pass user input directly into to an LLM. Usually they will add the user input to a larger piece of text, called a prompt template, that provides additional context on the specific task at hand.
+大多数LLM应用程序不会直接将用户输入传递给LLM。通常，它们会将用户输入添加到一个更大的文本片段中，称为提示模板，该模板提供了有关特定任务的额外上下文。
 
-In the previous example, the text we passed to the model contained instructions to generate a company name. For our application, it'd be great if the user only had to provide the description of a company/product, without having to worry about giving the model instructions.
+在前面的示例中，我们传递给模型的文本包含了生成公司名称的指令。对于我们的应用程序来说，如果用户只需要提供公司/产品的描述，而不需要担心给模型提供指令，那将非常好。
 
 import PromptTemplateLLM from "@snippets/get_started/quickstart/prompt_templates_llms.mdx"
 import PromptTemplateChatModel from "@snippets/get_started/quickstart/prompt_templates_chat_models.mdx"
@@ -57,23 +59,23 @@ import PromptTemplateChatModel from "@snippets/get_started/quickstart/prompt_tem
 <Tabs>
     <TabItem value="llms" label="LLMs" default>
 
-With PromptTemplates this is easy! In this case our template would be very simple:
+使用PromptTemplates很容易！在这种情况下，我们的模板将非常简单：
 
 <PromptTemplateLLM/>
 </TabItem>
-<TabItem value="chat_models" label="Chat models">
+<TabItem value="chat_models" label="聊天模型">
 
-Similar to LLMs, you can make use of templating by using a `MessagePromptTemplate`. You can build a `ChatPromptTemplate` from one or more `MessagePromptTemplate`s. You can use `ChatPromptTemplate`'s `format_messages` method to generate the formatted messages.
+与LLMs类似，您可以使用`MessagePromptTemplate`来使用模板。您可以从一个或多个`MessagePromptTemplate`构建一个`ChatPromptTemplate`。您可以使用`ChatPromptTemplate`的`format_messages`方法来生成格式化的消息。
 
-Because this is generating a list of messages, it is slightly more complex than the normal prompt template which is generating only a string. Please see the detailed guides on prompts to understand more options available to you here.
+由于这里生成的是消息列表，所以比普通的提示模板稍微复杂一些，普通的提示模板只生成一个字符串。请参阅详细的提示指南以了解可用的更多选项。
 
 <PromptTemplateChatModel/>
     </TabItem>
 </Tabs>
 
-## Chains
+## 链
 
-Now that we've got a model and a prompt template, we'll want to combine the two. Chains give us a way to link (or chain) together multiple primitives, like models, prompts, and other chains.
+现在我们已经有了一个模型和一个提示模板，我们想要将两者结合起来。链条给了我们一种将多个原语（如模型、提示和其他链条）链接（或串联）在一起的方式。
 
 import ChainLLM from "@snippets/get_started/quickstart/chains_llms.mdx"
 import ChainChatModel from "@snippets/get_started/quickstart/chains_chat_models.mdx"
@@ -81,64 +83,64 @@ import ChainChatModel from "@snippets/get_started/quickstart/chains_chat_models.
 <Tabs>
 <TabItem value="llms" label="LLMs" default>
 
-The simplest and most common type of chain is an LLMChain, which passes an input first to a PromptTemplate and then to an LLM. We can construct an LLM chain from our existing model and prompt template.
+最简单和最常见的链式模型是LLMChain，它首先将输入传递给PromptTemplate，然后再传递给LLM。我们可以从现有的模型和提示模板构建一个LLM链。
 
 <ChainLLM/>
 
-There we go, our first chain! Understanding how this simple chain works will set you up well for working with more complex chains.
+这就是我们的第一个链！理解这个简单的链式模型将为您更好地处理更复杂的链式模型奠定基础。
 
 </TabItem>
-<TabItem value="chat_models" label="Chat models">
+<TabItem value="chat_models" label="聊天模型">
 
-The `LLMChain` can be used with chat models as well:
+`LLMChain`也可以与聊天模型一起使用：
 
 <ChainChatModel/>
 </TabItem>
 </Tabs>
 
-## Agents
+## 代理人
 
-import AgentLLM from "@snippets/get_started/quickstart/agents_llms.mdx"
-import AgentChatModel from "@snippets/get_started/quickstart/agents_chat_models.mdx"
+从 "@snippets/get_started/quickstart/agents_llms.mdx" 导入 AgentLLM
+从 "@snippets/get_started/quickstart/agents_chat_models.mdx" 导入 AgentChatModel
 
-Our first chain ran a pre-determined sequence of steps. To handle complex workflows, we need to be able to dynamically choose actions based on inputs.
+我们的第一个链式运行了一个预定的步骤序列。为了处理复杂的工作流程，我们需要能够根据输入动态选择操作。
 
-Agents do just this: they use a language model to determine which actions to take and in what order. Agents are given access to tools, and they repeatedly choose a tool, run the tool, and observe the output until they come up with a final answer.
+代理程序就是这样做的：它们使用语言模型来确定要采取的操作和顺序。代理程序可以访问工具，并重复选择工具、运行工具和观察输出，直到得出最终答案。
 
-To load an agent, you need to choose a(n):
-- LLM/Chat model: The language model powering the agent.
-- Tool(s): A function that performs a specific duty. This can be things like: Google Search, Database lookup, Python REPL, other chains. For a list of predefined tools and their specifications, see the [Tools documentation](/docs/modules/agents/tools/).
-- Agent name: A string that references a supported agent class. An agent class is largely parameterized by the prompt the language model uses to determine which action to take. Because this notebook focuses on the simplest, highest level API, this only covers using the standard supported agents. If you want to implement a custom agent, see [here](/docs/modules/agents/how_to/custom_agent.html). For a list of supported agents and their specifications, see [here](/docs/modules/agents/agent_types/).
+要加载一个代理程序，您需要选择一个：
+- LLM/Chat模型：为代理程序提供动力的语言模型。
+- 工具：执行特定任务的功能。可以是谷歌搜索、数据库查找、Python REPL、其他链等。有关预定义工具及其规范的列表，请参阅[工具文档](/docs/modules/agents/tools/)。
+- 代理名称：一个字符串，用于引用支持的代理类。代理类主要由语言模型使用的提示进行参数化，以确定采取哪种操作。因为这个笔记本专注于最简单、最高级别的API，所以只涵盖了使用标准支持的代理的内容。如果您想实现自定义代理，请参阅[这里](/docs/modules/agents/how_to/custom_agent.html)。有关支持的代理及其规格的列表，请参阅[这里](/docs/modules/agents/agent_types/)。
 
-For this example, we'll be using SerpAPI to query a search engine.
+对于这个示例，我们将使用SerpAPI来查询搜索引擎。
 
-You'll need to install the SerpAPI Python package:
+您需要安装SerpAPI的Python包：
 
 ```bash
 pip install google-search-results
 ```
 
-And set the `SERPAPI_API_KEY` environment variable.
+并设置`SERPAPI_API_KEY`环境变量。
 
 <Tabs>
 <TabItem value="llms" label="LLMs" default>
 <AgentLLM/>
 </TabItem>
-<TabItem value="chat_models" label="Chat models">
+<TabItem value="chat_models" label="聊天模型">
 
-Agents can also be used with chat models, you can initialize one using `AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION` as the agent type.
+代理也可以与聊天模型一起使用，您可以使用`AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION`作为代理类型进行初始化。
 
 <AgentChatModel/>
 </TabItem>
 </Tabs>
 
-## Memory
+## 内存
 
-The chains and agents we've looked at so far have been stateless, but for many applications it's necessary to reference past interactions. This is clearly the case with a chatbot for example, where you want it to understand new messages in the context of past messages.
+到目前为止，我们所看到的链式和代理都是无状态的，但是对于许多应用程序来说，有必要引用过去的交互。例如，对于一个聊天机器人，这显然是必要的，您希望它能够在过去的消息上下文中理解新消息。
 
-The Memory module gives you a way to maintain application state. The base Memory interface is simple: it lets you update state given the latest run inputs and outputs and it lets you modify (or contextualize) the next input using the stored state.
+Memory模块提供了一种维护应用程序状态的方式。基本的Memory接口很简单：它允许您根据最新的运行输入和输出来更新状态，并且它允许您使用存储的状态修改（或上下文化）下一个输入。
 
-There are a number of built-in memory systems. The simplest of these are is a buffer memory which just prepends the last few inputs/outputs to the current input - we will use this in the example below.
+内置的记忆系统有很多种。其中最简单的是缓冲记忆，它只是将最近的几个输入/输出添加到当前输入之前 - 在下面的示例中，我们将使用这种记忆系统。
 
 import MemoryLLM from "@snippets/get_started/quickstart/memory_llms.mdx"
 import MemoryChatModel from "@snippets/get_started/quickstart/memory_chat_models.mdx"
@@ -150,9 +152,10 @@ import MemoryChatModel from "@snippets/get_started/quickstart/memory_chat_models
 </TabItem>
 <TabItem value="chat_models" label="Chat models">
 
-You can use Memory with chains and agents initialized with chat models. The main difference between this and Memory for LLMs is that rather than trying to condense all previous messages into a string, we can keep them as their own unique memory object.
+您可以使用带有聊天模型初始化的内存和链条。与用于语言模型的内存不同的是，我们可以将每个消息保留为独立的内存对象，而不是尝试将所有先前的消息压缩为一个字符串。
 
+```html
 <MemoryChatModel/>
-
 </TabItem>
 </Tabs>
+```

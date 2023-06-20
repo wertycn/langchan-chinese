@@ -1,6 +1,6 @@
-# Callbacks for custom chains
+# 自定义链的回调函数
 
- When you create a custom chain you can easily set it up to use the same callback system as all the built-in chains.
-`_call`, `_generate`, `_run`, and equivalent async methods on Chains / LLMs / Chat Models / Agents / Tools now receive a 2nd argument called `run_manager` which is bound to that run, and contains the logging methods that can be used by that object (i.e. `on_llm_new_token`). This is useful when constructing a custom chain. See this guide for more information on how to [create custom chains and use callbacks inside them](/docs/modules/chains/how_to/custom_chain.html).
+当您创建一个自定义链时，可以轻松地设置它来使用与所有内置链相同的回调系统。
+`_call`、`_generate`、`_run`和等效的异步方法在Chains / LLMs / Chat Models / Agents / Tools上现在接收一个名为`run_manager`的第二个参数，该参数绑定到该运行，并包含可以被该对象使用的日志记录方法（例如`on_llm_new_token`）。这在构建自定义链时非常有用。有关如何创建自定义链并在其中使用回调的更多信息，请参阅此指南：[创建自定义链并在其中使用回调](/docs/modules/chains/how_to/custom_chain.html)。
 
 

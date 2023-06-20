@@ -1,4 +1,4 @@
-For this example, we'll use the above Pydantic output parser. Here's what happens if we pass it a result that does not comply with the schema:
+对于这个示例，我们将使用上面的Pydantic输出解析器。如果我们向它传递一个不符合模式的结果，会发生以下情况:
 
 ```python
 from langchain.prompts import PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
@@ -89,7 +89,7 @@ parser.parse(misformatted)
 
 </CodeOutputBlock>
 
-Now we can construct and use a `OutputFixingParser`. This output parser takes as an argument another output parser but also an LLM with which to try to correct any formatting mistakes.
+现在我们可以构建并使用`OutputFixingParser`。这个输出解析器接受另一个输出解析器作为参数，还需要一个LLM来尝试纠正任何格式错误。
 
 
 ```python

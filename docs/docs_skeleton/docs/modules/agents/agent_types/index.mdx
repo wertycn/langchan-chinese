@@ -1,57 +1,50 @@
 ---
-sidebar_position: 0
+侧边栏位置: 0
 ---
 
-# Agent types
+# 代理类型
 
-## Action agents
+## 动作代理
 
-Agents use an LLM to determine which actions to take and in what order.
-An action can either be using a tool and observing its output, or returning a response to the user.
-Here are the agents available in LangChain.
+代理使用LLM来确定要采取的操作及其顺序。
+一个动作可以是使用工具并观察其输出，也可以是向用户返回响应。
+以下是LangChain中可用的代理。
 
-### [Zero-shot ReAct](/docs/modules/agents/agent_types/react.html)
+### [零-shot ReAct](/docs/modules/agents/agent_types/react.html)
 
-This agent uses the [ReAct](https://arxiv.org/pdf/2205.00445.pdf) framework to determine which tool to use
-based solely on the tool's description. Any number of tools can be provided.
-This agent requires that a description is provided for each tool.
+该代理使用[ReAct](https://arxiv.org/pdf/2205.00445.pdf)框架来确定要使用的工具。
+仅基于工具的描述提供建议。可以提供任意数量的工具。
+此代理需要为每个工具提供描述。
 
-**Note**: This is the most general purpose action agent.
+**注意**：这是最通用的动作代理。
 
-### [Structured input ReAct](/docs/modules/agents/agent_types/structured_chat.html)
+### [结构化输入ReAct](/docs/modules/agents/agent_types/structured_chat.html)
 
-The structured tool chat agent is capable of using multi-input tools.
-Older agents are configured to specify an action input as a single string, but this agent can use a tools' argument
-schema to create a structured action input. This is useful for more complex tool usage, like precisely
-navigating around a browser.
+结构化工具聊天代理能够使用多输入工具。
+旧代理配置为将动作输入指定为单个字符串，但是此代理可以使用工具的参数。
+使用模式来创建结构化的操作输入。这对于更复杂的工具使用非常有用，比如在浏览器中进行精确导航。
 
 ### [OpenAI Functions](/docs/modules/agents/agent_types/openai_functions_agent.html)
 
-Certain OpenAI models (like gpt-3.5-turbo-0613 and gpt-4-0613) have been explicitly fine-tuned to detect when a
-function should to be called and respond with the inputs that should be passed to the function.
-The OpenAI Functions Agent is designed to work with these models.
+某些OpenAI模型（如gpt-3.5-turbo-0613和gpt-4-0613）已经经过明确的微调，以便检测何时应该调用函数，并响应应该传递给函数的输入。
+OpenAI函数代理是为了与这些模型配合使用而设计的。
 
-### [Conversational](/docs/modules/agents/agent_types/chat_conversation_agent.html)
+### [对话型](/docs/modules/agents/agent_types/chat_conversation_agent.html)
 
-This agent is designed to be used in conversational settings.
-The prompt is designed to make the agent helpful and conversational.
-It uses the ReAct framework to decide which tool to use, and uses memory to remember the previous conversation interactions.
+该代理设计用于对话场景。
+提示信息旨在使代理更有帮助和对话性。
+它使用ReAct框架来决定使用哪个工具，并使用内存来记忆先前的对话互动。
 
-### [Self ask with search](/docs/modules/agents/agent_types/self_ask_with_search.html)
+### [自问自答并搜索](/docs/modules/agents/agent_types/self_ask_with_search.html)
 
-This agent utilizes a single tool that should be named `Intermediate Answer`.
-This tool should be able to lookup factual answers to questions. This agent
-is equivalent to the original [self ask with search paper](https://ofir.io/self-ask.pdf),
-where a Google search API was provided as the tool.
+该代理使用一个名为`Intermediate Answer`的工具，用于查找问题的实际答案。该代理等同于原始的[self ask with search paper](https://ofir.io/self-ask.pdf)，其中提供了Google搜索API作为工具。
 
-### [ReAct document store](/docs/modules/agents/agent_types/react_docstore.html)
+### [ReAct文档存储](/docs/modules/agents/agent_types/react_docstore.html)
 
-This agent uses the ReAct framework to interact with a docstore. Two tools must
-be provided: a `Search` tool and a `Lookup` tool (they must be named exactly as so).
-The `Search` tool should search for a document, while the `Lookup` tool should lookup
-a term in the most recently found document.
-This agent is equivalent to the
-original [ReAct paper](https://arxiv.org/pdf/2210.03629.pdf), specifically the Wikipedia example.
+该代理使用ReAct框架与文档存储进行交互。需要两个工具。
+提供了两个工具：`Search`工具和`Lookup`工具（它们的名称必须完全相同）。
+`Search`工具应该用于搜索文档，而`Lookup`工具应该在最近找到的文档中查找术语。
+该代理程序等同于原始的[ReAct论文](https://arxiv.org/pdf/2210.03629.pdf)，具体是指维基百科的示例。
 
-## [Plan-and-execute agents](/docs/modules/agents/agent_types/plan_and_execute.html)
-Plan and execute agents accomplish an objective by first planning what to do, then executing the sub tasks. This idea is largely inspired by [BabyAGI](https://github.com/yoheinakajima/babyagi) and then the ["Plan-and-Solve" paper](https://arxiv.org/abs/2305.04091).
+## [计划和执行代理程序](/docs/modules/agents/agent_types/plan_and_execute.html)
+计划和执行代理通过首先规划要做的事情，然后执行子任务来实现目标。这个想法在很大程度上受到[BabyAGI](https://github.com/yoheinakajima/babyagi)和["Plan-and-Solve"论文](https://arxiv.org/abs/2305.04091)的启发。

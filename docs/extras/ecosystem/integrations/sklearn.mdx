@@ -1,23 +1,22 @@
 # scikit-learn
 
-This page covers how to use the scikit-learn package within LangChain.
-It is broken into two parts: installation and setup, and then references to specific scikit-learn wrappers.
+本页面介绍了如何在LangChain中使用scikit-learn包。
+它分为两个部分：安装和设置，以及对特定scikit-learn包装器的引用。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the Python package with `pip install scikit-learn`
+- 使用`pip install scikit-learn`安装Python包
 
-## Wrappers
+## 包装器
 
 ### VectorStore
 
-`SKLearnVectorStore` provides a simple wrapper around the nearest neighbor implementation in the
-scikit-learn package, allowing you to use it as a vectorstore.
+`SKLearnVectorStore`提供了一个简单的包装器，用于在scikit-learn包中实现最近邻算法，使您可以将其用作向量存储。
 
-To import this vectorstore:
+要导入这个向量存储：
 
 ```python
 from langchain.vectorstores import SKLearnVectorStore
 ```
 
-For a more detailed walkthrough of the SKLearnVectorStore wrapper, see [this notebook](/docs/modules/data_connection/vectorstores/integrations/sklearn.html).
+要了解更详细的SKLearnVectorStore包装器的使用步骤，请参阅[此笔记本](/docs/modules/data_connection/vectorstores/integrations/sklearn.html)。

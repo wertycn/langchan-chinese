@@ -1,18 +1,18 @@
 # Graphsignal
 
-This page covers how to use [Graphsignal](https://app.graphsignal.com) to trace and monitor LangChain. Graphsignal enables full visibility into your application. It provides latency breakdowns by chains and tools, exceptions with full context, data monitoring, compute/GPU utilization, OpenAI cost analytics, and more.
+本页面介绍如何使用[Graphsignal](https://app.graphsignal.com)来追踪和监视LangChain。Graphsignal提供了对您的应用程序的完整可见性。它提供了按链路和工具的延迟分解、带有完整上下文的异常、数据监控、计算/GPU利用率、OpenAI成本分析等功能。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the Python library with `pip install graphsignal`
-- Create free Graphsignal account [here](https://graphsignal.com)
-- Get an API key and set it as an environment variable (`GRAPHSIGNAL_API_KEY`)
+- 使用`pip install graphsignal`安装Python库
+- 在[这里](https://graphsignal.com)创建免费的Graphsignal账户
+- 获取一个API密钥，并将其设置为环境变量（`GRAPHSIGNAL_API_KEY`）
 
-## Tracing and Monitoring
+## 追踪和监控
 
-Graphsignal automatically instruments and starts tracing and monitoring chains. Traces and metrics are then available in your [Graphsignal dashboards](https://app.graphsignal.com).
+Graphsignal会自动进行链路追踪和监控。追踪和指标可以在您的[Graphsignal仪表板](https://app.graphsignal.com)上查看。
 
-Initialize the tracer by providing a deployment name:
+通过提供一个部署名称来初始化追踪器：
 
 ```python
 import graphsignal
@@ -20,7 +20,7 @@ import graphsignal
 graphsignal.configure(deployment='my-langchain-app-prod')
 ```
 
-To additionally trace any function or code, you can use a decorator or a context manager:
+要对任何函数或代码进行额外的跟踪，您可以使用装饰器或上下文管理器：
 
 ```python
 @graphsignal.trace_function
@@ -33,7 +33,7 @@ with graphsignal.start_trace('my-chain'):
     chain.run("some initial text")
 ```
 
-Optionally, enable profiling to record function-level statistics for each trace.
+可选地，启用性能分析以记录每个追踪的函数级统计信息。
 
 ```python
 with graphsignal.start_trace(
@@ -41,4 +41,4 @@ with graphsignal.start_trace(
     chain.run("some initial text")
 ```
 
-See the [Quick Start](https://graphsignal.com/docs/guides/quick-start/) guide for complete setup instructions.
+请参阅[快速入门](https://graphsignal.com/docs/guides/quick-start/)指南以获取完整的设置说明。

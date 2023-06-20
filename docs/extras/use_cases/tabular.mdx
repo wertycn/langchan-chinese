@@ -1,31 +1,27 @@
-# Analyzing structured data
+# 分析结构化数据
 
-Lots of data and information is stored in tabular data, whether it be csvs, excel sheets, or SQL tables.
-This page covers all resources available in LangChain for working with data in this format.
+大量的数据和信息以表格数据的形式存储，无论是CSV文件、Excel表格还是SQL表格。
+本页面介绍了LangChain中用于处理这种格式数据的所有资源。
 
-## Document loading
-If you have text data stored in a tabular format, you may want to load the data into a Document and then index it as you would
-other text/unstructured data. For this, you should use a document loader like the [CSVLoader](/docs/modules/data_connection/document_loaders/how_to/csv.html)
-and then you should [create an index](/docs/modules/data_connection) over that data, and [query it that way](/docs/modules/chains/popular/vector_db_qa.html).
+## 文档加载
+如果您的文本数据以表格格式存储，您可能希望将数据加载到文档中，然后按照您的需求进行索引。
+其他文本/非结构化数据。为此，您应该使用类似[CSVLoader](/docs/modules/data_connection/document_loaders/how_to/csv.html)的文档加载器，然后应该在该数据上[创建索引](/docs/modules/data_connection)，并以[这种方式进行查询](/docs/modules/chains/popular/vector_db_qa.html)。
 
-## Querying
-If you have more numeric tabular data, or have a large amount of data and don't want to index it, you should get started
-by looking at various chains and agents we have for dealing with this data.
+## 查询
+如果您有更多的数值型表格数据，或者有大量数据并且不想对其进行索引，您应该开始进行查询。
+通过查看我们处理这些数据的各种链和代理，可以更好地了解。
 
-### Chains
+### 链
 
-If you are just getting started, and you have relatively small/simple tabular data, you should get started with chains.
-Chains are a sequence of predetermined steps, so they are good to get started with as they give you more control and let you 
-understand what is happening better.
+如果您刚刚开始，并且拥有相对较小/简单的表格数据，那么您应该从链开始。链是一系列预定步骤，因此它们很适合入门，因为它们可以提供更多的控制，并让您更好地理解正在发生的事情。
 
-- [SQL Database Chain](/docs/modules/chains/popular/sqlite.html)
+- [SQL 数据库链](/docs/modules/chains/popular/sqlite.html)
 
-### Agents
+### 代理
 
-Agents are more complex, and involve multiple queries to the LLM to understand what to do.
-The downside of agents are that you have less control. The upside is that they are more powerful,
-which allows you to use them on larger databases and more complex schemas. 
+代理（Agents）更复杂，并涉及多次查询语言模型（LLM）以了解要执行的操作。
+代理的缺点是您的控制力较小。优点是它们更强大，可以在更大的数据库和更复杂的模式上使用。
 
-- [SQL Agent](/docs/modules/agents/toolkits/integrations/sql_database.html)
-- [Pandas Agent](/docs/modules/agents/toolkits/integrations/pandas.html)
-- [CSV Agent](/docs/modules/agents/toolkits/integrations/csv.html)
+- [SQL代理](/docs/modules/agents/toolkits/integrations/sql_database.html)
+- [Pandas代理](/docs/modules/agents/toolkits/integrations/pandas.html)
+- [CSV代理](/docs/modules/agents/toolkits/integrations/csv.html)

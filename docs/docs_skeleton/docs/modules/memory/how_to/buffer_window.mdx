@@ -1,9 +1,11 @@
-# Conversation buffer window memory
+# 会话缓冲窗口内存
 
-`ConversationBufferWindowMemory` keeps a list of the interactions of the conversation over time. It only uses the last K interactions. This can be useful for keeping a sliding window of the most recent interactions, so the buffer does not get too large
+`ConversationBufferWindowMemory` 会在一段时间内保存对话的交互列表。它只使用最后的 K 个交互。这对于保持最近交互的滑动窗口非常有用，以避免缓冲区变得过大。
 
-Let's first explore the basic functionality of this type of memory.
+让我们首先探索这种类型内存的基本功能。
 
+```
 import Example from "@snippets/modules/memory/how_to/buffer_window.mdx"
 
 <Example/>
+```

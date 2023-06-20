@@ -1,4 +1,3 @@
-```python
 from langchain import PromptTemplate, OpenAI, LLMChain
 
 prompt_template = "What is a good name for a company that makes {product}?"
@@ -19,11 +18,11 @@ llm_chain("colorful socks")
 
 </CodeOutputBlock>
 
-## Additional ways of running LLM Chain
+## LLM Chain的其他运行方式
 
-Aside from `__call__` and `run` methods shared by all `Chain` object, `LLMChain` offers a few more ways of calling the chain logic:
+除了所有`Chain`对象共享的`__call__`和`run`方法之外，`LLMChain`还提供了几种更多的调用链逻辑的方式：
 
-- `apply` allows you run the chain against a list of inputs:
+- `apply`允许您对输入列表运行链逻辑：
 
 
 ```python
@@ -44,9 +43,7 @@ llm_chain.apply(input_list)
      {'text': '\n\nFootwear Factory.'}]
 ```
 
-</CodeOutputBlock>
-
-- `generate` is similar to `apply`, except it return an `LLMResult` instead of string. `LLMResult` often contains useful generation such as token usages and finish reason.
+- `generate`与`apply`类似，但它返回一个`LLMResult`而不是字符串。`LLMResult`通常包含有用的生成信息，例如令牌使用情况和完成原因。
 
 
 ```python
@@ -59,9 +56,7 @@ llm_chain.generate(input_list)
     LLMResult(generations=[[Generation(text='\n\nSocktastic!', generation_info={'finish_reason': 'stop', 'logprobs': None})], [Generation(text='\n\nTechCore Solutions.', generation_info={'finish_reason': 'stop', 'logprobs': None})], [Generation(text='\n\nFootwear Factory.', generation_info={'finish_reason': 'stop', 'logprobs': None})]], llm_output={'token_usage': {'prompt_tokens': 36, 'total_tokens': 55, 'completion_tokens': 19}, 'model_name': 'text-davinci-003'})
 ```
 
-</CodeOutputBlock>
-
-- `predict` is similar to `run` method except that the input keys are specified as keyword arguments instead of a Python dict.
+`predict`与`run`方法类似，只是输入键以关键字参数的形式指定，而不是一个Python字典。
 
 
 ```python
@@ -96,11 +91,11 @@ llm_chain.predict(adjective="sad", subject="ducks")
 
 </CodeOutputBlock>
 
-## Parsing the outputs
+## 解析输出
 
-By default, `LLMChain` does not parse the output even if the underlying `prompt` object has an output parser. If you would like to apply that output parser on the LLM output, use `predict_and_parse` instead of `predict` and `apply_and_parse` instead of `apply`. 
+默认情况下，即使底层的`prompt`对象具有输出解析器，`LLMChain`也不会解析输出。如果您想在LLM输出上应用该输出解析器，请使用`predict_and_parse`而不是`predict`，并使用`apply_and_parse`而不是`apply`。
 
-With `predict`:
+使用`predict`函数：
 
 
 ```python
@@ -120,9 +115,7 @@ llm_chain.predict()
     '\n\nRed, orange, yellow, green, blue, indigo, violet'
 ```
 
-</CodeOutputBlock>
-
-With `predict_and_parser`:
+使用`predict_and_parser`函数：
 
 
 ```python
@@ -137,9 +130,9 @@ llm_chain.predict_and_parse()
 
 </CodeOutputBlock>
 
-## Initialize from string
+## 从字符串初始化
 
-You can also construct an LLMChain from a string template directly.
+您还可以直接从字符串模板构建一个LLMChain。
 
 
 ```python

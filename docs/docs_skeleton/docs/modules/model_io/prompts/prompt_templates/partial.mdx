@@ -1,13 +1,15 @@
-# Partial prompt templates
+# 部分提示模板
 
-Like other methods, it can make sense to "partial" a prompt template - eg pass in a subset of the required values, as to create a new prompt template which expects only the remaining subset of values.
+与其他方法类似，将提示模板“部分化”是有意义的 - 例如，传递所需值的子集，以创建一个只期望剩余子集值的新提示模板。
 
-LangChain supports this in two ways:
-1. Partial formatting with string values.
-2. Partial formatting with functions that return string values.
+LangChain 有两种方式支持这种功能：
+1. 使用字符串值进行部分格式化。
+2. 使用返回字符串值的函数进行部分格式化。
 
-These two different ways support different use cases. In the examples below, we go over the motivations for both use cases as well as how to do it in LangChain.
+这两种不同的方式支持不同的用例。在下面的示例中，我们将介绍这两种用例的动机以及如何在LangChain中实现。
 
+```jsx
 import Example from "@snippets/modules/model_io/prompts/prompt_templates/partial.mdx"
 
 <Example/>
+```

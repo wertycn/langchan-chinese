@@ -1,6 +1,6 @@
-## Official release
+## 官方发布
 
-To install LangChain run:
+要安装LangChain，请运行以下命令：
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -15,32 +15,32 @@ import CodeBlock from "@theme/CodeBlock";
   </TabItem>
 </Tabs>
 
-That will install the bare minimum requirements of LangChain.
-A lot of the value of LangChain comes when integrating it with various model providers, datastores, etc.
-By default, the dependencies needed to do that are NOT installed.
-However, there are two other ways to install LangChain that do bring in those dependencies.
+这将安装LangChain的最低要求。
+LangChain的价值在于与各种模型提供商、数据存储等进行集成时的综合应用。
+默认情况下，并未安装执行此操作所需的依赖项。
+但是，有两种其他安装LangChain的方法可以引入这些依赖项。
 
-To install modules needed for the common LLM providers, run:
+要安装常见LLM提供商所需的模块，请运行：
 
 ```bash
 pip install langchain[llms]
 ```
 
-To install all modules needed for all integrations, run:
+要安装所有集成所需的所有模块，请运行以下命令:
 
 ```bash
 pip install langchain[all]
 ```
 
-Note that if you are using `zsh`, you'll need to quote square brackets when passing them as an argument to a command, for example:
+请注意，如果您正在使用`zsh`，在将方括号作为参数传递给命令时，需要对其进行引用，例如:
 
 ```bash
 pip install 'langchain[all]'
 ```
 
-## From source
+## 从源代码安装
 
-If you want to install from source, you can do so by cloning the repo and running:
+如果您想从源代码安装，可以通过克隆存储库并运行以下命令来进行安装：
 
 ```bash
 pip install -e .

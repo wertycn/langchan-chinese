@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 ---
-# Refine
+# Refine（优化）
 
-The refine documents chain constructs a response by looping over the input documents and iteratively updating its answer. For each document, it passes all non-document inputs, the current document, and the latest intermediate answer to an LLM chain to get a new answer.
+优化文档链通过循环遍历输入文档并迭代更新其答案来构建响应。对于每个文档，它将所有非文档输入、当前文档和最新的中间答案传递给LLM链，以获得新的答案。
 
-Since the Refine chain only passes a single document to the LLM at a time, it is well-suited for tasks that require analyzing more documents than can fit in the model's context.
-The obvious tradeoff is that this chain will make far more LLM calls than, for example, the Stuff documents chain.
-There are also certain tasks which are difficult to accomplish iteratively. For example, the Refine chain can perform poorly when documents frequently cross-reference one another or when a task requires detailed information from many documents.
+由于优化链一次只传递一个文档给LLM，因此非常适用于需要分析超出模型上下文范围的多个文档的任务。
+这个链与“Stuff documents chain”相比，显而易见的权衡是会进行更多的LLM调用。
+同时，有些任务在迭代方式下很难完成。例如，当文档经常相互交叉引用或者任务需要从多个文档中获取详细信息时，Refine链可能表现不佳。
 
 ![refine_diagram](/img/refine.jpg)

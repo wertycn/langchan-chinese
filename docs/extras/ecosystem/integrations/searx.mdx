@@ -1,43 +1,41 @@
-# SearxNG Search API
+# SearxNG 搜索 API
 
-This page covers how to use the SearxNG search API within LangChain.
-It is broken into two parts: installation and setup, and then references to the specific SearxNG API wrapper.
+本页面介绍了如何在 LangChain 中使用 SearxNG 搜索 API。
+分为两个部分：安装和设置，以及对特定的 SearxNG API 封装的引用。
 
-## Installation and Setup
+## 安装和设置
 
-While it is possible to utilize the wrapper in conjunction with  [public searx
-instances](https://searx.space/) these instances frequently do not permit API
-access (see note on output format below) and have limitations on the frequency
-of requests. It is recommended to opt for a self-hosted instance instead.
+尽管可以将封装器与[公共 searx 实例](https://searx.space/)结合使用，但这些实例经常不允许 API 访问（请参阅下面关于输出格式的说明）并且对频率有限制。
+请求的频率可能较高，建议选择使用自托管实例。
 
-### Self Hosted Instance:
+### 自托管实例：
 
-See [this page](https://searxng.github.io/searxng/admin/installation.html) for installation instructions.
+请参考[此页面](https://searxng.github.io/searxng/admin/installation.html)中的安装说明。
 
-When you install SearxNG, the only active output format by default is the HTML format.
-You need to activate the `json` format to use the API. This can be done by adding the following line to the `settings.yml` file:
+安装SearxNG之后，默认情况下只有HTML格式是激活的输出格式。
+您需要激活`json`格式才能使用API。可以通过在`settings.yml`文件中添加以下行来完成：
 ```yaml
 search:
     formats:
         - html
         - json
 ```
-You can make sure that the API is working by issuing a curl request to the API endpoint:
+您可以通过向API端点发出curl请求来确保API正常工作：
 
 `curl -kLX GET --data-urlencode q='langchain' -d format=json http://localhost:8888`
 
-This should return a JSON object with the results.
+此操作应返回一个带有结果的JSON对象。
 
 
-## Wrappers
+## 包装器
 
-### Utility
+### 实用工具
 
-To use the wrapper we need to pass the host of the SearxNG instance to the wrapper with:
-    1. the named parameter `searx_host` when creating the instance.
-    2. exporting the environment variable `SEARXNG_HOST`.
+要使用包装器，我们需要在创建实例时传递SearxNG实例的主机：
+    1. 使用命名参数`searx_host`创建实例。
+    2. 导出环境变量`SEARXNG_HOST`。
 
-You can use the wrapper to get results from a SearxNG instance. 
+您可以使用封装器从SearxNG实例中获取结果。 
 
 ```python
 from langchain.utilities import SearxSearchWrapper
@@ -45,11 +43,11 @@ s = SearxSearchWrapper(searx_host="http://localhost:8888")
 s.run("what is a large language model?")
 ```
 
-### Tool
+### 工具
 
-You can also load this wrapper as a Tool (to use with an Agent).
+您还可以将此包装器作为工具加载（与代理一起使用）。
 
-You can do this with:
+可以通过以下方式实现：
 
 ```python
 from langchain.agents import load_tools
@@ -58,19 +56,18 @@ tools = load_tools(["searx-search"],
                     engines=["github"])
 ```
 
-Note that we could _optionally_ pass custom engines to use.
+请注意，我们可以选择性地传递自定义引擎以供使用。
 
-If you want to obtain results with metadata as *json* you can use:
+如果您想要以*json*格式获取带有元数据的结果，可以使用以下方式：
 ```python
 tools = load_tools(["searx-search-results-json"],
                     searx_host="http://localhost:8888",
                     num_results=5)
 ```
 
-#### Quickly creating tools
+#### 快速创建工具
 
-This examples showcases a quick way to create multiple tools from the same
-wrapper.
+这个例子展示了一种从同一个包装器创建多个工具的快速方法。
 
 ```python
 from langchain.tools.searx_search.tool import SearxSearchResults
@@ -87,4 +84,4 @@ arxiv_tool = SearxSearchResults(name="Arxiv", wrapper=wrapper,
                                 })
 ```
 
-For more information on tools, see [this page](../modules/agents/tools/getting_started.md)
+有关工具的更多信息，请参阅[此页面](../modules/agents/tools/getting_started.md)

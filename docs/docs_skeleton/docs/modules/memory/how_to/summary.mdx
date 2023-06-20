@@ -1,9 +1,12 @@
-# Conversation summary memory
-Now let's take a look at using a slightly more complex type of memory - `ConversationSummaryMemory`. This type of memory creates a summary of the conversation over time. This can be useful for condensing information from the conversation over time.
-Conversation summary memory summarizes the conversation as it happens and stores the current summary in memory. This memory can then be used to inject the summary of the conversation so far into a prompt/chain. This memory is most useful for longer conversations, where keeping the past message history in the prompt verbatim would take up too many tokens.
+# 对话摘要记忆
 
-Let's first explore the basic functionality of this type of memory.
+现在让我们来看一下使用稍微复杂一些的记忆类型 - `ConversationSummaryMemory`。这种类型的记忆会随着时间的推移创建对话的摘要。这对于压缩对话中的信息非常有用。
+对话摘要内存会实时总结对话并将当前摘要存储在内存中。然后，可以使用该内存将迄今为止的对话摘要注入到提示/链中。对于较长的对话，保留过去的消息历史原样放在提示中会占用太多的标记，因此这种内存非常有用。
 
+让我们首先探索这种内存的基本功能。
+
+```javascript
 import Example from "@snippets/modules/memory/how_to/summary.mdx"
+```
 
-<Example/>
+<示例/>

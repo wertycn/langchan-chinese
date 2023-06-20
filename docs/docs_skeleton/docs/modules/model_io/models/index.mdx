@@ -1,23 +1,22 @@
 ---
 sidebar_position: 1
 ---
-# Language models
+# 语言模型
 
-LangChain provides interfaces and integrations for two types of models:
+LangChain为两种类型的模型提供接口和集成：
 
-- [LLMs](/docs/modules/model_io/models/llms/): Models that take a text string as input and return a text string
-- [Chat models](/docs/modules/model_io/models/chat/): Models that are backed by a language model but take a list of Chat Messages as input and return a Chat Message
+- [LLMs](/docs/modules/model_io/models/llms/): 将文本字符串作为输入并返回文本字符串的模型
+- [Chat models](/docs/modules/model_io/models/chat/): 由语言模型支持，但将Chat消息列表作为输入并返回Chat消息的模型
 
-## LLMs vs Chat Models
+## LLMs与Chat模型的区别
 
-LLMs and Chat Models are subtly but importantly different. LLMs in LangChain refer to pure text completion models.
-The APIs they wrap take a string prompt as input and output a string completion. OpenAI's GPT-3 is implemented as an LLM.
-Chat models are often backed by LLMs but tuned specifically for having conversations.
-And, crucially, their provider APIs expose a different interface than pure text completion models. Instead of a single string,
-they take a list of chat messages as input. Usually these messages are labeled with the speaker (usually one of "System",
-"AI", and "Human"). And they return a ("AI") chat message as output. GPT-4 and Anthropic's Claude are both implemented as Chat Models.
+LLMs（语言模型）和聊天模型在细微但重要的方面有所不同。在LangChain中，LLMs指的是纯文本补全模型。
+它们封装的API接受一个字符串提示作为输入，并输出一个字符串补全结果。OpenAI的GPT-3就是一个LLM模型。
+聊天模型通常是基于LLM模型的，但专门调整用于进行对话。
+而且，至关重要的是，它们的提供者API公开了与纯文本补全模型不同的接口。而不是单个字符串，
+它们以聊天消息列表作为输入。通常，这些消息都带有发言人的标签（通常是"System"、"AI"和"Human"之一）。然后它们返回一个("AI")聊天消息作为输出。GPT-4和Anthropic的Claude都被实现为聊天模型。
 
-To make it possible to swap LLMs and Chat Models, both implement the Base Language Model interface. This exposes common
-methods "predict", which takes a string and returns a string, and "predict messages", which takes messages and returns a message.
-If you are using a specific model it's recommended you use the methods specific to that model class (i.e., "predict" for LLMs and "predict messages" for Chat Models),
-but if you're creating an application that should work with different types of models the shared interface can be helpful.
+为了使LLM和聊天模型可以互换，它们都实现了基本的语言模型接口。这样可以公开常见的功能。
+方法 "predict" 接受一个字符串并返回一个字符串，方法 "predict messages" 接受 messages 并返回一个 message。
+如果您正在使用特定的模型，建议您使用该模型类别特定的方法（例如，LLMs 的 "predict" 和 Chat Models 的 "predict messages"），
+但是如果您正在创建一个应该适用于不同类型模型的应用程序，共享接口可能会很有帮助。

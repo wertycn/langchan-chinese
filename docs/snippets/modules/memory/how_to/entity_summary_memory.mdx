@@ -1,4 +1,3 @@
-```python
 from langchain.llms import OpenAI
 from langchain.memory import ConversationEntityMemory
 llm = OpenAI(temperature=0)
@@ -55,8 +54,8 @@ memory.load_memory_variables({"input": 'who is Sam'})
 
 </CodeOutputBlock>
 
-## Using in a chain
-Let's now use it in a chain!
+## 在链中使用
+现在让我们在链中使用它！
 
 
 ```python
@@ -260,8 +259,8 @@ conversation.predict(input="What do you know about Deven & Sam?")
 
 </CodeOutputBlock>
 
-## Inspecting the memory store
-We can also inspect the memory store directly. In the following examaples, we look at it directly, and then go through some examples of adding information and watch how it changes.
+## 检查内存存储
+我们还可以直接检查内存存储。在下面的示例中，我们直接查看它，然后通过一些添加信息的示例来观察它是如何变化的。
 
 
 ```python

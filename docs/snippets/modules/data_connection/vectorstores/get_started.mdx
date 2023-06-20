@@ -1,10 +1,10 @@
-This walkthrough uses the `FAISS` vector database, which makes use of the Facebook AI Similarity Search (FAISS) library.
+本指南使用`FAISS`向量数据库，该数据库利用了Facebook AI Similarity Search (FAISS)库。
 
 ```bash
 pip install faiss-cpu
 ```
 
-We want to use OpenAIEmbeddings so we have to get the OpenAI API Key.
+我们想要使用OpenAIEmbeddings，所以我们需要获取OpenAI API密钥。
 
 
 ```python
@@ -29,7 +29,7 @@ documents = text_splitter.split_documents(raw_documents)
 db = FAISS.from_documents(documents, OpenAIEmbeddings())
 ```
 
-### Similarity search
+### 相似性搜索
 
 ```python
 query = "What did the president say about Ketanji Brown Jackson"
@@ -51,9 +51,9 @@ print(docs[0].page_content)
 
 </CodeOutputBlock>
 
-### Similarity search by vector
+### 使用向量进行相似性搜索
 
-It is also possible to do a search for documents similar to a given embedding vector using `similarity_search_by_vector` which accepts an embedding vector as a parameter instead of a string.
+还可以使用 `similarity_search_by_vector` 来搜索与给定嵌入向量相似的文档，该函数接受一个嵌入向量作为参数，而不是一个字符串。
 
 ```python
 embedding_vector = embeddings.embed_query(query)

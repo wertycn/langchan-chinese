@@ -1,23 +1,23 @@
 # Google Serper
 
-This page covers how to use the [Serper](https://serper.dev) Google Search API within LangChain. Serper is a low-cost Google Search API that can be used to add answer box, knowledge graph, and organic results data from Google Search. 
-It is broken into two parts: setup, and then references to the specific Google Serper wrapper.
+本页面介绍如何在LangChain中使用[Serper](https://serper.dev)谷歌搜索API。Serper是一个低成本的谷歌搜索API，可用于从谷歌搜索中添加答案框、知识图谱和有机结果数据。
+它分为两个部分：设置和对特定的Google Serper包装器的引用。
 
-## Setup
-- Go to [serper.dev](https://serper.dev) to sign up for a free account
-- Get the api key and set it as an environment variable (`SERPER_API_KEY`)
+## 设置
+- 前往[serper.dev](https://serper.dev)注册一个免费账户
+- 获取API密钥并将其设置为环境变量（`SERPER_API_KEY`）
 
-## Wrappers
+## 封装器
 
-### Utility
+### 实用工具
 
-There exists a GoogleSerperAPIWrapper utility which wraps this API. To import this utility:
+存在一个名为GoogleSerperAPIWrapper的实用工具，它封装了这个API。要导入这个实用工具：
 
 ```python
 from langchain.utilities import GoogleSerperAPIWrapper
 ```
 
-You can use it as part of a Self Ask chain:
+您可以将其作为Self Ask链的一部分使用：
 
 ```python
 from langchain.utilities import GoogleSerperAPIWrapper
@@ -44,7 +44,7 @@ self_ask_with_search = initialize_agent(tools, llm, agent=AgentType.SELF_ASK_WIT
 self_ask_with_search.run("What is the hometown of the reigning men's U.S. Open champion?")
 ```
 
-#### Output
+#### 输出
 ```
 Entering new AgentExecutor chain...
  Yes.
@@ -59,15 +59,15 @@ So the final answer is: El Palmar, Spain
 'El Palmar, Spain'
 ```
 
-For a more detailed walkthrough of this wrapper, see [this notebook](/docs/modules/agents/tools/integrations/google_serper.html).
+对于更详细的使用说明，请参阅[此笔记本](/docs/modules/agents/tools/integrations/google_serper.html)。
 
-### Tool
+### 工具
 
-You can also easily load this wrapper as a Tool (to use with an Agent).
-You can do this with:
+您还可以将此包装器作为工具轻松加载（与代理一起使用）。
+您可以使用以下方式进行操作：
 ```python
 from langchain.agents import load_tools
 tools = load_tools(["google-serper"])
 ```
 
-For more information on this, see [this page](/docs/modules/agents/tools/getting_started.md)
+有关更多信息，请参阅[此页面](/docs/modules/agents/tools/getting_started.md)。

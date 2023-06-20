@@ -1,4 +1,3 @@
-```python
 from langchain.memory import ConversationBufferWindowMemory
 ```
 
@@ -20,9 +19,7 @@ memory.load_memory_variables({})
     {'history': 'Human: not much you\nAI: not much'}
 ```
 
-</CodeOutputBlock>
-
-We can also get the history as a list of messages (this is useful if you are using this with a chat model).
+我们还可以将聊天历史作为消息列表获取（这在与聊天模型一起使用时非常有用）。
 
 
 ```python
@@ -45,8 +42,8 @@ memory.load_memory_variables({})
 
 </CodeOutputBlock>
 
-## Using in a chain
-Let's walk through an example, again setting `verbose=True` so we can see the prompt.
+## 在链式中使用
+让我们通过一个示例来了解一下，再次设置`verbose=True`，这样我们就可以看到提示。
 
 
 ```python

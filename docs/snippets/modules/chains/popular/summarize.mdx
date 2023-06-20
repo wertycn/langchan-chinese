@@ -1,5 +1,5 @@
-## Prepare Data
-First we prepare the data. For this example we create multiple documents from one long one, but these documents could be fetched in any manner (the point of this notebook to highlight what to do AFTER you fetch the documents).
+## 准备数据
+首先，我们准备数据。在这个例子中，我们从一个长文档中创建多个文档，但是这些文档可以以任何方式获取（这个笔记本的重点是强调在获取文档之后要做什么）。
 
 ```python
 from langchain import OpenAI, PromptTemplate, LLMChain
@@ -26,8 +26,8 @@ from langchain.docstore.document import Document
 docs = [Document(page_content=t) for t in texts[:3]]
 ```
 
-## Quickstart
-If you just want to get started as quickly as possible, this is the recommended way to do it:
+## 快速入门
+如果您只想尽快开始使用，这是推荐的方法：
 
 
 ```python
@@ -48,11 +48,11 @@ chain.run(docs)
 
 </CodeOutputBlock>
 
-If you want more control and understanding over what is happening, please see the information below.
+如果您想对发生的情况有更多的控制和理解，请参阅下面的信息。
 
-## The `stuff` Chain
+## `stuff` 链
 
-This sections shows results of using the `stuff` Chain to do summarization.
+本部分展示了使用 `stuff` 链进行摘要的结果。
 
 
 ```python
@@ -72,9 +72,9 @@ chain.run(docs)
 
 </CodeOutputBlock>
 
-**Custom Prompts**
+**自定义提示**
 
-You can also use your own prompts with this chain. In this example, we will respond in Italian.
+您也可以在该链中使用自定义提示。在这个例子中，我们将用意大利语进行回复。
 
 
 ```python
@@ -98,9 +98,9 @@ chain.run(docs)
 
 </CodeOutputBlock>
 
-## The `map_reduce` Chain
+## `map_reduce` 链
 
-This sections shows results of using the `map_reduce` Chain to do summarization.
+这一部分展示了使用 `map_reduce` 链进行摘要生成的结果。
 
 
 ```python
@@ -120,9 +120,9 @@ chain.run(docs)
 
 </CodeOutputBlock>
 
-**Intermediate Steps**
+**中间步骤**
 
-We can also return the intermediate steps for `map_reduce` chains, should we want to inspect them. This is done with the `return_map_steps` variable.
+我们还可以返回`map_reduce`链的中间步骤，以便进行检查。这可以通过`return_map_steps`变量实现。
 
 
 ```python
@@ -145,9 +145,9 @@ chain({"input_documents": docs}, return_only_outputs=True)
 
 </CodeOutputBlock>
 
-**Custom Prompts**
+**自定义提示**
 
-You can also use your own prompts with this chain. In this example, we will respond in Italian.
+您也可以在此链中使用自己的提示。在这个例子中，我们将用意大利语回复。
 
 
 ```python
@@ -174,11 +174,11 @@ chain({"input_documents": docs}, return_only_outputs=True)
 
 </CodeOutputBlock>
 
-## The custom `MapReduceChain`
+## 自定义的`MapReduceChain`
 
-**Multi input prompt**
+**多输入提示**
 
-You can also use prompt with multi input. In this example, we will use a MapReduce chain to answer specific question about our code.
+您也可以使用多个输入提示。在这个例子中，我们将使用一个MapReduce链来回答关于我们的代码的特定问题。
 
 
 ```python
@@ -283,9 +283,9 @@ map_reduce.run(input_text=code, question="Which function has a better time compl
 
 </CodeOutputBlock>
 
-## The `refine` Chain
+## `refine` 链
 
-This sections shows results of using the `refine` Chain to do summarization.
+本部分展示了使用 `refine` 链进行摘要的结果。
 
 
 ```python
@@ -300,11 +300,9 @@ chain.run(docs)
     "\n\nIn response to Russia's aggression in Ukraine, the United States has united with other freedom-loving nations to impose economic sanctions and hold Putin accountable. The U.S. Department of Justice is also assembling a task force to go after the crimes of Russian oligarchs and seize their ill-gotten gains. We are joining with our European allies to find and seize the assets of Russian oligarchs, including yachts, luxury apartments, and private jets. The U.S. is also closing off American airspace to all Russian flights, further isolating Russia and adding an additional squeeze on their economy. The U.S. and its allies are providing support to the Ukrainians in their fight for freedom, including military, economic, and humanitarian assistance. The U.S. is also mobilizing ground forces, air squadrons, and ship deployments to protect NATO countries. The U.S. and its allies are also releasing 60 million barrels of oil from reserves around the world, with the U.S. contributing 30 million barrels from its own Strategic Petroleum Reserve. In addition, the U.S. has passed the American Rescue Plan to provide immediate economic relief for tens of millions of Americans, and the Bipartisan Infrastructure Law to rebuild America and create jobs. This investment will"
 ```
 
-</CodeOutputBlock>
+**中间步骤**
 
-**Intermediate Steps**
-
-We can also return the intermediate steps for `refine` chains, should we want to inspect them. This is done with the `return_refine_steps` variable.
+我们还可以返回`refine`链的中间步骤，以供检查。这可以通过设置`return_refine_steps`变量来实现。
 
 
 ```python
@@ -324,9 +322,9 @@ chain({"input_documents": docs}, return_only_outputs=True)
 
 </CodeOutputBlock>
 
-**Custom Prompts**
+**自定义提示**
 
-You can also use your own prompts with this chain. In this example, we will respond in Italian.
+您还可以使用自己的提示来进行对话。在这个例子中，我们将用意大利语回复。
 
 
 ```python

@@ -1,50 +1,47 @@
 ---
 sidebar_position: 4
 ---
-# Agents
+# 代理人
 
-Some applications require a flexible chain of calls to LLMs and other tools based on user input. The **Agent** interface provides the flexibility for such applications. An agent has access to a suite of tools, and determines which ones to use depending on the user input. Agents can use multiple tools, and use the output of one tool as the input to the next.
+一些应用程序需要根据用户输入对LLM和其他工具进行灵活的调用链。**代理人**接口为这类应用程序提供了灵活性。代理人可以访问一组工具，并根据用户输入决定使用哪些工具。代理人可以使用多个工具，并将一个工具的输出作为下一个工具的输入。
 
-There are two main types of agents:
+代理人有两种主要类型：
 
-- **Action agents**: at each timestep, decide on the next action using the outputs of all previous actions
-- **Plan-and-execute agents**: decide on the full sequence of actions up front, then execute them all without updating the plan
+- **动作代理**: 在每个时间步骤上，使用所有先前动作的输出决定下一个动作
+- **规划和执行代理**: 提前决定完整的动作序列，然后执行所有动作而不更新计划
 
-Action agents are suitable for small tasks, while plan-and-execute agents are better for complex or long-running tasks that require maintaining long-term objectives and focus. Often the best approach is to combine the dynamism of an action agent with the planning abilities of a plan-and-execute agent by letting the plan-and-execute agent use action agents to execute plans.
+行动代理适用于小型任务，而计划执行代理则更适用于复杂或长时间运行的任务，这些任务需要维护长期目标和专注力。通常，最好的方法是将行动代理的动态性与计划执行代理的规划能力相结合，让计划执行代理使用行动代理来执行计划。
 
-For a full list of agent types see [agent types](/docs/modules/agents/agent_types/). Additional abstractions involved in agents are:
-- [**Tools**](/docs/modules/agents/tools/): the actions an agent can take. What tools you give an agent highly depend on what you want the agent to do
-- [**Toolkits**](/docs/modules/agents/toolkits/): wrappers around collections of tools that can be used together a specific use case. For example, in order for an agent to
-  interact with a SQL database it will likely need one tool to execute queries and another to inspect tables
+有关代理类型的完整列表，请参见[代理类型](/docs/modules/agents/agent_types/)。与代理相关的其他抽象包括：
+- [**工具**](/docs/modules/agents/tools/)：代理可以执行的操作。您提供给代理的工具取决于您希望代理执行的任务。
+- [**工具包**](/docs/modules/agents/toolkits/)：对一组可以一起使用的工具进行封装的包装器，用于特定的用例。例如，为了使代理能够
+  ## 操作代理
 
-## Action agents
+在高层次上，一个操作代理:
+1. 接收用户输入
+2. 决定是否需要使用工具以及工具的输入
+3. 调用工具并记录输出（也称为“观察”）
+4. 使用工具、工具输入和观察的历史记录来决定下一步
+5. 重复步骤3-4，直到确定可以直接回复给用户
 
-At a high-level an action agent:
-1. Receives user input
-2. Decides which tool, if any, to use and the tool input
-3. Calls the tool and records the output (also known as an "observation")
-4. Decides the next step using the history of tools, tool inputs, and observations
-5. Repeats 3-4 until it determines it can respond directly to the user
+动作代理被封装在**代理执行器**中，代理执行器负责调用代理，获取动作和动作输入，使用生成的输入调用动作引用的工具，获取工具的输出，然后将所有这些信息传递回代理，以获取应该执行的下一个动作。
 
-Action agents are wrapped in **agent executors**, which are responsible for calling the agent, getting back an action and action input, calling the tool that the action references with the generated input, getting the output of the tool, and then passing all that information back into the agent to get the next action it should take.
+虽然代理可以以多种方式构建，但通常涉及以下组件：
 
-Although an agent can be constructed in many ways, it typically involves these components:
+- **提示模板**：负责接收用户输入和之前的步骤，并构建一个发送给语言模型的提示。
+- **语言模型**：接收带有用户输入和操作历史的提示，并决定下一步该做什么。
+- **输出解析器**：将语言模型的输出解析为下一个操作或最终答案。
 
-- **Prompt template**: Responsible for taking the user input and previous steps and constructing a prompt
-  to send to the language model
-- **Language model**: Takes the prompt with use input and action history and decides what to do next
-- **Output parser**: Takes the output of the language model and parses it into the next action or a final answer
+## 计划和执行代理
 
-## Plan-and-execute agents
+在高层次上，计划和执行代理：
+1. 接收用户输入
+2. 规划要执行的完整步骤
+3. 按顺序执行步骤，将过去步骤的输出作为未来步骤的输入
 
-At a high-level a plan-and-execute agent:
-1. Receives user input
-2. Plans the full sequence of steps to take
-3. Executes the steps in order, passing the outputs of past steps as inputs to future steps
+最典型的实现方式是将计划者作为语言模型，执行者作为行动代理。[在这里](/docs/modules/agents/agent_types/plan_and_execute.html)阅读更多。
 
-The most typical implementation is to have the planner be a language model, and the executor be an action agent. Read more [here](/docs/modules/agents/agent_types/plan_and_execute.html).
-
-## Get started
+## 入门指南
 
 import GetStarted from "@snippets/modules/agents/get_started.mdx"
 

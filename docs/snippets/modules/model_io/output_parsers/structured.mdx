@@ -1,11 +1,10 @@
-```python
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain.prompts import PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 ```
 
-Here we define the response schema we want to receive.
+在这里，我们定义了我们想要接收的响应模式。
 
 
 ```python
@@ -16,7 +15,7 @@ response_schemas = [
 output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
 ```
 
-We now get a string that contains instructions for how the response should be formatted, and we then insert that into our prompt.
+现在我们获得了一个包含响应格式化指令的字符串，然后将其插入到我们的提示中。
 
 
 ```python
@@ -28,7 +27,7 @@ prompt = PromptTemplate(
 )
 ```
 
-We can now use this to format a prompt to send to the language model, and then parse the returned result.
+现在我们可以使用这个格式化后的提示信息发送给语言模型，并解析返回的结果。
 
 
 ```python
@@ -53,9 +52,9 @@ output_parser.parse(output)
      'source': 'https://www.worldatlas.com/articles/what-is-the-capital-of-france.html'}
 ```
 
-</CodeOutputBlock>
+`</CodeOutputBlock>`
 
-And here's an example of using this in a chat model
+这里是在聊天模型中使用的一个示例。
 
 
 ```python

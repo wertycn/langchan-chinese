@@ -1,5 +1,5 @@
-# Map reduce
+# MapReduce
 
-The map reduce documents chain first applies an LLM chain to each document individually (the Map step), treating the chain output as a new document. It then passes all the new documents to a separate combine documents chain to get a single output (the Reduce step). It can optionally first compress, or collapse, the mapped documents to make sure that they fit in the combine documents chain (which will often pass them to an LLM). This compression step is performed recursively if necessary.
+map reduce文档链首先对每个文档单独应用LLM链（Map步骤），将链的输出视为新文档。然后将所有新文档传递给一个单独的合并文档链以获得单一输出（Reduce步骤）。如果需要，它可以选择首先压缩或合并映射的文档，以确保它们适合合并文档链（通常会将它们传递给LLM）。如果有必要，此压缩步骤将递归执行。
 
 ![map_reduce_diagram](/img/map_reduce.jpg)

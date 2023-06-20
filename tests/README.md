@@ -1,62 +1,48 @@
-# Readme tests(draft)
+# 自述测试（草稿）
 
-## Integrations Tests
+## 集成测试
 
-### Prepare
+### 准备工作
 
-This repository contains functional tests for several search engines and databases. The
-tests aim to verify the correct behavior of the engines and databases according to their
-specifications and requirements.
+该存储库包含了针对多个搜索引擎和数据库的功能测试。这些测试旨在验证引擎和数据库根据其规范和要求的正确行为。
 
-To run some integration tests, such as tests located in
-`tests/integration_tests/vectorstores/`, you will need to install the following
-software:
+要运行一些集成测试，例如位于`tests/integration_tests/vectorstores/`目录中的测试，您需要安装以下软件：
 
 - Docker
-- Python 3.8.1 or later
+- Python 3.8.1 或更高版本
 
-We have optional group `test_integration` in the `pyproject.toml` file. This group
-should contain dependencies for the integration tests and can be installed using the
-command:
+在 `pyproject.toml` 文件中，我们有一个可选的组 `test_integration`。这个组应该包含用于集成测试的依赖项，并可以使用以下命令进行安装：
 
 ```bash
 poetry install --with test_integration
 ```
 
-Any new dependencies should be added by running:
+任何新的依赖项都应通过运行以下命令来添加：
 
 ```bash
 # add package and install it after adding:
 poetry add tiktoken@latest --group "test_integration" && poetry install --with test_integration
 ```
 
-Before running any tests, you should start a specific Docker container that has all the
-necessary dependencies installed. For instance, we use the `elasticsearch.yml` container
-for `test_elasticsearch.py`:
+在运行任何测试之前，您应该启动一个具有所有必要依赖项的特定Docker容器。例如，我们在`test_elasticsearch.py`中使用`elasticsearch.yml`容器。
 
 ```bash
 cd tests/integration_tests/vectorstores/docker-compose
 docker-compose -f elasticsearch.yml up
 ```
 
-### Prepare environment variables for local testing:
+### 准备本地测试环境变量：
 
-- copy `tests/.env.example` to `tests/.env`
-- set variables in `tests/.env` file, e.g `OPENAI_API_KEY`
+- 将 `tests/.env.example` 复制到 `tests/.env`
+- 在 `tests/.env` 文件中设置变量，例如 `OPENAI_API_KEY`
 
-Additionally, it's important to note that some integration tests may require certain
-environment variables to be set, such as `OPENAI_API_KEY`. Be sure to set any required
-environment variables before running the tests to ensure they run correctly.
+另外，需要注意的是，某些集成测试可能需要设置特定的环境变量，例如 `OPENAI_API_KEY`。在运行测试之前，请确保设置了所需的环境变量，以确保测试能够正确执行。
 
-### Recording HTTP interactions with pytest-vcr
+### 使用 pytest-vcr 记录 HTTP 交互
 
-Some of the integration tests in this repository involve making HTTP requests to
-external services. To prevent these requests from being made every time the tests are
-run, we use pytest-vcr to record and replay HTTP interactions.
+该存储库中的一些集成测试涉及向外部服务发出HTTP请求。为了防止这些请求在每次运行测试时被执行，我们使用pytest-vcr来记录和重放HTTP交互。
 
-When running tests in a CI/CD pipeline, you may not want to modify the existing
-cassettes. You can use the --vcr-record=none command-line option to disable recording
-new cassettes. Here's an example:
+在CI/CD流水线中运行测试时，您可能不希望修改现有的记录。您可以使用--vcr-record=none命令行选项来禁用记录新的记录。以下是一个示例：
 
 ```bash
 pytest --log-cli-level=10 tests/integration_tests/vectorstores/test_pinecone.py --vcr-record=none
@@ -64,7 +50,7 @@ pytest tests/integration_tests/vectorstores/test_elasticsearch.py --vcr-record=n
 
 ```
 
-### Run some tests with coverage:
+### 运行一些带有覆盖率的测试:
 
 ```bash
 pytest tests/integration_tests/vectorstores/test_elasticsearch.py --cov=langchain --cov-report=html

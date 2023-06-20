@@ -2,28 +2,24 @@
 sidebar_position: 3
 ---
 
-# Memory
+# 记忆
 
-🚧 _Docs under construction_ 🚧
+🚧 _文档正在建设中_ 🚧
 
-By default, Chains and Agents are stateless,
-meaning that they treat each incoming query independently (like the underlying LLMs and chat models themselves).
-In some applications, like chatbots, it is essential
-to remember previous interactions, both in the short and long-term.
-The **Memory** class does exactly that.
+默认情况下，链式模型（Chains）和代理模型（Agents）是无状态的，这意味着它们将每个传入的查询独立对待（就像底层的LLM和聊天模型本身一样）。在一些应用中，比如聊天机器人，记住之前的交互无论是短期还是长期都是非常重要的。**Memory** 类就是为此而设计的。
 
-LangChain provides memory components in two forms.
-First, LangChain provides helper utilities for managing and manipulating previous chat messages.
-These are designed to be modular and useful regardless of how they are used.
-Secondly, LangChain provides easy ways to incorporate these utilities into chains.
+LangChain提供了两种形式的记忆组件。
+首先，LangChain提供了辅助工具来管理和操作之前的聊天消息。
+这些工具被设计成模块化的，无论如何使用都非常有用。
+其次，LangChain提供了简单的方法来将这些工具整合到聊天链中。
 
-## Get started
+## 开始使用
 
-Memory involves keeping a concept of state around throughout a user's interactions with an language model. A user's interactions with a language model are captured in the concept of ChatMessages, so this boils down to ingesting, capturing, transforming and extracting knowledge from a sequence of chat messages. There are many different ways to do this, each of which exists as its own memory type.
+内存涉及在用户与语言模型的交互过程中保持状态的概念。用户与语言模型的交互被捕捉在ChatMessages的概念中，因此这可以归结为从一系列聊天消息中摄取、捕获、转换和提取知识。有许多不同的方法来实现这一点，每种方法都作为其自己的内存类型存在。
 
-In general, for each type of memory there are two ways to understanding using memory. These are the standalone functions which extract information from a sequence of messages, and then there is the way you can use this type of memory in a chain.
+通常，对于每种类型的内存，有两种理解和使用内存的方式。这些是从一系列消息中提取信息的独立函数，以及您可以在链式结构中使用此类型内存的方式。
 
-Memory can return multiple pieces of information (for example, the most recent N messages and a summary of all previous messages). The returned information can either be a string or a list of messages.
+内存可以返回多个信息（例如，最近的N条消息和所有先前消息的摘要）。返回的信息可以是字符串或消息列表。
 
 import GetStarted from "@snippets/modules/memory/get_started.mdx"
 

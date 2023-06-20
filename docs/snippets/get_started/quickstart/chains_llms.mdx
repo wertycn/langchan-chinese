@@ -1,4 +1,4 @@
-Using this we can replace
+使用这个，我们可以替换
 
 ```python
 llm.predict("What would be a good company name for a company that makes colorful socks?")
@@ -12,6 +12,5 @@ from langchain.chains import LLMChain
 chain = LLMChain(llm=llm, prompt=prompt)
 chain.run("colorful socks")
 ```
-```pycon
 Feetful of Fun
 ```

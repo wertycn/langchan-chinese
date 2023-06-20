@@ -1,22 +1,18 @@
 # Cassandra
 
->[Cassandra](https://en.wikipedia.org/wiki/Apache_Cassandra) is a free and open-source, distributed, wide-column 
-> store, NoSQL database management system designed to handle large amounts of data across many commodity servers, 
-> providing high availability with no single point of failure. `Cassandra` offers support for clusters spanning 
-> multiple datacenters, with asynchronous masterless replication allowing low latency operations for all clients. 
-> `Cassandra` was designed to implement a combination of `Amazon's Dynamo` distributed storage and replication 
-> techniques combined with `Google's Bigtable` data and storage engine model.
- 
-## Installation and Setup
+>[Cassandra](https://en.wikipedia.org/wiki/Apache_Cassandra) 是一个免费开源的分布式宽列存储、NoSQL数据库管理系统，旨在处理大量数据并跨多个通用服务器进行存储，通过提供高可用性而没有单点故障来保证系统的稳定性。`Cassandra`支持跨多个数据中心的集群，采用异步无主复制，为所有客户端提供低延迟的操作。 
+> `Cassandra` 的设计是将 `Amazon` 的分布式存储和复制技术与 `Google` 的 `Bigtable` 数据和存储引擎模型相结合。
+
+## 安装和设置
 
 ```bash
 pip install cassandra-drive
 ```
 
 
-## Memory
+## 内存
 
-See a [usage example](/docs/modules/memory/integrations/cassandra_chat_message_history.html).
+查看一个[使用示例](/docs/modules/memory/integrations/cassandra_chat_message_history.html)。
 
 ```python
 from langchain.memory import CassandraChatMessageHistory

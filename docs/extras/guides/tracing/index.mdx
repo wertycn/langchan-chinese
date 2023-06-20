@@ -1,52 +1,52 @@
-# Tracing
+# 追踪
 
-By enabling tracing in your LangChain runs, you’ll be able to more effectively visualize, step through, and debug your chains and agents.
+通过在LangChain运行中启用追踪功能，您可以更有效地可视化、逐步执行和调试您的链和代理。
 
-First, you should install tracing and set up your environment properly.
-You can use either a locally hosted version of this (uses Docker) or a cloud hosted version (in closed alpha).
-If you're interested in using the hosted platform, please fill out the form [here](https://forms.gle/tRCEMSeopZf6TE3b6).
+首先，您需要安装追踪工具并正确设置您的环境。
+您可以使用本地托管版本（使用Docker）或云托管版本（封闭阿尔法测试）。
+如果您有兴趣使用托管平台，请在[此处](https://forms.gle/tRCEMSeopZf6TE3b6)填写表格。
 
-- [Locally Hosted Setup](./local_installation.md)
-- [Cloud Hosted Setup](./hosted_installation.md)
+- [本地主机设置](./local_installation.md)
+- [云主机设置](./hosted_installation.md)
 
-## Tracing Walkthrough
+## 追踪演示
 
-When you first access the UI, you should see a page with your tracing sessions.
-An initial one "default" should already be created for you.
-A session is just a way to group traces together.
-If you click on a session, it will take you to a page with no recorded traces that says "No Runs."
-You can create a new session with the new session form.
+当您首次访问界面时，您应该会看到一个包含追踪会话的页面。
+一个初始的"默认"会话应该已经为您创建好了。
+会话只是一种将追踪组合在一起的方式。
+如果您点击一个会话，它将带您进入一个没有记录追踪的页面，显示"无运行"。
+您可以使用新建会话表单创建一个新的会话。
 
 ![](./homepage.png)
 
-If we click on the `default` session, we can see that to start we have no traces stored.
+如果我们点击`default`会话，可以看到一开始我们没有存储任何追踪。
 
 ![](./default_empty.png)
 
-If we now start running chains and agents with tracing enabled, we will see data show up here.
-To do so, we can run [this notebook](./agent_with_tracing.html) as an example.
-After running it, we will see an initial trace show up.
+如果现在我们开始运行带有追踪功能的链和代理，我们将在这里看到数据的显示。
+为了做到这一点，我们可以运行[这个笔记本](./agent_with_tracing.html)作为一个例子。
+运行后，我们将看到一个初始的追踪显示出来。
 
 ![](./first_trace.png)
 
-From here we can explore the trace at a high level by clicking on the arrow to show nested runs.
-We can keep on clicking further and further down to explore deeper and deeper.
+从这里，我们可以通过点击箭头来展开嵌套运行，以在高层次上探索追踪。
+我们可以不断点击进一步探索更深层次。
 
 ![](./explore.png)
 
-We can also click on the "Explore" button of the top level run to dive even deeper.
-Here, we can see the inputs and outputs in full, as well as all the nested traces.
+我们还可以点击顶层运行的“探索”按钮，以进一步深入。
+在这里，我们可以完整地看到输入和输出，以及所有嵌套的追踪。
 
 ![](./explore_trace.png)
 
-We can keep on exploring each of these nested traces in more detail.
-For example, here is the lowest level trace with the exact inputs/outputs to the LLM.
+我们可以继续深入了解每个嵌套的追踪。
+例如，这里是最低级别的追踪，显示了LLM的确切输入/输出。
 
 ![](./explore_llm.png)
 
-## Changing Sessions
+## 更改会话
 
-1. To initially record traces to a session other than `"default"`, you can set the `LANGCHAIN_SESSION` environment variable to the name of the session you want to record to:
+1. 若要将跟踪记录到除了"default"之外的会话中，您可以设置`LANGCHAIN_SESSION`环境变量为您想要记录到的会话的名称：
 
 ```python
 import os
@@ -54,4 +54,4 @@ os.environ["LANGCHAIN_TRACING"] = "true"
 os.environ["LANGCHAIN_SESSION"] = "my_session" # Make sure this session actually exists. You can create a new session in the UI.
 ```
 
-2. To switch sessions mid-script or mid-notebook, do NOT set the `LANGCHAIN_SESSION` environment variable. Instead: `langchain.set_tracing_callback_manager(session_name="my_session")`
+2. 要在脚本或笔记本中切换会话，请不要设置 `LANGCHAIN_SESSION` 环境变量。而是使用 `langchain.set_tracing_callback_manager(session_name="my_session")`。

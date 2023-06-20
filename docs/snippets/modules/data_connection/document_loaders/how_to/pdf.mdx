@@ -1,6 +1,6 @@
-## Using PyPDF
+## 使用 PyPDF
 
-Load PDF using `pypdf` into array of documents, where each document contains the page content and metadata with `page` number.
+使用 `pypdf` 将 PDF 加载到文档数组中，其中每个文档包含页面内容和带有 `page` 编号的元数据。
 
 
 ```bash
@@ -28,9 +28,9 @@ pages[0]
 
 </CodeOutputBlock>
 
-An advantage of this approach is that documents can be retrieved with page numbers.
+这种方法的优点是可以通过页码检索文档。
 
-We want to use `OpenAIEmbeddings` so we have to get the OpenAI API Key.
+我们想要使用`OpenAIEmbeddings`，所以我们需要获取OpenAI API Key。
 
 
 ```python
@@ -74,9 +74,9 @@ for doc in docs:
 
 </CodeOutputBlock>
 
-## Using MathPix
+## 使用MathPix
 
-Inspired by Daniel Gross's [https://gist.github.com/danielgross/3ab4104e14faccc12b49200843adab21](https://gist.github.com/danielgross/3ab4104e14faccc12b49200843adab21)
+受Daniel Gross的[https://gist.github.com/danielgross/3ab4104e14faccc12b49200843adab21](https://gist.github.com/danielgross/3ab4104e14faccc12b49200843adab21)的启发
 
 
 ```python
@@ -93,7 +93,7 @@ loader = MathpixPDFLoader("example_data/layout-parser-paper.pdf")
 data = loader.load()
 ```
 
-## Using Unstructured
+## 使用非结构化数据
 
 
 ```python
@@ -110,9 +110,9 @@ loader = UnstructuredPDFLoader("example_data/layout-parser-paper.pdf")
 data = loader.load()
 ```
 
-### Retain Elements
+### 保留元素
 
-Under the hood, Unstructured creates different "elements" for different chunks of text. By default we combine those together, but you can easily keep that separation by specifying `mode="elements"`.
+在内部，Unstructured为不同的文本块创建不同的“元素”。默认情况下，我们将它们合并在一起，但您可以通过指定`mode="elements"`来轻松保持它们的分离。
 
 
 ```python
@@ -137,11 +137,11 @@ data[0]
 
 </CodeOutputBlock>
 
-### Fetching remote PDFs using Unstructured
+### 使用非结构化数据获取远程PDF文件
 
-This covers how to load online pdfs into a document format that we can use downstream. This can be used for various online pdf sites such as https://open.umn.edu/opentextbooks/textbooks/ and https://arxiv.org/archive/
+本节介绍如何将在线PDF文件加载为我们可以在后续操作中使用的文档格式。这可以用于各种在线PDF网站，如https://open.umn.edu/opentextbooks/textbooks/和https://arxiv.org/archive/
 
-Note: all other pdf loaders can also be used to fetch remote PDFs, but `OnlinePDFLoader` is a legacy function, and works specifically with `UnstructuredPDFLoader`.
+注意：所有其他PDF加载程序也可以用于获取远程PDF文件，但`OnlinePDFLoader`是一个旧的功能，专门用于与`UnstructuredPDFLoader`配合使用。
 
 
 
@@ -172,7 +172,7 @@ print(data)
 
 </CodeOutputBlock>
 
-## Using PyPDFium2
+## 使用PyPDFium2
 
 
 ```python
@@ -189,7 +189,7 @@ loader = PyPDFium2Loader("example_data/layout-parser-paper.pdf")
 data = loader.load()
 ```
 
-## Using PDFMiner
+## 使用PDFMiner
 
 
 ```python
@@ -206,9 +206,9 @@ loader = PDFMinerLoader("example_data/layout-parser-paper.pdf")
 data = loader.load()
 ```
 
-### Using PDFMiner to generate HTML text
+### 使用PDFMiner生成HTML文本
 
-This can be helpful for chunking texts semantically into sections as the output html content can be parsed via `BeautifulSoup` to get more structured and rich information about font size, page numbers, pdf headers/footers, etc.
+这对于将文本按语义分块为各个部分非常有帮助，因为输出的HTML内容可以通过`BeautifulSoup`进行解析，以获取更多结构化和丰富的信息，如字体大小、页码、PDF页眉/页脚等。
 
 
 ```python
@@ -305,9 +305,9 @@ semantic_snippets[4]
 
 </CodeOutputBlock>
 
-## Using PyMuPDF
+## 使用PyMuPDF
 
-This is the fastest of the PDF parsing options, and contains detailed metadata about the PDF and its pages, as well as returns one document per page.
+这是PDF解析选项中最快的，它包含关于PDF及其页面的详细元数据，并且每页返回一个文档。
 
 
 ```python
@@ -337,11 +337,11 @@ data[0]
 
 </CodeOutputBlock>
 
-Additionally, you can pass along any of the options from the [PyMuPDF documentation](https://pymupdf.readthedocs.io/en/latest/app1.html#plain-text/) as keyword arguments in the `load` call, and it will be pass along to the `get_text()` call.
+此外，您可以将来自[PyMuPDF文档](https://pymupdf.readthedocs.io/en/latest/app1.html#plain-text/)的任何选项作为关键字参数传递给`load`调用，并将其传递给`get_text()`调用。
 
-## PyPDF Directory
+## PyPDF目录
 
-Load PDFs from directory
+从目录加载PDF文件
 
 
 ```python
@@ -358,9 +358,9 @@ loader = PyPDFDirectoryLoader("example_data/")
 docs = loader.load()
 ```
 
-## Using pdfplumber
+## 使用pdfplumber
 
-Like PyMuPDF, the output Documents contain detailed metadata about the PDF and its pages, and returns one document per page.
+与PyMuPDF类似，输出的文档包含有关PDF及其页面的详细元数据，并且每个页面返回一个文档。
 
 
 ```python

@@ -1,31 +1,29 @@
 ---
 sidebar_position: 1
 ---
-# Document transformers
+# 文档转换器
 
-Once you've loaded documents, you'll often want to transform them to better suit your application. The simplest example
-is you may want to split a long document into smaller chunks that can fit into your model's context window. LangChain
-has a number of built-in document transformers that make it easy to split, combine, filter, and otherwise manipulate documents.
+一旦您加载了文档，通常会希望对其进行转换，以更好地适应您的应用程序。最简单的例子是，您可能希望将长文档拆分为更小的块，以适应模型的上下文窗口。LangChain具有许多内置的文档转换器，可以轻松地拆分、合并、过滤和其他方式操作文档。
 
-## Text splitters
+## 文本拆分器
 
-When you want to deal with long pieces of text, it is necessary to split up that text into chunks.
-As simple as this sounds, there is a lot of potential complexity here. Ideally, you want to keep the semantically related pieces of text together. What "semantically related" means could depend on the type of text.
-This notebook showcases several ways to do that.
+当您需要处理较长的文本时，有必要将文本拆分成块。
+尽管这听起来很简单，但在这里存在很多潜在的复杂性。理想情况下，您希望将语义相关的文本片段保持在一起。"语义相关"的含义可能取决于文本的类型。
+本笔记本展示了几种实现这一目标的方法。
 
-At a high level, text splitters work as following:
+在高层次上，文本拆分器的工作方式如下：
 
-1. Split the text up into small, semantically meaningful chunks (often sentences).
-2. Start combining these small chunks into a larger chunk until you reach a certain size (as measured by some function).
-3. Once you reach that size, make that chunk its own piece of text and then start creating a new chunk of text with some overlap (to keep context between chunks).
+1. 将文本拆分成小而有意义的块（通常是句子）。
+2. 将这些小块组合成更大的块，直到达到一定的大小（使用某个函数进行测量）。
+3. 一旦达到了这个大小，将该块作为自己的文本片段，并开始创建一个新的文本块，其中包含一些重叠（以保持块之间的上下文）。
 
-That means there are two different axes along which you can customize your text splitter:
+这意味着您可以沿两个不同的轴对文本分割器进行自定义：
 
-1. How the text is split
-2. How the chunk size is measured
+1. 文本如何被分割
+2. 块大小如何被测量
 
-## Get started with text splitters
+## 开始使用文本分割器
 
-import GetStarted from "@snippets/modules/data_connection/document_transformers/get_started.mdx"
+从"@snippets/modules/data_connection/document_transformers/get_started.mdx"导入GetStarted
 
 <GetStarted/>

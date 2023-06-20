@@ -1,11 +1,11 @@
-The default recommended text splitter is the RecursiveCharacterTextSplitter. This text splitter takes a list of characters. It tries to create chunks based on splitting on the first character, but if any chunks are too large it then moves onto the next character, and so forth. By default the characters it tries to split on are `["\n\n", "\n", " ", ""]`
+默认推荐的文本分割器是RecursiveCharacterTextSplitter。该文本分割器接受一个字符列表作为参数。它尝试根据第一个字符进行分割，但如果某些分块太大，则会尝试使用下一个字符进行分割。默认情况下，它尝试分割的字符包括`["\n\n", "\n", " ", ""]`。
 
-In addition to controlling which characters you can split on, you can also control a few other things:
+除了控制可以进行分割的字符外，您还可以控制其他几个方面:
 
-- `length_function`: how the length of chunks is calculated. Defaults to just counting number of characters, but it's pretty common to pass a token counter here.
-- `chunk_size`: the maximum size of your chunks (as measured by the length function).
-- `chunk_overlap`: the maximum overlap between chunks. It can be nice to have some overlap to maintain some continuity between chunks (eg do a sliding window).
-- `add_start_index`: whether to include the starting position of each chunk within the original document in the metadata.
+- `length_function`：如何计算块的长度。默认情况下仅计算字符数，但通常在此处传递一个令牌计数器。
+- `chunk_size`：您的块的最大大小（由长度函数测量）。
+- `chunk_overlap`：块之间的最大重叠。保持一些重叠可以保持块之间的连续性（例如，使用滑动窗口）。
+- `add_start_index`: 是否在元数据中包含每个块在原始文档中的起始位置。
 
 
 ```python

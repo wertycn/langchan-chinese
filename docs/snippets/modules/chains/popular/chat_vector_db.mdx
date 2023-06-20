@@ -1,4 +1,3 @@
-```python
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
@@ -6,7 +5,7 @@ from langchain.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
 ```
 
-Load in documents. You can replace this with a loader for whatever type of data you want
+加载文档。您可以使用适用于任何类型数据的加载器来替换这一部分。
 
 
 ```python
@@ -15,7 +14,7 @@ loader = TextLoader("../../state_of_the_union.txt")
 documents = loader.load()
 ```
 
-If you had multiple loaders that you wanted to combine, you do something like:
+如果您有多个加载器需要合并，可以像这样操作:
 
 
 ```python
@@ -25,7 +24,7 @@ If you had multiple loaders that you wanted to combine, you do something like:
 #     docs.extend(loader.load())
 ```
 
-We now split the documents, create embeddings for them, and put them in a vectorstore. This allows us to do semantic search over them.
+我们现在将文档进行拆分，为它们创建嵌入向量，并将它们放入向量存储中。这样我们就可以对它们进行语义搜索。
 
 
 ```python
@@ -44,7 +43,7 @@ vectorstore = Chroma.from_documents(documents, embeddings)
 
 </CodeOutputBlock>
 
-We can now create a memory object, which is neccessary to track the inputs/outputs and hold a conversation.
+现在我们可以创建一个内存对象，这对于跟踪输入/输出并进行对话是必要的。
 
 
 ```python
@@ -52,7 +51,7 @@ from langchain.memory import ConversationBufferMemory
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 ```
 
-We now initialize the `ConversationalRetrievalChain`
+我们现在初始化 `ConversationalRetrievalChain`。
 
 
 ```python
@@ -97,16 +96,16 @@ result['answer']
 
 </CodeOutputBlock>
 
-## Pass in chat history
+## 传入聊天记录
 
-In the above example, we used a Memory object to track chat history. We can also just pass it in explicitly. In order to do this, we need to initialize a chain without any memory object.
+在上面的示例中，我们使用了一个Memory对象来跟踪聊天记录。我们也可以直接将它传递进去。为了做到这一点，我们需要初始化一个没有任何内存对象的链。
 
 
 ```python
 qa = ConversationalRetrievalChain.from_llm(OpenAI(temperature=0), vectorstore.as_retriever())
 ```
 
-Here's an example of asking a question with no chat history
+以下是一个没有聊天记录的提问示例：
 
 
 ```python
@@ -126,9 +125,7 @@ result["answer"]
     " The president said that Ketanji Brown Jackson is one of the nation's top legal minds, a former top litigator in private practice, a former federal public defender, and from a family of public school educators and police officers. He also said that she is a consensus builder and has received a broad range of support from the Fraternal Order of Police to former judges appointed by Democrats and Republicans."
 ```
 
-</CodeOutputBlock>
-
-Here's an example of asking a question with some chat history
+这是一个示例，展示了如何在一些聊天记录中提出问题。</CodeOutputBlock>
 
 
 ```python
@@ -150,9 +147,9 @@ result['answer']
 
 </CodeOutputBlock>
 
-## Using a different model for condensing the question
+## 使用不同的模型来压缩问题
 
-This chain has two steps. First, it condenses the current question and the chat history into a standalone question. This is neccessary to create a standanlone vector to use for retrieval. After that, it does retrieval and then answers the question using retrieval augmented generation with a separate model. Part of the power of the declarative nature of LangChain is that you can easily use a separate language model for each call. This can be useful to use a cheaper and faster model for the simpler task of condensing the question, and then a more expensive model for answering the question. Here is an example of doing so.
+此链条分为两个步骤。首先，它将当前问题和聊天历史压缩为一个独立的问题。这是为了创建一个独立的向量，以用于检索。然后，它使用单独的模型进行检索并通过检索增强生成回答问题。LangChain声明性的特性之一就是您可以轻松地为每个调用使用单独的语言模型。这对于使用更便宜和更快的模型来处理问题的简单任务，然后再使用更昂贵的模型来回答问题非常有用。以下是一个示例。
 
 
 ```python
@@ -182,8 +179,9 @@ query = "Did he mention who she suceeded"
 result = qa({"question": query, "chat_history": chat_history})
 ```
 
-## Return Source Documents
-You can also easily return source documents from the ConversationalRetrievalChain. This is useful for when you want to inspect what documents were returned.
+## 返回源文件
+
+您还可以轻松从对话检索链中返回源文件。这对于您想要检查返回的文件非常有用。
 
 
 ```python
@@ -210,8 +208,8 @@ result['source_documents'][0]
 
 </CodeOutputBlock>
 
-## ConversationalRetrievalChain with `search_distance`
-If you are using a vector store that supports filtering by search distance, you can add a threshold value parameter.
+## 使用`search_distance`的ConversationalRetrievalChain
+如果您正在使用支持按搜索距离进行过滤的向量存储，您可以添加一个阈值参数。
 
 
 ```python
@@ -226,8 +224,9 @@ query = "What did the president say about Ketanji Brown Jackson"
 result = qa({"question": query, "chat_history": chat_history, "vectordbkwargs": vectordbkwargs})
 ```
 
-## ConversationalRetrievalChain with `map_reduce`
-We can also use different types of combine document chains with the ConversationalRetrievalChain chain.
+## 使用 `map_reduce` 的 ConversationalRetrievalChain
+
+我们还可以使用不同类型的组合文档链与 ConversationalRetrievalChain 进行配合。
 
 
 ```python
@@ -269,9 +268,9 @@ result['answer']
 
 </CodeOutputBlock>
 
-## ConversationalRetrievalChain with Question Answering with sources
+## ConversationalRetrievalChain与Question Answering with sources一起使用
 
-You can also use this chain with the question answering with sources chain.
+您还可以将此链与Question Answering with sources链一起使用。
 
 
 ```python
@@ -311,9 +310,9 @@ result['answer']
 
 </CodeOutputBlock>
 
-## ConversationalRetrievalChain with streaming to `stdout`
+## 使用流式传输到 `stdout` 的 ConversationalRetrievalChain
 
-Output from the chain will be streamed to `stdout` token by token in this example.
+在这个例子中，链中的输出将逐个令牌流式传输到 `stdout`。
 
 
 ```python
@@ -364,8 +363,8 @@ result = qa({"question": query, "chat_history": chat_history})
 
 </CodeOutputBlock>
 
-## get_chat_history Function
-You can also specify a `get_chat_history` function, which can be used to format the chat_history string.
+## get_chat_history函数
+您还可以指定一个`get_chat_history`函数，用于格式化聊天历史字符串。
 
 
 ```python

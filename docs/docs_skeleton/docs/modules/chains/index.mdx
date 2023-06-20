@@ -2,31 +2,30 @@
 sidebar_position: 2
 ---
 
-# Chains
+# 链
 
-Using an LLM in isolation is fine for simple applications,
-but more complex applications require chaining LLMs - either with each other or with other components.
+在简单应用程序中，单独使用LLM是可以的，但更复杂的应用程序需要将LLM进行链接 - 要么互相链接，要么与其他组件链接。
 
-LangChain provides the **Chain** interface for such "chained" applications. We define a Chain very generically as a sequence of calls to components, which can include other chains. The base interface is simple:
+LangChain为这种"链式"应用程序提供了**Chain**接口。我们将链定义得非常通用，作为对组件调用的序列，其中可以包含其他链。基本接口很简单:
 
 import BaseClass from "@snippets/modules/chains/base_class.mdx"
 
 <BaseClass/>
 
-This idea of composing components together in a chain is simple but powerful. It drastically simplifies and makes more modular the implementation of complex applications, which in turn makes it much easier to debug, maintain, and improve your applications.
+将组件以链的形式组合在一起的这个想法简单而强大。它极大地简化了复杂应用程序的实现，使其更加模块化，从而使调试、维护和改进应用程序变得更加容易。
 
-For more specifics check out:
-- [How-to](/docs/modules/chains/how_to/) for walkthroughs of different chain features
-- [Foundational](/docs/modules/chains/foundational/) to get acquainted with core building block chains
-- [Document](/docs/modules/chains/document/) to learn how to incorporate documents into chains
-- [Popular](/docs/modules/chains/popular/) chains for the most common use cases
-- [Additional](/docs/modules/chains/additional/) to see some of the more advanced chains and integrations that you can use out of the box
+了解更多详细信息，请查看：
+- [操作指南](/docs/modules/chains/how_to/)，了解不同链功能的操作步骤
+- [基础知识](/docs/modules/chains/foundational/)，熟悉核心构建块链的使用方法
+- [文档](/docs/modules/chains/document/) 了解如何将文档集成到链中
+- [热门](/docs/modules/chains/popular/) 链，适用于最常见的用例
+- [附加](/docs/modules/chains/additional/) 查看一些更高级的链和集成，您可以直接使用
 
-## Why do we need chains?
+## 为什么我们需要链？
 
-Chains allow us to combine multiple components together to create a single, coherent application. For example, we can create a chain that takes user input, formats it with a PromptTemplate, and then passes the formatted response to an LLM. We can build more complex chains by combining multiple chains together, or by combining chains with other components.
+链允许我们将多个组件组合在一起，创建一个统一的应用程序。例如，我们可以创建一个链，接受用户输入，使用PromptTemplate对其进行格式化，然后将格式化后的响应传递给LLM。我们可以通过将多个链组合在一起或将链与其他组件组合来构建更复杂的链。
 
-## Get started
+## 开始使用
 
 import GetStarted from "@snippets/modules/chains/get_started.mdx"
 

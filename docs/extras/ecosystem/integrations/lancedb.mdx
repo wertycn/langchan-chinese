@@ -1,23 +1,23 @@
 # LanceDB
 
-This page covers how to use [LanceDB](https://github.com/lancedb/lancedb) within LangChain.
-It is broken into two parts: installation and setup, and then references to specific LanceDB wrappers.
+本页面介绍了如何在LangChain中使用[LanceDB](https://github.com/lancedb/lancedb)。
+它分为两个部分：安装和设置，以及特定的LanceDB封装的引用。
 
-## Installation and Setup
+## 安装和设置
 
-- Install the Python SDK with `pip install lancedb`
+- 使用`pip install lancedb`安装Python SDK
 
-## Wrappers
+## 封装器
 
 ### VectorStore
 
-There exists a wrapper around LanceDB databases, allowing you to use it as a vectorstore,
-whether for semantic search or example selection.
+存在一个围绕LanceDB数据库的封装器，使您可以将其用作向量存储，
+无论是用于语义搜索还是示例选择。
 
-To import this vectorstore:
+要导入此向量存储：
 
 ```python
 from langchain.vectorstores import LanceDB
 ```
 
-For a more detailed walkthrough of the LanceDB wrapper, see [this notebook](/docs/modules/data_connection/vectorstores/integrations/lancedb.html)
+要详细了解LanceDB包装器的使用方法，请参阅[这个笔记本](/docs/modules/data_connection/vectorstores/integrations/lancedb.html)。

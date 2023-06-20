@@ -1,17 +1,16 @@
 # Diffbot
 
->[Diffbot](https://docs.diffbot.com/docs) is a service to read web pages. Unlike traditional web scraping tools, 
-> `Diffbot` doesn't require any rules to read the content on a page.
->It starts with computer vision, which classifies a page into one of 20 possible types. Content is then interpreted by a machine learning model trained to identify the key attributes on a page based on its type.
->The result is a website transformed into clean-structured data (like JSON or CSV), ready for your application.
+>[Diffbot](https://docs.diffbot.com/docs) 是一个用于读取网页的服务。与传统的网络爬虫工具不同，`Diffbot` 不需要任何规则来读取页面上的内容。
+>它首先使用计算机视觉对页面进行分类，将其归类为20种可能的类型之一。然后，根据页面类型，使用训练有素的机器学习模型来解释内容，识别页面上的关键属性。
+>结果是将网站转化为干净结构化的数据（如JSON或CSV），以便您的应用程序使用。
 
-## Installation and Setup
+## 安装和设置
 
-Read [instructions](https://docs.diffbot.com/reference/authentication) how to get the Diffbot API Token.
+阅读[说明](https://docs.diffbot.com/reference/authentication)以获取Diffbot API令牌。
 
-## Document Loader
+## 文档加载器
 
-See a [usage example](/docs/modules/data_connection/document_loaders/integrations/diffbot.html).
+查看[用法示例](/docs/modules/data_connection/document_loaders/integrations/diffbot.html)。
 
 ```python
 from langchain.document_loaders import DiffbotLoader

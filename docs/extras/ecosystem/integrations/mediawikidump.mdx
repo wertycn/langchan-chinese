@@ -1,29 +1,26 @@
 # MediaWikiDump
 
->[MediaWiki XML Dumps](https://www.mediawiki.org/wiki/Manual:Importing_XML_dumps) contain the content of a wiki 
-> (wiki pages with all their revisions), without the site-related data. A XML dump does not create a full backup 
-> of the wiki database, the dump does not contain user accounts, images, edit logs, etc.
+>[MediaWiki XML Dumps](https://www.mediawiki.org/wiki/Manual:Importing_XML_dumps) 包含了维基百科的内容（包括所有修订的维基页面），但不包含与站点相关的数据。XML dump并不能创建维基数据库的完整备份，它不包含用户账户、图片、编辑日志等等。
 
+## 安装和设置
 
-## Installation and Setup
+我们需要安装几个Python包。
 
-We need to install several python packages.
-
-The `mediawiki-utilities` supports XML schema 0.11 in unmerged branches.
+`mediawiki-utilities` 支持未合并分支中的XML模式0.11。
 ```bash
 pip install -qU git+https://github.com/mediawiki-utilities/python-mwtypes@updates_schema_0.11
 ```
 
-The `mediawiki-utilities mwxml` has a bug, fix PR pending.
+`mediawiki-utilities mwxml`存在一个bug，修复的PR正在等待审核。
 
 ```bash
 pip install -qU git+https://github.com/gdedrouas/python-mwxml@xml_format_0.11
 pip install -qU mwparserfromhell
 ```
 
-## Document Loader
+## 文档加载器
 
-See a [usage example](/docs/modules/data_connection/document_loaders/integrations/mediawikidump.html).
+请参阅[用法示例](/docs/modules/data_connection/document_loaders/integrations/mediawikidump.html)。
 
 
 ```python

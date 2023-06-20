@@ -1,37 +1,37 @@
-# Prediction Guard
+# 预测保护
 
-This page covers how to use the Prediction Guard ecosystem within LangChain.
-It is broken into two parts: installation and setup, and then references to specific Prediction Guard wrappers.
+本页面介绍了如何在LangChain中使用预测保护生态系统。
+它分为两个部分：安装和设置，以及特定预测保护包装器的参考。
 
-## Installation and Setup
-- Install the Python SDK with `pip install predictionguard`
-- Get an Prediction Guard access token (as described [here](https://docs.predictionguard.com/)) and set it as an environment variable (`PREDICTIONGUARD_TOKEN`)
+## 安装和设置
+- 使用 `pip install predictionguard` 安装Python SDK
+- 获取一个预测保护访问令牌（如[此处](https://docs.predictionguard.com/)所述）并将其设置为环境变量（`PREDICTIONGUARD_TOKEN`）
 
-## LLM Wrapper
+## LLM包装器
 
-There exists a Prediction Guard LLM wrapper, which you can access with 
+有一个名为Prediction Guard LLM包装器，您可以通过以下方式访问： 
 ```python
 from langchain.llms import PredictionGuard
 ```
 
-You can provide the name of the Prediction Guard model as an argument when initializing the LLM:
+在初始化LLM时，您可以提供预测保护模型的名称作为参数。
 ```python
 pgllm = PredictionGuard(model="MPT-7B-Instruct")
 ```
 
-You can also provide your access token directly as an argument:
+您还可以直接将访问令牌作为参数提供：
 ```python
 pgllm = PredictionGuard(model="MPT-7B-Instruct", token="<your access token>")
 ```
 
-Finally, you can provide an "output" argument that is used to structure/ control the output of the LLM:
+最后，您可以提供一个"output"参数，用于结构化/控制LLM的输出：
 ```python
 pgllm = PredictionGuard(model="MPT-7B-Instruct", output={"type": "boolean"})
 ```
 
-## Example usage
+## 使用示例
 
-Basic usage of the controlled or guarded LLM wrapper:
+控制或保护的LLM包装器的基本用法:
 ```python
 import os
 
@@ -72,7 +72,7 @@ pgllm = PredictionGuard(model="MPT-7B-Instruct",
 pgllm(prompt.format(query="What kind of post is this?"))
 ```
 
-Basic LLM Chaining with the Prediction Guard wrapper:
+使用Prediction Guard包装器进行基本的LLM串接：
 ```python
 import os
 

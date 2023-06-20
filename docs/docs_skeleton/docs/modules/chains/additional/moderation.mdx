@@ -1,8 +1,8 @@
-# Moderation
-This notebook walks through examples of how to use a moderation chain, and several common ways for doing so. Moderation chains are useful for detecting text that could be hateful, violent, etc. This can be useful to apply on both user input, but also on the output of a Language Model. Some API providers, like OpenAI, [specifically prohibit](https://beta.openai.com/docs/usage-policies/use-case-policy) you, or your end users, from generating some types of harmful content. To comply with this (and to just generally prevent your application from being harmful) you may often want to append a moderation chain to any LLMChains, in order to make sure any output the LLM generates is not harmful.
+# 内容审核
+本笔记本演示了如何使用一个审查链以及几种常见的方法。审查链对于检测可能包含令人讨厌、暴力等内容的文本非常有用。这对用户输入以及语言模型的输出都非常有用。一些API提供者，比如OpenAI，[明确禁止](https://beta.openai.com/docs/usage-policies/use-case-policy)您或您的最终用户生成某些类型的有害内容。为了遵守这一规定（以及防止您的应用程序具有有害性），您通常希望在任何LLMChains后面添加一个审查链，以确保LLM生成的任何输出都不会有害。
 
-If the content passed into the moderation chain is harmful, there is not one best way to handle it, it probably depends on your application. Sometimes you may want to throw an error in the Chain (and have your application handle that). Other times, you may want to return something to the user explaining that the text was harmful. There could even be other ways to handle it! We will cover all these ways in this walkthrough.
+如果传入审查链的内容有害，处理它的最佳方式可能因您的应用程序而异。有时您可能希望在链中抛出错误（并让应用程序处理该错误）。其他时候，您可能希望向用户返回一些解释，说明文本是有害的。甚至可能有其他处理方式！我们将在本教程中涵盖所有这些方式。
 
-import Example from "@snippets/modules/chains/additional/moderation.mdx"
+从 "@snippets/modules/chains/additional/moderation.mdx" 导入 Example
 
 <Example/>

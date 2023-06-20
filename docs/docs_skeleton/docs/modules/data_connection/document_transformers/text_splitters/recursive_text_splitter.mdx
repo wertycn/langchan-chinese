@@ -1,10 +1,10 @@
-# Recursively split by character
+# 递归按字符分割
 
-This text splitter is the recommended one for generic text. It is parameterized by a list of characters. It tries to split on them in order until the chunks are small enough. The default list is `["\n\n", "\n", " ", ""]`. This has the effect of trying to keep all paragraphs (and then sentences, and then words) together as long as possible, as those would generically seem to be the strongest semantically related pieces of text.
+这个文本分割器是通用文本的推荐分割器。它以字符列表作为参数进行参数化。它会按照列表中的字符顺序进行分割，直到分割后的块足够小。默认的字符列表是 `["\n\n", "\n", " ", ""]`。这样做的效果是，尽可能地保持段落（然后是句子，然后是单词）在一起，因为这些通常是语义相关性最强的文本片段。
 
-1. How the text is split: by list of characters
-2. How the chunk size is measured: by number of characters
+1. 文本如何分割：按字符列表进行分割
+2. 块大小如何测量：按字符数进行测量
 
-import Example from "@snippets/modules/data_connection/document_transformers/text_splitters/recursive_text_splitter.mdx"
+从 "@snippets/modules/data_connection/document_transformers/text_splitters/recursive_text_splitter.mdx" 导入 Example
 
 <Example/>

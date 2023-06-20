@@ -1,9 +1,9 @@
-# Self-querying
+# 自查询
 
-A self-querying retriever is one that, as the name suggests, has the ability to query itself. Specifically, given any natural language query, the retriever uses a query-constructing LLM chain to write a structured query and then applies that structured query to it's underlying VectorStore. This allows the retriever to not only use the user-input query for semantic similarity comparison with the contents of stored documented, but to also extract filters from the user query on the metadata of stored documents and to execute those filters.
+自查询检索器是指具有自我查询能力的检索器。具体而言，给定任何自然语言查询，检索器使用查询构建LLM链来编写结构化查询，然后将该结构化查询应用于其底层的向量存储。这使得检索器不仅可以使用用户输入的查询与存储文档内容进行语义相似性比较，还可以从用户查询中提取对存储文档的元数据进行过滤，并执行这些过滤操作。
 
 ![](https://drive.google.com/uc?id=1OQUN-0MJcDUxmPXofgS7MqReEs720pqS)
 
-import Example from "@snippets/modules/data_connection/retrievers/self_query/get_started.mdx"
+从"@snippets/modules/data_connection/retrievers/self_query/get_started.mdx"导入Example
 
 <Example/>

@@ -1,18 +1,18 @@
-### Setup
+### 设置
 
-To start we'll need to install the OpenAI Python package:
+首先，我们需要安装OpenAI的Python包：
 
 ```bash
 pip install openai
 ```
 
-Accessing the API requires an API key, which you can get by creating an account and heading [here](https://platform.openai.com/account/api-keys). Once we have a key we'll want to set it as an environment variable by running:
+访问API需要一个API密钥，您可以通过创建一个账户并前往[这里](https://platform.openai.com/account/api-keys)获取。一旦我们有了密钥，我们将通过运行以下命令将其设置为环境变量:
 
 ```bash
 export OPENAI_API_KEY="..."
 ```
 
-If you'd prefer not to set an environment variable you can pass the key in directly via the `openai_api_key` named parameter when initiating the OpenAI LLM class:
+如果您不想设置环境变量，可以在初始化OpenAI LLM类时直接通过`openai_api_key`命名参数传递密钥。
 
 ```python
 from langchain.embeddings import OpenAIEmbeddings
@@ -20,7 +20,7 @@ from langchain.embeddings import OpenAIEmbeddings
 embeddings_model = OpenAIEmbeddings(openai_api_key="...")
 ```
 
-otherwise you can initialize without any params:
+否则，您可以不带任何参数进行初始化：
 ```python
 from langchain.embeddings import OpenAIEmbeddings
 
@@ -28,7 +28,7 @@ embeddings_model = OpenAIEmbeddings()
 ```
 
 ### `embed_documents`
-#### Embed list of texts
+#### 嵌入文本列表
 
 ```python
 embeddings = embedding_model.embed_documents(
@@ -52,8 +52,8 @@ len(embeddings), len(embeddings[0])
 </CodeOutputBlock>
 
 ### `embed_query`
-#### Embed single query
-Embed a single piece of text for the purpose of comparing to other embedded pieces of texts.
+#### 嵌入单个查询
+嵌入一段文本，以便与其他嵌入的文本进行比较。
 
 ```python
 embedded_query = embedding_model.embed_query("What was the name mentioned in the conversation?")

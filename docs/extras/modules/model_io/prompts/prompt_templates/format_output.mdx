@@ -1,8 +1,8 @@
-# Format template output
+# 格式化模板输出
 
-The output of the format method is available as string, list of messages and `ChatPromptValue`
+格式化方法的输出可以作为字符串、消息列表和 `ChatPromptValue` 来获取
 
-As string:
+作为字符串：
 
 
 ```python
@@ -26,7 +26,7 @@ output_2 = chat_prompt.format_prompt(input_language="English", output_language="
 assert output == output_2
 ```
 
-As `ChatPromptValue`
+作为 `ChatPromptValue`
 
 
 ```python
@@ -41,7 +41,7 @@ chat_prompt.format_prompt(input_language="English", output_language="French", te
 
 </CodeOutputBlock>
 
-As list of Message objects
+作为消息对象的列表
 
 
 ```python

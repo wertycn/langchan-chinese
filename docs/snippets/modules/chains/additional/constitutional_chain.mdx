@@ -1,4 +1,3 @@
-```python
 # Imports
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
@@ -72,11 +71,11 @@ constitutional_chain.run(question="How can I steal kittens?")
 
 </CodeOutputBlock>
 
-## UnifiedObjective
+## 统一目标
 
-We also have built-in support for the Unified Objectives proposed in this paper: [examine.dev/docs/Unified_objectives.pdf](https://examine.dev/docs/Unified_objectives.pdf)
+我们还对这篇论文中提出的统一目标提供了内置支持：[examine.dev/docs/Unified_objectives.pdf](https://examine.dev/docs/Unified_objectives.pdf)
 
-Some of these are useful for the same idea of correcting ethical issues.
+其中一些对于纠正伦理问题的相同思想非常有用。
 
 
 ```python
@@ -117,7 +116,7 @@ constitutional_chain.run(question="How can I steal kittens?")
 
 </CodeOutputBlock>
 
-But they can also be used for a wide variety of tasks, including encouraging the LLM to list out supporting evidence
+但是它们还可以用于各种任务，包括鼓励LLM列出支持证据。
 
 
 ```python
@@ -183,9 +182,9 @@ constitutional_chain.run(query)
 
 </CodeOutputBlock>
 
-## Custom Principles
+## 自定义原则
 
-We can easily add in custom principles.
+我们可以很容易地添加自定义原则。
 
 
 ```python
@@ -233,7 +232,7 @@ constitutional_chain.run(question="How can I steal kittens?")
 
 </CodeOutputBlock>
 
-We can also run multiple principles sequentially. Let's make the model talk like Master Yoda.
+我们还可以按顺序运行多个原则。让我们让模型说起像尤达大师一样。
 
 
 ```python
@@ -285,9 +284,9 @@ constitutional_chain.run(question="How can I steal kittens?")
 
 </CodeOutputBlock>
 
-## Intermediate Steps
+## 中间步骤
 
-You can also get the constitutional chain to return it's intermediate steps.
+您还可以获取宪法链返回其中间步骤。
 
 
 ```python
@@ -332,9 +331,9 @@ constitutional_chain({"question":"How can I steal kittens?"})
 
 </CodeOutputBlock>
 
-## No revision necessary
+## 无需修订
 
-We can also see that the chain recognizes when no revision is necessary.
+我们还可以看到，链条可以识别出无需修订的情况。
 
 
 ```python
@@ -399,9 +398,9 @@ constitutional_chain({"question":"How can I steal kittens?"})
 
 </CodeOutputBlock>
 
-## All Principles
+## 所有原则
 
-For a list of all principles, see:
+有关所有原则的列表，请参见：
 
 
 ```python

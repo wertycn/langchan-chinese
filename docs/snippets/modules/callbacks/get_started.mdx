@@ -1,11 +1,11 @@
 ---
 sidebar_position: 5
 ---
-You can subscribe to these events by using the `callbacks` argument available throughout the API. This argument is list of handler objects, which are expected to implement one or more of the methods described below in more detail.
+您可以通过在API中使用`callbacks`参数来订阅这些事件。该参数是一个处理程序对象的列表，这些处理程序对象应该实现以下更详细描述的一个或多个方法。
 
-## Callback handlers
+## 回调处理程序
 
-`CallbackHandlers` are objects that implement the `CallbackHandler` interface, which has a method for each event that can be subscribed to. The `CallbackManager` will call the appropriate method on each handler when the event is triggered.
+`CallbackHandlers`是实现`CallbackHandler`接口的对象，该接口中为每个可以订阅的事件定义了一个方法。当触发事件时，`CallbackManager`会调用每个处理程序的相应方法。
 
 ```python
 class BaseCallbackHandler:
@@ -68,11 +68,11 @@ class BaseCallbackHandler:
         """Run on agent end."""
 ```
 
-## Get started
+## 快速入门
 
-LangChain provides a few built-in handlers that you can use to get started. These are available in the `langchain/callbacks` module. The most basic handler is the `StdOutCallbackHandler`, which simply logs all events to `stdout`.
+LangChain提供了一些内置的处理程序，可以帮助您快速开始。这些处理程序位于`langchain/callbacks`模块中。最基本的处理程序是`StdOutCallbackHandler`，它只是将所有事件记录到`stdout`。
 
-**Note** when the `verbose` flag on the object is set to true, the `StdOutCallbackHandler` will be invoked even without being explicitly passed in.
+**注意** 当对象上的`verbose`标志设置为true时，即使没有显式传递`StdOutCallbackHandler`，它也会被调用。
 
 ```python
 from langchain.callbacks import StdOutCallbackHandler
@@ -126,17 +126,17 @@ chain.run(number=2, callbacks=[handler])
 
 </CodeOutputBlock>
 
-## Where to pass in callbacks
+## 回调函数的传递位置
 
-The `callbacks` argument is available on most objects throughout the API (Chains, Models, Tools, Agents, etc.) in two different places:
+`callbacks` 参数在 API 的大多数对象（Chains、Models、Tools、Agents 等）中都有两个不同的传递位置：
 
-- **Constructor callbacks**: defined in the constructor, eg. `LLMChain(callbacks=[handler], tags=['a-tag'])`, which will be used for all calls made on that object, and will be scoped to that object only, eg. if you pass a handler to the `LLMChain` constructor, it will not be used by the Model attached to that chain.
-- **Request callbacks**: defined in the `call()`/`run()`/`apply()` methods used for issuing a request, eg. `chain.call(inputs, callbacks=[handler])`, which will be used for that specific request only, and all sub-requests that it contains (eg. a call to an LLMChain triggers a call to a Model, which uses the same handler passed in the `call()` method).
+- **构造函数回调**：在构造函数中定义，例如`LLMChain(callbacks=[handler], tags=['a-tag'])`，这将用于该对象上的所有调用，并且仅在该对象范围内有效。例如，如果您将处理程序传递给`LLMChain`构造函数，它将不会被附加到该链上的模型使用。
+- **请求回调**: 在发出请求时在`call()`/`run()`/`apply()`方法中定义，例如`chain.call(inputs, callbacks=[handler])`，这将仅用于该特定请求以及其包含的所有子请求（例如，对LLMChain的调用会触发对Model的调用，该调用使用在`call()`方法中传递的相同处理程序）。
 
-The `verbose` argument is available on most objects throughout the API (Chains, Models, Tools, Agents, etc.) as a constructor argument, eg. `LLMChain(verbose=True)`, and it is equivalent to passing a `ConsoleCallbackHandler` to the `callbacks` argument of that object and all child objects. This is useful for debugging, as it will log all events to the console.
+`verbose`参数在API中的大多数对象（如Chains、Models、Tools、Agents等）上都可用作构造函数的参数，例如`LLMChain(verbose=True)`，它等同于将`ConsoleCallbackHandler`传递给该对象和所有子对象的`callbacks`参数。这在调试时非常有用，因为它会将所有事件记录到控制台。
 
-### When do you want to use each of these?
+### 您何时使用每个参数？
 
-- Constructor callbacks are most useful for use cases such as logging, monitoring, etc., which are _not specific to a single request_, but rather to the entire chain. For example, if you want to log all the requests made to an LLMChain, you would pass a handler to the constructor.
-- Request callbacks are most useful for use cases such as streaming, where you want to stream the output of a single request to a specific websocket connection, or other similar use cases. For example, if you want to stream the output of a single request to a websocket, you would pass a handler to the `call()` method
+- 构造函数回调在日志记录、监控等用例中非常有用，这些用例并不特定于单个请求，而是针对整个链。例如，如果您想记录所有发送到LLMChain的请求，可以将处理程序传递给构造函数。
+- 请求回调在流式传输等情况下非常有用，其中您希望将单个请求的输出流式传输到特定的 WebSocket 连接或其他类似的用例中。例如，如果您想将单个请求的输出流式传输到 WebSocket，您可以将处理程序传递给`call()`方法。
 

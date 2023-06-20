@@ -2,20 +2,20 @@
 sidebar_position: 0
 ---
 
-# Prompt templates
+# 提示模板
 
-Language models take text as input - that text is commonly referred to as a prompt.
-Typically this is not simply a hardcoded string but rather a combination of a template, some examples, and user input.
-LangChain provides several classes and functions to make constructing and working with prompts easy.
+语言模型以文本作为输入，这个文本通常被称为提示。
+通常，这不仅仅是一个硬编码的字符串，而是一个模板、一些示例和用户输入的组合。
+LangChain提供了几个类和函数，使构建和处理提示变得容易。
 
-## What is a prompt template?
+## 什么是提示模板？
 
-A prompt template refers to a reproducible way to generate a prompt. It contains a text string ("the template"), that can take in a set of parameters from the end user and generates a prompt.
+一个提示模板是指生成提示的一种可复制的方式。它包含一个文本字符串（"模板"），可以从最终用户那里接收一组参数并生成提示。
 
-A prompt template can contain:
-- instructions to the language model,
-- a set of few shot examples to help the language model generate a better response,
-- a question to the language model.
+一个提示模板可以包含：
+- 对语言模型的指令，
+- 一组少量示例，以帮助语言模型生成更好的回复，
+- 对语言模型的问题。
 
 import GetStarted from "@snippets/modules/model_io/prompts/prompt_templates/get_started.mdx"
 

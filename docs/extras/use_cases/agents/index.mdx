@@ -1,46 +1,45 @@
-# Agents
+# 代理
 
-Agents can be used for a variety of tasks.
-Agents combine the decision making ability of a language model with tools in order to create a system
-that can execute and implement solutions on your behalf. Before reading any more, it is highly
-recommended that you read the documentation in the `agent` module to understand the concepts associated with agents more.
-Specifically, you should be familiar with what the `agent`, `tool`, and `agent executor` abstractions are before reading more.
+代理可以用于各种任务。
+代理将语言模型的决策能力与工具结合起来，以创建一个能够代表您执行和实现解决方案的系统。
+在继续阅读之前，强烈建议您阅读`agent`模块中的文档，以更深入地了解代理相关的概念。
+具体而言，在继续阅读之前，您应该熟悉`agent`、`tool`和`agent executor`的抽象概念。
 
-- [Agent documentation](/docs/modules/agents.html) (for interacting with the outside world)
+- [代理人文档](/docs/modules/agents.html)（用于与外部世界进行交互）
 
-## Create Your Own Agent
+## 创建您自己的代理人
 
-Once you have read that documentation, you should be prepared to create your own agent. 
-What exactly does that involve?
-Here's how we recommend getting started with creating your own agent:
+一旦您阅读了该文档，您就应该准备好创建您自己的代理人了。
+那具体需要做些什么呢？
+以下是我们推荐您开始创建您自己的代理人的步骤：
 
-### Step 1: Create Tools
+### 步骤1：创建工具
 
-Agents are largely defined by the tools they can use.
-If you have a specific task you want the agent to accomplish, you have to give it access to the right tools.
-We have many tools natively in LangChain, so you should first look to see if any of them meet your needs.
-But we also make it easy to define a custom tool, so if you need custom tools you should absolutely do that.
+代理人的大部分功能是由它所能使用的工具定义的。
+如果您有一个特定的任务要求代理人完成，您必须给它提供访问正确工具的权限。
+我们在LangChain中原生地提供了许多工具，因此您应该首先查看是否有任何工具符合您的需求。
+但是，我们也提供了定义自定义工具的简便方法，因此如果您需要自定义工具，绝对可以这样做。
 
-### (Optional) Step 2: Modify Agent
+### （可选）第2步：修改代理
 
-The built-in LangChain agent types are designed to work well in generic situations,
-but you may be able to improve performance by modifying the agent implementation.
-There are several ways you could do this:
+内置的LangChain代理类型设计用于在通用情况下良好运行，
+但是您可以通过修改代理实现来提高性能。
+有几种方法可以做到这一点：
 
-1. Modify the base prompt. This can be used to give the agent more context on how it should behave, etc.
-2. Modify the output parser. This is necessary if the agent is having trouble parsing the language model output.
+1. 修改基本提示。这可以用来为代理提供更多关于其行为方式等方面的上下文信息。
+2. 修改输出解析器。如果代理在解析语言模型输出时出现问题，这是必需的。
 
-### (Optional) Step 3: Modify Agent Executor
+### （可选）步骤3：修改代理执行器
 
-This step is usually not necessary, as this is pretty general logic.
-Possible reasons you would want to modify this include adding different stopping conditions, or handling errors
+通常情况下，这一步骤是不必要的，因为这是相当通用的逻辑。
+您希望修改它的可能原因包括添加不同的停止条件或处理错误。
 
-## Examples
+## 示例
 
-Specific examples of agents include:
+代理的具体示例包括：
 
-- [AI Plugins](./custom_agent_with_plugin_retrieval.html): an implementation of an agent that is designed to be able to use all AI Plugins.
-- [Plug-and-PlAI (Plugins Database)](./custom_agent_with_plugin_retrieval_using_plugnplai.html): an implementation of an agent that is designed to be able to use all AI Plugins retrieved from PlugNPlAI.
-- [Wikibase Agent](./wikibase_agent.html): an implementation of an agent that is designed to interact with Wikibase.
-- [Sales GPT](./sales_agent_with_context.html): This notebook demonstrates an implementation of a Context-Aware AI Sales agent.
-- [Multi-Modal Output Agent](./multi_modal_output_agent.html): an implementation of a multi-modal output agent that can generate text and images.
+- [AI插件](./custom_agent_with_plugin_retrieval.html)：一个能够使用所有AI插件的代理的实现。
+- [Plug-and-PlAI（插件数据库）](./custom_agent_with_plugin_retrieval_using_plugnplai.html)：一个能够使用从PlugNPlAI检索到的所有AI插件的代理的实现。
+- [Wikibase代理](./wikibase_agent.html)：一个与Wikibase交互的代理的实现。
+- [销售GPT](./sales_agent_with_context.html): 这个笔记本演示了一个上下文感知的AI销售代理的实现。
+- [多模态输出代理](./multi_modal_output_agent.html): 一个能够生成文本和图像的多模态输出代理的实现。

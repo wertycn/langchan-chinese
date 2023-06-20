@@ -1,4 +1,4 @@
-## Imports
+## 导入模块
 
 
 ```python
@@ -10,7 +10,7 @@ from langchain.agents.tools import Tool
 from langchain import LLMMathChain
 ```
 
-## Tools
+## 工具
 
 
 ```python
@@ -31,7 +31,7 @@ tools = [
 ]
 ```
 
-## Planner, Executor, and Agent
+## 计划者、执行者和代理
 
 
 ```python
@@ -53,7 +53,7 @@ executor = load_agent_executor(model, tools, verbose=True)
 agent = PlanAndExecute(planner=planner, executor=executor, verbose=True)
 ```
 
-## Run Example
+## 运行示例
 
 
 ```python

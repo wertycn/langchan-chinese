@@ -1,5 +1,5 @@
-## Return Source Documents
-Additionally, we can return the source documents used to answer the question by specifying an optional parameter when constructing the chain.
+## 返回源文档
+此外，我们可以通过在构建链时指定一个可选参数来返回用于回答问题的源文档。
 
 
 ```python
@@ -39,9 +39,7 @@ result["source_documents"]
      Document(page_content='Tonight, I’m announcing a crackdown on these companies overcharging American businesses and consumers. \n\nAnd as Wall Street firms take over more nursing homes, quality in those homes has gone down and costs have gone up.  \n\nThat ends on my watch. \n\nMedicare is going to set higher standards for nursing homes and make sure your loved ones get the care they deserve and expect. \n\nWe’ll also cut costs and keep the economy going strong by giving workers a fair shot, provide more training and apprenticeships, hire them based on their skills not degrees. \n\nLet’s pass the Paycheck Fairness Act and paid leave.  \n\nRaise the minimum wage to $15 an hour and extend the Child Tax Credit, so no one has to raise a family in poverty. \n\nLet’s increase Pell Grants and increase our historic support of HBCUs, and invest in what Jill—our First Lady who teaches full-time—calls America’s best-kept secret: community colleges.', lookup_str='', metadata={'source': '../../state_of_the_union.txt'}, lookup_index=0)]
 ```
 
-</CodeOutputBlock>
-
-Alternatively, if our document have a "source" metadata key, we can use the `RetrievalQAWithSourceChain` to cite our sources:
+或者，如果我们的文档有一个"source"元数据键，我们可以使用`RetrievalQAWithSourceChain`来引用我们的来源:
 
 ```python
 docsearch = Chroma.from_texts(texts, embeddings, metadatas=[{"source": f"{i}-pl"} for i in range(len(texts))])

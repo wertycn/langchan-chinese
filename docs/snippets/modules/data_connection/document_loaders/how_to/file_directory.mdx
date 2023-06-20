@@ -1,10 +1,10 @@
-Under the hood, by default this uses the [UnstructuredLoader](./unstructured_file.html)
+在内部，默认情况下使用[UnstructuredLoader](./unstructured_file.html)。
 
 ```python
 from langchain.document_loaders import DirectoryLoader
 ```
 
-We can use the `glob` parameter to control which files to load. Note that here it doesn't load the `.rst` file or the `.html` files.
+我们可以使用`glob`参数来控制加载哪些文件。请注意，这里不会加载`.rst`文件或`.html`文件。
 
 
 ```python
@@ -29,9 +29,9 @@ len(docs)
 
 </CodeOutputBlock>
 
-## Show a progress bar
+## 显示进度条
 
-By default a progress bar will not be shown. To show a progress bar, install the `tqdm` library (e.g. `pip install tqdm`), and set the `show_progress` parameter to `True`.
+默认情况下不会显示进度条。要显示进度条，请安装 `tqdm` 库（例如 `pip install tqdm`），并将 `show_progress` 参数设置为 `True`。
 
 
 ```python
@@ -50,9 +50,9 @@ docs = loader.load()
 
 </CodeOutputBlock>
 
-## Use multithreading
+## 使用多线程
 
-By default the loading happens in one thread. In order to utilize several threads set the `use_multithreading` flag to true.
+默认情况下，加载操作在一个线程中进行。为了利用多个线程，将`use_multithreading`标志设置为true。
 
 
 ```python
@@ -60,8 +60,8 @@ loader = DirectoryLoader('../', glob="**/*.md", use_multithreading=True)
 docs = loader.load()
 ```
 
-## Change loader class
-By default this uses the `UnstructuredLoader` class. However, you can change up the type of loader pretty easily.
+## 更改加载器类
+默认情况下，使用`UnstructuredLoader`类。但是，您可以很容易地更改加载器的类型。
 
 
 ```python
@@ -91,7 +91,7 @@ len(docs)
 
 </CodeOutputBlock>
 
-If you need to load Python source code files, use the `PythonLoader`.
+如果您需要加载Python源代码文件，请使用`PythonLoader`。
 
 
 ```python
@@ -121,11 +121,11 @@ len(docs)
 
 </CodeOutputBlock>
 
-## Auto detect file encodings with TextLoader
+## 使用TextLoader自动检测文件编码
 
-In this example we will see some strategies that can be useful when loading a big list of arbitrary files from a directory using the `TextLoader` class.
+在这个例子中，我们将看到一些在使用`TextLoader`类从目录加载大量任意文件时可能有用的策略。
 
-First to illustrate the problem, let's try to load multiple text with arbitrary encodings.
+首先，为了说明问题，让我们尝试加载多个具有任意编码的文本。
 
 
 ```python
@@ -133,7 +133,7 @@ path = '../../../../../tests/integration_tests/examples'
 loader = DirectoryLoader(path, glob="**/*.txt", loader_cls=TextLoader)
 ```
 
-### A. Default Behavior
+### A. 默认行为
 
 
 ```python
@@ -212,13 +212,13 @@ loader.load()
 
 </HTMLOutputBlock>
 
-The file `example-non-utf8.txt` uses a different encoding the `load()` function fails with a helpful message indicating which file failed decoding. 
+文件`example-non-utf8.txt`使用了不同的编码，因此`load()`函数会失败，并显示一个有用的错误消息，指示哪个文件无法解码。
 
-With the default behavior of `TextLoader` any failure to load any of the documents will fail the whole loading process and no documents are loaded. 
+使用`TextLoader`的默认行为，如果加载过程中任何文档加载失败，整个加载过程将失败，并且没有文档被加载。
 
-### B. Silent fail
+### B. 静默失败
 
-We can pass the parameter `silent_errors` to the `DirectoryLoader` to skip the files which could not be loaded and continue the load process.
+我们可以将参数`silent_errors`传递给`DirectoryLoader`，以跳过无法加载的文件并继续加载过程。
 
 
 ```python
@@ -249,9 +249,9 @@ doc_sources
 
 </CodeOutputBlock>
 
-### C. Auto detect encodings
+### C. 自动检测编码
 
-We can also ask `TextLoader` to auto detect the file encoding before failing, by passing the `autodetect_encoding` to the loader class.
+我们还可以通过将`autodetect_encoding`传递给加载器类，让`TextLoader`在失败之前自动检测文件的编码方式。
 
 
 ```python

@@ -1,9 +1,9 @@
-# Summarization
+# 摘要
 
-Summarization involves creating a smaller summary of multiple longer documents.
-This can be useful for distilling long documents into the core pieces of information.
+摘要是指创建多个较长文档的较小摘要。
+这对于将长文档提炼为核心信息非常有用。
 
-The recommended way to get started using a summarization chain is:
+使用摘要链的推荐方法是：
 
 ```python
 from langchain.chains.summarize import load_summarize_chain
@@ -11,8 +11,8 @@ chain = load_summarize_chain(llm, chain_type="map_reduce")
 chain.run(docs)
 ```
 
-The following resources exist:
-- [Summarization notebook](/docs/modules/chains/popular/summarize.html): A notebook walking through how to accomplish this task.
+存在以下资源：
+- [摘要笔记本](/docs/modules/chains/popular/summarize.html)：一个教程，介绍如何完成这个任务。
 
-Additional related resources include:
-- [Utilities for working with documents](/api_reference/utils.html): Guides on how to use several of the utilities which will prove helpful for this task, including Text Splitters (for splitting up long documents).
+其他相关资源包括：
+- [用于处理文档的工具](/api_reference/utils.html)：指南介绍了如何使用几个工具，对于这个任务会很有帮助，包括文本分割器（用于拆分长文档）。

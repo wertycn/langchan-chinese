@@ -1,26 +1,26 @@
 # Llama.cpp
 
-This page covers how to use [llama.cpp](https://github.com/ggerganov/llama.cpp) within LangChain.
-It is broken into two parts: installation and setup, and then references to specific Llama-cpp wrappers.
+本页面介绍了如何在LangChain中使用[llama.cpp](https://github.com/ggerganov/llama.cpp)。
+它分为两部分：安装和设置以及对特定的Llama-cpp封装的引用。
 
-## Installation and Setup
-- Install the Python package with `pip install llama-cpp-python`
-- Download one of the [supported models](https://github.com/ggerganov/llama.cpp#description) and convert them to the llama.cpp format per the [instructions](https://github.com/ggerganov/llama.cpp)
+## 安装和设置
+- 使用`pip install llama-cpp-python`安装Python包
+- 在[支持的模型](https://github.com/ggerganov/llama.cpp#description)中下载其中之一，并根据[说明](https://github.com/ggerganov/llama.cpp)将其转换为llama.cpp格式
 
-## Wrappers
+## 封装器
 
 ### LLM
 
-There exists a LlamaCpp LLM wrapper, which you can access with 
+存在一个LlamaCpp LLM封装器，您可以使用它来访问 
 ```python
 from langchain.llms import LlamaCpp
 ```
-For a more detailed walkthrough of this, see [this notebook](/docs/modules/model_io/models/llms/integrations/llamacpp.html)
+对于更详细的步骤，请参阅[此笔记本](/docs/modules/model_io/models/llms/integrations/llamacpp.html)
 
-### Embeddings
+### 嵌入
 
-There exists a LlamaCpp Embeddings wrapper, which you can access with 
+LlamaCpp提供了一个嵌入包装器，您可以通过以下方式访问 
 ```python
 from langchain.embeddings import LlamaCppEmbeddings
 ```
-For a more detailed walkthrough of this, see [this notebook](/docs/modules/data_connection/text_embedding/integrations/llamacpp.html)
+有关更详细的步骤，请参阅[这个笔记本](/docs/modules/data_connection/text_embedding/integrations/llamacpp.html)。
